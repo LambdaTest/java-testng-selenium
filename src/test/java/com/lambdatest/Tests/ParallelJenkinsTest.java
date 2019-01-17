@@ -38,7 +38,7 @@ public class ParallelJenkinsTest {
 		
 		this.setUp(browser, version, os, resValue, method.getName());
 		
-		getWebDriver().get("https://4dvanceboy.github.io/lambdatest/lambdasampleapp.html");
+		getWebDriver().get("https://lambdatest.github.io/sample-todo-app/");
 
 		// Click on First Item
 		getWebDriver().findElement(By.name("li1")).click();

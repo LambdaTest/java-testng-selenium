@@ -51,7 +51,7 @@ public class SingleTest {
 	public void test() {
 
 		// Launch the app
-		driver.get("https://4dvanceboy.github.io/lambdatest/lambdasampleapp.html");
+		driver.get("https://lambdatest.github.io/sample-todo-app/");
 
 		// Click on First Item
 		driver.findElement(By.name("li1")).click();

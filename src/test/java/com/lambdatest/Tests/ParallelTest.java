@@ -30,7 +30,7 @@ public class ParallelTest {
 
 		// Launch the app
 		this.setUp(browser, version, os, method.getName());
-		getWebDriver().get("https://4dvanceboy.github.io/lambdatest/lambdasampleapp.html");
+		getWebDriver().get("https://lambdatest.github.io/sample-todo-app/");
 
 		// Click on First Item
 		getWebDriver().findElement(By.name("li1")).click();
