@@ -1,0 +1,12 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite thread-count="1" verbose="1" name="Lambdatest Suite"
+	annotations="JDK" parallel="tests">
+
+	<test name="Lambdatest Suite- Single From Jenkins">
+		<classes>
+			<class name="com.lambdatest.Tests.SingleJenkinsTest" />
+		</classes>
+	</test>
+
+</suite>
