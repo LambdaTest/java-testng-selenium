@@ -76,9 +76,12 @@ public class ParallelTest {
 	@DataProvider(name = "browsersDetails", parallel = true)
 	public static Object[][] ltBrowserDataProvider(Method testMethod) {
 		return new Object[][] {
+			
 				 new Object[] { "internet explorer", "11.0", "Windows 8.1" },
 				new Object[] { "chrome", "60.0", "Windows 8.1" },
-				new Object[] { "firefox", "60.0", "Windows 8.1" }, };
+				new Object[] { "firefox", "60.0", "Windows 8.1" }, 
+				
+		};
 	}
 
 	public WebDriver getWebDriver() {
