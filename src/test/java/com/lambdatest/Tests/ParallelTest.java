@@ -61,6 +61,7 @@ public class ParallelTest {
 		((JavascriptExecutor) webDriver.get()).executeScript("lambda-status="
 		+ (result.isSuccess() ? "passed" : "failed"));
 		webDriver.get().quit();
+		Thread.sleep(10000);
 	}
 	
 	
@@ -69,10 +70,10 @@ public class ParallelTest {
 
 	@DataProvider(name = "browsersDetails", parallel = true)
 	public static Object[][] ltBrowserDataProvider(Method testMethod) {
-		return new Object[][] { new Object[] { "MicrosoftEdge", "16.0", "WIN10" },
-				new Object[] { "firefox", "60.0", "WIN10" }, new Object[] { "internet explorer", "11.0", "WIN7" },
-				new Object[] { "chrome", "60.0", "OS X 10.11" }, new Object[] { "chrome", "70.0", "macOS 10.13" },
-				new Object[] { "firefox", "60.0", "WIN7" }, };
+		return new Object[][] {
+				 new Object[] { "internet explorer", "11.0", "Windows 8.1" },
+				new Object[] { "chrome", "60.0", "Windows 8.1" },
+				new Object[] { "firefox", "60.0", "Windows 8.1" }, };
 	}
 
 	public WebDriver getWebDriver() {
@@ -89,13 +90,15 @@ public class ParallelTest {
 		capabilities.setCapability(CapabilityType.VERSION, version);
 		capabilities.setCapability(CapabilityType.PLATFORM, os);
 		capabilities.setCapability("name", methodName);
-		capabilities.setCapability("build", "TestNG Parallel Test");
+		capabilities.setCapability("build", "10.33.13.34");
 		capabilities.setCapability("name", "TestNG Parallel");
 		capabilities.setCapability("screen_resolution", "1024x768");
 		capabilities.setCapability("network", true);
 		capabilities.setCapability("video", true);
 		capabilities.setCapability("console", true);
 		capabilities.setCapability("visual", true);
+		capabilities.setCapability("fixedIP", "10.33.13.34");
+		System.out.println("capabilities"+capabilities);
 		
 		String username = Configuration.readConfig("LambdaTest_UserName");
 		String accesskey = Configuration.readConfig("LambdaTest_AppKey");
