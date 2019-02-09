@@ -24,7 +24,7 @@
     <div class="top-banner-root">
       <span class="top-banner-title-font">Test results</span>
       <br/>
-      <span class="top-banner-font-1">1 suite</span>
+      <span class="top-banner-font-1">1 suite, 2 failed tests</span>
     </div> <!-- top-banner-root -->
     <div class="navigator-root">
       <div class="navigator-suite-header">
@@ -38,7 +38,7 @@
         <div class="rounded-window">
           <div class="suite-header light-rounded-window-top">
             <a href="#" class="navigator-link" panel-name="suite-Default_suite">
-              <span class="suite-name border-skipped">Default suite</span>
+              <span class="suite-name border-failed">Default suite</span>
             </a> <!-- navigator-link -->
           </div> <!-- suite-header light-rounded-window-top -->
           <div class="navigator-suite-content">
@@ -91,46 +91,55 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">6 methods,  6 skipped,  </span>
+                    <span class="method-stats">6 methods, 2 failed,   4 passed</span>
                   </li>
                   <li>
-                    <span class="method-list-title skipped">Skipped methods</span>
-                    <span class="show-or-hide-methods skipped">
-                      <a href="#" panel-name="suite-Default_suite" class="hide-methods skipped suite-Default_suite"> (hide)</a> <!-- hide-methods skipped suite-Default_suite -->
-                      <a href="#" panel-name="suite-Default_suite" class="show-methods skipped suite-Default_suite"> (show)</a> <!-- show-methods skipped suite-Default_suite -->
+                    <span class="method-list-title failed">Failed methods</span>
+                    <span class="show-or-hide-methods failed">
+                      <a href="#" panel-name="suite-Default_suite" class="hide-methods failed suite-Default_suite"> (hide)</a> <!-- hide-methods failed suite-Default_suite -->
+                      <a href="#" panel-name="suite-Default_suite" class="show-methods failed suite-Default_suite"> (show)</a> <!-- show-methods failed suite-Default_suite -->
                     </span>
-                    <div class="method-list-content skipped suite-Default_suite">
+                    <div class="method-list-content failed suite-Default_suite">
                       <span>
-                        <img width="3%" src="skipped.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="com.lambdatest.Tests.ParallelTest" hash-for-method="test(chrome, 60.0, OS X 10.11, public void com.lambdatest.Tests.ParallelTest.test(java.lang.String,java.l...)">test(chrome, 60.0, OS X 10.11, public void com.lambdatest.Tests.ParallelTest.test(java.lang.String,java.l...)</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img width="3%" src="skipped.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="com.lambdatest.Tests.ParallelTest" hash-for-method="test(MicrosoftEdge, 16.0, WIN10, public void com.lambdatest.Tests.ParallelTest.test(java.lang.String,java...)">test(MicrosoftEdge, 16.0, WIN10, public void com.lambdatest.Tests.ParallelTest.test(java.lang.String,java...)</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img width="3%" src="skipped.png"/>
+                        <img width="3%" src="failed.png"/>
                         <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="com.lambdatest.Tests.ParallelTest" hash-for-method="test(firefox, 60.0, WIN10, public void com.lambdatest.Tests.ParallelTest.test(java.lang.String,java.lang....)">test(firefox, 60.0, WIN10, public void com.lambdatest.Tests.ParallelTest.test(java.lang.String,java.lang....)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
-                        <img width="3%" src="skipped.png"/>
+                        <img width="3%" src="failed.png"/>
                         <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="com.lambdatest.Tests.ParallelTest" hash-for-method="test(firefox, 60.0, WIN7, public void com.lambdatest.Tests.ParallelTest.test(java.lang.String,java.lang.S...)">test(firefox, 60.0, WIN7, public void com.lambdatest.Tests.ParallelTest.test(java.lang.String,java.lang.S...)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
+                    </div> <!-- method-list-content failed suite-Default_suite -->
+                  </li>
+                  <li>
+                    <span class="method-list-title passed">Passed methods</span>
+                    <span class="show-or-hide-methods passed">
+                      <a href="#" panel-name="suite-Default_suite" class="hide-methods passed suite-Default_suite"> (hide)</a> <!-- hide-methods passed suite-Default_suite -->
+                      <a href="#" panel-name="suite-Default_suite" class="show-methods passed suite-Default_suite"> (show)</a> <!-- show-methods passed suite-Default_suite -->
+                    </span>
+                    <div class="method-list-content passed suite-Default_suite">
                       <span>
-                        <img width="3%" src="skipped.png"/>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="com.lambdatest.Tests.ParallelTest" hash-for-method="test(MicrosoftEdge, 16.0, WIN10, public void com.lambdatest.Tests.ParallelTest.test(java.lang.String,java...)">test(MicrosoftEdge, 16.0, WIN10, public void com.lambdatest.Tests.ParallelTest.test(java.lang.String,java...)</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
                         <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="com.lambdatest.Tests.ParallelTest" hash-for-method="test(internet explorer, 11.0, WIN7, public void com.lambdatest.Tests.ParallelTest.test(java.lang.String,j...)">test(internet explorer, 11.0, WIN7, public void com.lambdatest.Tests.ParallelTest.test(java.lang.String,j...)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
-                        <img width="3%" src="skipped.png"/>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="com.lambdatest.Tests.ParallelTest" hash-for-method="test(chrome, 60.0, OS X 10.11, public void com.lambdatest.Tests.ParallelTest.test(java.lang.String,java.l...)">test(chrome, 60.0, OS X 10.11, public void com.lambdatest.Tests.ParallelTest.test(java.lang.String,java.l...)</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
                         <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="com.lambdatest.Tests.ParallelTest" hash-for-method="test(chrome, 70.0, macOS 10.13, public void com.lambdatest.Tests.ParallelTest.test(java.lang.String,java....)">test(chrome, 70.0, macOS 10.13, public void com.lambdatest.Tests.ParallelTest.test(java.lang.String,java....)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
-                    </div> <!-- method-list-content skipped suite-Default_suite -->
+                    </div> <!-- method-list-content passed suite-Default_suite -->
                   </li>
                 </ul>
               </div> <!-- suite-section-content -->
@@ -142,34 +151,57 @@
     <div class="wrapper">
       <div class="main-panel-root">
         <div panel-name="suite-Default_suite" class="panel Default_suite">
-          <div class="suite-Default_suite-class-skipped">
+          <div class="suite-Default_suite-class-failed">
             <div class="main-panel-header rounded-window-top">
-              <img src="skipped.png"/>
+              <img src="failed.png"/>
               <span class="class-name">com.lambdatest.Tests.ParallelTest</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
-              <div class="method">
-                <div class="method-content">
-                  <a name="test(chrome, 60.0, OS X 10.11, public void com.lambdatest.Tests.ParallelTest.test(java.lang.String,java.l...)">
-                  </a> <!-- test(chrome, 60.0, OS X 10.11, public void com.lambdatest.Tests.ParallelTest.test(java.lang.String,java.l...) -->
-                  <span class="method-name">test</span>
-                  <span class="parameters">(chrome, 60.0, OS X 10.11, public void com.lambdatest.Tests.ParallelTest.test(java.lang.String,java.lang.String,java.lang.String,java.lang.reflect.Method) throws java.lang.Exception)</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="test(MicrosoftEdge, 16.0, WIN10, public void com.lambdatest.Tests.ParallelTest.test(java.lang.String,java...)">
-                  </a> <!-- test(MicrosoftEdge, 16.0, WIN10, public void com.lambdatest.Tests.ParallelTest.test(java.lang.String,java...) -->
-                  <span class="method-name">test</span>
-                  <span class="parameters">(MicrosoftEdge, 16.0, WIN10, public void com.lambdatest.Tests.ParallelTest.test(java.lang.String,java.lang.String,java.lang.String,java.lang.reflect.Method) throws java.lang.Exception)</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
                   <a name="test(firefox, 60.0, WIN10, public void com.lambdatest.Tests.ParallelTest.test(java.lang.String,java.lang....)">
                   </a> <!-- test(firefox, 60.0, WIN10, public void com.lambdatest.Tests.ParallelTest.test(java.lang.String,java.lang....) -->
                   <span class="method-name">test</span>
                   <span class="parameters">(firefox, 60.0, WIN10, public void com.lambdatest.Tests.ParallelTest.test(java.lang.String,java.lang.String,java.lang.String,java.lang.reflect.Method) throws java.lang.Exception)</span>
+                  <div class="stack-trace">org.openqa.selenium.WebDriverException: &lt;html&gt;
+&lt;head&gt;&lt;title&gt;502 Bad Gateway&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;center&gt;&lt;h1&gt;502 Bad Gateway&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx/1.15.5&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+Command duration or timeout: 276 milliseconds
+Build info: version: &apos;2.53.1&apos;, revision: &apos;a36b8b1cd5757287168e54b817830adce9b0158d&apos;, time: &apos;2016-06-30 19:26:09&apos;
+System info: host: &apos;hplappy&apos;, ip: &apos;127.0.1.1&apos;, os.name: &apos;Linux&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;4.15.0-43-generic&apos;, java.version: &apos;1.8.0_191&apos;
+Driver info: org.openqa.selenium.remote.RemoteWebDriver
+Capabilities [{capabilities={moz:profile=C:\Users\ltuser\AppData\Local\Temp\rust_mozprofile.Ilya0BGDcUkX, rotatable=false, timeouts={implicit=0, pageLoad=300000, script=30000}, pageLoadStrategy=normal, moz:headless=false, proxy={proxyAutoconfigUrl=http://127.0.0.1:43000/api/v1.0/proxy.pac, proxyType=PAC}, moz:accessibilityChecks=false, moz:useNonSpecCompliantPointerOrigin=false, webdriver.remote.sessionid=b5a531d1-ffb6-4524-8145-bc57dc625afa, acceptInsecureCerts=true, browserVersion=60.0, platformVersion=10.0, moz:processID=2548, browserName=firefox, platformName=windows_nt, moz:webdriverClick=true}, sessionId=b5a531d1-ffb6-4524-8145-bc57dc625afa, platform=ANY}]
+Session ID: null
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:206)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:158)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:678)
+	at org.openqa.selenium.remote.RemoteWebDriver.get(RemoteWebDriver.java:316)
+	at com.lambdatest.Tests.ParallelTest.test(ParallelTest.java:39)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:86)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:643)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:820)
+	at org.testng.internal.TestMethodWithDataProviderMethodWorker.call(TestMethodWithDataProviderMethodWorker.java:75)
+	at org.testng.internal.TestMethodWithDataProviderMethodWorker.call(TestMethodWithDataProviderMethodWorker.java:14)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+
+</div> <!-- stack-trace -->
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
@@ -178,6 +210,61 @@
                   </a> <!-- test(firefox, 60.0, WIN7, public void com.lambdatest.Tests.ParallelTest.test(java.lang.String,java.lang.S...) -->
                   <span class="method-name">test</span>
                   <span class="parameters">(firefox, 60.0, WIN7, public void com.lambdatest.Tests.ParallelTest.test(java.lang.String,java.lang.String,java.lang.String,java.lang.reflect.Method) throws java.lang.Exception)</span>
+                  <div class="stack-trace">org.openqa.selenium.WebDriverException: &lt;html&gt;
+&lt;head&gt;&lt;title&gt;502 Bad Gateway&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;center&gt;&lt;h1&gt;502 Bad Gateway&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx/1.15.5&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+Command duration or timeout: 283 milliseconds
+Build info: version: &apos;2.53.1&apos;, revision: &apos;a36b8b1cd5757287168e54b817830adce9b0158d&apos;, time: &apos;2016-06-30 19:26:09&apos;
+System info: host: &apos;hplappy&apos;, ip: &apos;127.0.1.1&apos;, os.name: &apos;Linux&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;4.15.0-43-generic&apos;, java.version: &apos;1.8.0_191&apos;
+Driver info: org.openqa.selenium.remote.RemoteWebDriver
+Capabilities [{capabilities={moz:profile=C:\Users\ltuser\AppData\Local\Temp\rust_mozprofile.tyFt5ojDixtH, rotatable=false, timeouts={implicit=0, pageLoad=300000, script=30000}, pageLoadStrategy=normal, moz:headless=false, proxy={proxyAutoconfigUrl=http://127.0.0.1:43000/api/v1.0/proxy.pac, proxyType=PAC}, moz:accessibilityChecks=false, moz:useNonSpecCompliantPointerOrigin=false, webdriver.remote.sessionid=89e56b5d-42fc-411a-9783-0584b37402e3, acceptInsecureCerts=true, browserVersion=60.0, platformVersion=6.1, moz:processID=1656, browserName=firefox, platformName=windows_nt, moz:webdriverClick=true}, sessionId=89e56b5d-42fc-411a-9783-0584b37402e3, platform=ANY}]
+Session ID: null
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:206)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:158)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:678)
+	at org.openqa.selenium.remote.RemoteWebDriver.get(RemoteWebDriver.java:316)
+	at com.lambdatest.Tests.ParallelTest.test(ParallelTest.java:39)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:86)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:643)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:820)
+	at org.testng.internal.TestMethodWithDataProviderMethodWorker.call(TestMethodWithDataProviderMethodWorker.java:75)
+	at org.testng.internal.TestMethodWithDataProviderMethodWorker.call(TestMethodWithDataProviderMethodWorker.java:14)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+
+</div> <!-- stack-trace -->
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Default_suite-class-failed -->
+          <div class="suite-Default_suite-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
+              <span class="class-name">com.lambdatest.Tests.ParallelTest</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="test(MicrosoftEdge, 16.0, WIN10, public void com.lambdatest.Tests.ParallelTest.test(java.lang.String,java...)">
+                  </a> <!-- test(MicrosoftEdge, 16.0, WIN10, public void com.lambdatest.Tests.ParallelTest.test(java.lang.String,java...) -->
+                  <span class="method-name">test</span>
+                  <span class="parameters">(MicrosoftEdge, 16.0, WIN10, public void com.lambdatest.Tests.ParallelTest.test(java.lang.String,java.lang.String,java.lang.String,java.lang.reflect.Method) throws java.lang.Exception)</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
@@ -190,6 +277,14 @@
               </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
+                  <a name="test(chrome, 60.0, OS X 10.11, public void com.lambdatest.Tests.ParallelTest.test(java.lang.String,java.l...)">
+                  </a> <!-- test(chrome, 60.0, OS X 10.11, public void com.lambdatest.Tests.ParallelTest.test(java.lang.String,java.l...) -->
+                  <span class="method-name">test</span>
+                  <span class="parameters">(chrome, 60.0, OS X 10.11, public void com.lambdatest.Tests.ParallelTest.test(java.lang.String,java.lang.String,java.lang.String,java.lang.reflect.Method) throws java.lang.Exception)</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
                   <a name="test(chrome, 70.0, macOS 10.13, public void com.lambdatest.Tests.ParallelTest.test(java.lang.String,java....)">
                   </a> <!-- test(chrome, 70.0, macOS 10.13, public void com.lambdatest.Tests.ParallelTest.test(java.lang.String,java....) -->
                   <span class="method-name">test</span>
@@ -197,11 +292,11 @@
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
-          </div> <!-- suite-Default_suite-class-skipped -->
+          </div> <!-- suite-Default_suite-class-passed -->
         </div> <!-- panel Default_suite -->
         <div panel-name="test-xml-Default_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">/tmp/testng-eclipse-1864938584/testng-customsuite.xml</span>
+            <span class="header-content">/tmp/testng-eclipse-565947664/testng-customsuite.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
@@ -254,32 +349,32 @@ data.addRows(6);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'test')
 data.setCell(0, 2, 'com.lambdatest.Tests.ParallelTest')
-data.setCell(0, 3, 26);
+data.setCell(0, 3, 338764);
 data.setCell(1, 0, 1)
 data.setCell(1, 1, 'test')
 data.setCell(1, 2, 'com.lambdatest.Tests.ParallelTest')
-data.setCell(1, 3, 20);
+data.setCell(1, 3, 307092);
 data.setCell(2, 0, 2)
 data.setCell(2, 1, 'test')
 data.setCell(2, 2, 'com.lambdatest.Tests.ParallelTest')
-data.setCell(2, 3, 15);
+data.setCell(2, 3, 187647);
 data.setCell(3, 0, 3)
 data.setCell(3, 1, 'test')
 data.setCell(3, 2, 'com.lambdatest.Tests.ParallelTest')
-data.setCell(3, 3, 10);
+data.setCell(3, 3, 167917);
 data.setCell(4, 0, 4)
 data.setCell(4, 1, 'test')
 data.setCell(4, 2, 'com.lambdatest.Tests.ParallelTest')
-data.setCell(4, 3, 6);
+data.setCell(4, 3, 129651);
 data.setCell(5, 0, 5)
 data.setCell(5, 1, 'test')
 data.setCell(5, 2, 'com.lambdatest.Tests.ParallelTest')
-data.setCell(5, 3, 4);
+data.setCell(5, 3, 11784);
 window.suiteTableData['Default_suite']= { tableData: data, tableDiv: 'times-div-Default_suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 81 ms</span>
+              <span class="suite-total-time">Total running time: 19 minutes</span>
               <div id="times-div-Default_suite">
               </div> <!-- times-div-Default_suite -->
             </div> <!-- times-div -->
@@ -307,64 +402,60 @@ return data;
             <div class="chronological-class">
               <div class="chronological-class-name">com.lambdatest.Tests.ParallelTest</div> <!-- chronological-class-name -->
               <div class="test-method">
-                <span class="method-name">test(firefox, 60.0, WIN10, public void com.lambdatest.Tests.ParallelTest.test(java.lang.String,java.lang....)</span>
+                <span class="method-name">test(MicrosoftEdge, 16.0, WIN10, public void com.lambdatest.Tests.ParallelTest.test(java.lang.String,java...)</span>
                 <span class="method-start">0 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
-                <span class="method-name">test(firefox, 60.0, WIN7, public void com.lambdatest.Tests.ParallelTest.test(java.lang.String,java.lang.S...)</span>
-                <span class="method-start">5 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
                 <span class="method-name">test(chrome, 70.0, macOS 10.13, public void com.lambdatest.Tests.ParallelTest.test(java.lang.String,java....)</span>
-                <span class="method-start">12 ms</span>
+                <span class="method-start">1 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
-                <span class="method-name">test(chrome, 60.0, OS X 10.11, public void com.lambdatest.Tests.ParallelTest.test(java.lang.String,java.l...)</span>
-                <span class="method-start">16 ms</span>
+                <img src="failed.png">
+                </img>
+                <span class="method-name">test(firefox, 60.0, WIN10, public void com.lambdatest.Tests.ParallelTest.test(java.lang.String,java.lang....)</span>
+                <span class="method-start">1 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <span class="method-name">test(internet explorer, 11.0, WIN7, public void com.lambdatest.Tests.ParallelTest.test(java.lang.String,j...)</span>
-                <span class="method-start">17 ms</span>
+                <span class="method-start">5 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
-                <span class="method-name">test(MicrosoftEdge, 16.0, WIN10, public void com.lambdatest.Tests.ParallelTest.test(java.lang.String,java...)</span>
-                <span class="method-start">19 ms</span>
+                <span class="method-name">test(chrome, 60.0, OS X 10.11, public void com.lambdatest.Tests.ParallelTest.test(java.lang.String,java.l...)</span>
+                <span class="method-start">5 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <img src="failed.png">
+                </img>
+                <span class="method-name">test(firefox, 60.0, WIN7, public void com.lambdatest.Tests.ParallelTest.test(java.lang.String,java.lang.S...)</span>
+                <span class="method-start">5 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <img src="failed.png">
                 </img>
-                <span class="method-name">tearDown([TestResult name=test status=SKIP method=ParallelTest.test(java.lang.String, java.lang.String, java....)</span>
-                <span class="method-start">23 ms</span>
+                <span class="method-name">tearDown([TestResult name=test status=FAILURE method=ParallelTest.test(java.lang.String, java.lang.String, ja...)</span>
+                <span class="method-start">11797 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method after">
+                <span class="method-name">tearDown([TestResult name=test status=SUCCESS method=ParallelTest.test(java.lang.String, java.lang.String, ja...)</span>
+                <span class="method-start">129658 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method after">
+                <span class="method-name">tearDown([TestResult name=test status=SUCCESS method=ParallelTest.test(java.lang.String, java.lang.String, ja...)</span>
+                <span class="method-start">167925 ms</span>
               </div> <!-- configuration-method after -->
               <div class="configuration-method after">
                 <img src="failed.png">
                 </img>
-                <span class="method-name">tearDown([TestResult name=test status=SKIP method=ParallelTest.test(java.lang.String, java.lang.String, java....)</span>
-                <span class="method-start">27 ms</span>
+                <span class="method-name">tearDown([TestResult name=test status=FAILURE method=ParallelTest.test(java.lang.String, java.lang.String, ja...)</span>
+                <span class="method-start">187653 ms</span>
               </div> <!-- configuration-method after -->
               <div class="configuration-method after">
-                <img src="failed.png">
-                </img>
-                <span class="method-name">tearDown([TestResult name=test status=SKIP method=ParallelTest.test(java.lang.String, java.lang.String, java....)</span>
-                <span class="method-start">32 ms</span>
+                <span class="method-name">tearDown([TestResult name=test status=SUCCESS method=ParallelTest.test(java.lang.String, java.lang.String, ja...)</span>
+                <span class="method-start">307094 ms</span>
               </div> <!-- configuration-method after -->
               <div class="configuration-method after">
-                <img src="failed.png">
-                </img>
-                <span class="method-name">tearDown([TestResult name=test status=SKIP method=ParallelTest.test(java.lang.String, java.lang.String, java....)</span>
-                <span class="method-start">33 ms</span>
-              </div> <!-- configuration-method after -->
-              <div class="configuration-method after">
-                <img src="failed.png">
-                </img>
-                <span class="method-name">tearDown([TestResult name=test status=SKIP method=ParallelTest.test(java.lang.String, java.lang.String, java....)</span>
-                <span class="method-start">43 ms</span>
-              </div> <!-- configuration-method after -->
-              <div class="configuration-method after">
-                <img src="failed.png">
-                </img>
-                <span class="method-name">tearDown([TestResult name=test status=SKIP method=ParallelTest.test(java.lang.String, java.lang.String, java....)</span>
-                <span class="method-start">44 ms</span>
+                <span class="method-name">tearDown([TestResult name=test status=SUCCESS method=ParallelTest.test(java.lang.String, java.lang.String, ja...)</span>
+                <span class="method-start">338767 ms</span>
               </div> <!-- configuration-method after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

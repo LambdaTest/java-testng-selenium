@@ -10,7 +10,7 @@
     <classes>
       <class name="com.lambdatest.Tests.ParallelTest">
         <methods>
-          <include name="test"/>
+          <include name="test" invocation-numbers="5 1"/>
           <include name="tearDown"/>
         </methods>
       </class> <!-- com.lambdatest.Tests.ParallelTest -->

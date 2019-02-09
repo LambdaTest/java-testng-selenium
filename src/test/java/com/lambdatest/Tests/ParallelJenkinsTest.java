@@ -64,9 +64,10 @@ public class ParallelJenkinsTest {
 	}
 
 	@AfterMethod
-	public void afterTest() {
+	public void afterTest() throws InterruptedException {
 		((JavascriptExecutor) getWebDriver()).executeScript("lambda-status="+status+"");
 		getWebDriver().quit();
+		Thread.sleep(10000);
 	}
 
 	private ThreadLocal<WebDriver> webDriver = new ThreadLocal<WebDriver>();
@@ -132,7 +133,7 @@ public class ParallelJenkinsTest {
 		// set desired capabilities to launch appropriate browser on Lambdatest
 		capabilities.setCapability(CapabilityType.BROWSER_NAME, browser);
 		capabilities.setCapability(CapabilityType.VERSION, version);
-		capabilities.setCapability(CapabilityType.PLATFORM, os);
+		capabilities.setCapability(CapabilityType.PLATFORM, "Windows 8.1");
 		capabilities.setCapability("name", methodName);
 		capabilities.setCapability("build", buildTag);
 		capabilities.setCapability("name", "TestNG Parallel");
@@ -141,6 +142,7 @@ public class ParallelJenkinsTest {
 		capabilities.setCapability("video", true);
 		capabilities.setCapability("console", true);
 		capabilities.setCapability("visual", true);
+		capabilities.setCapability("fixedIP", "10.33.13.34");
 
 		// Launch remote browser and set it as the current thread
 		webDriver.set(new RemoteWebDriver(new URL(gridURL), capabilities));
