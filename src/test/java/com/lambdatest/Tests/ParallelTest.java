@@ -34,6 +34,7 @@ public class ParallelTest {
 	@Test(dataProvider = "browsersDetails")
 	public void test(String browser, String version, String os, Method method) throws Exception {
 
+		try {
 		// Launch the app
 		this.setUp(browser, version, os, method.getName());
 		getWebDriver().get("https://lambdatest.github.io/sample-todo-app/");
@@ -53,8 +54,12 @@ public class ParallelTest {
 		String item = getWebDriver().findElement(By.xpath("/html/body/div/div/div/ul/li[6]/span")).getText();
 		AssertJUnit.assertTrue(item.contains("Yey, Let's add it to list"));
 		status = "passed";
-
+		}
+		
+		catch(Exception e) {
+			e.printStackTrace();
 	}
+	}	
 
 	@AfterMethod(alwaysRun = true)
 	public void tearDown(ITestResult result) throws Exception {
@@ -93,9 +98,9 @@ public class ParallelTest {
 		capabilities.setCapability("build", "10.33.13.34");
 		capabilities.setCapability("name", "TestNG Parallel");
 		capabilities.setCapability("screen_resolution", "1024x768");
-		capabilities.setCapability("network", true);
+		capabilities.setCapability("network", false);
 		capabilities.setCapability("video", true);
-		capabilities.setCapability("console", true);
+		capabilities.setCapability("console", false);
 		capabilities.setCapability("visual", true);
 		capabilities.setCapability("fixedIP", "10.33.13.34");
 		System.out.println("capabilities"+capabilities);

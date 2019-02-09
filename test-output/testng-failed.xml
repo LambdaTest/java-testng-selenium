@@ -6,14 +6,4 @@
       <class name="com.lambdatest.Tests.ParallelTest"/>
     </classes>
   </test> <!-- Default test -->
-  <test name="Default test(failed)">
-    <classes>
-      <class name="com.lambdatest.Tests.ParallelTest">
-        <methods>
-          <include name="test" invocation-numbers="5 1"/>
-          <include name="tearDown"/>
-        </methods>
-      </class> <!-- com.lambdatest.Tests.ParallelTest -->
-    </classes>
-  </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
