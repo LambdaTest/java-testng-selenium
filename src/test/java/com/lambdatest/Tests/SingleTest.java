@@ -82,7 +82,6 @@ public class SingleTest {
 			status = "passed";
 			System.out.println("here");
 			((JavascriptExecutor) driver).executeScript("lambda-status=" + status + "");
-			driver.quit();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		} catch (Error e) {

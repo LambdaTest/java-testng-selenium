@@ -24,10 +24,12 @@ import org.testng.annotations.Test;
 public class ParallelTest {
 
 	public static String status = "failed";
-	public String buildTag = System.getenv("LT_BUILD");
-	public String username = System.getenv("LT_USERNAME");
-	public String accesskey = System.getenv("LT_APIKEY");
-	public String gridURL = System.getenv("LT_GRID_URL");
+	/*
+	 * public String buildTag = System.getenv("LT_BUILD"); public String username =
+	 * System.getenv("LT_USERNAME"); public String accesskey =
+	 * System.getenv("LT_APIKEY"); public String gridURL =
+	 * System.getenv("LT_GRID_URL");
+	 */
 
 	@Test(dataProvider = "browsersDetails")
 	public void test(String browser, String version, String os, Method method) throws Exception {
@@ -77,7 +79,7 @@ public class ParallelTest {
 		return webDriver.get();
 	}
 	
-	@BeforeMethod
+	
 	protected void setUp(String browser, String version, String os, String methodName)
 			throws Exception {
 		DesiredCapabilities capabilities = new DesiredCapabilities();
