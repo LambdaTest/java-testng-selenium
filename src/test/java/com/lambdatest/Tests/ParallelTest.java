@@ -34,7 +34,7 @@ public class ParallelTest {
 
 		// Launch the app
 		this.setUp(browser, version, os, method.getName());
-		getWebDriver().get("https://4dvanceboy.github.io/lambdatest/lambdasampleapp.html");
+		getWebDriver().get("https://lambdatest.github.io/sample-todo-app/");
 
 		// Click on First Item
 		getWebDriver().findElement(By.name("li1")).click();
@@ -100,7 +100,7 @@ public class ParallelTest {
 
 		
 		// Launch remote browser and set it as the current thread
-		String gridURL = "https://" + username + ":" + accesskey + "@beta-hub.lambdatest.com/wd/hub";
+		String gridURL = "https://" + username + ":" + accesskey + "@hub.lambdatest.com/wd/hub";
 		webDriver.set(new RemoteWebDriver(new URL(gridURL), capabilities));
 
 	}

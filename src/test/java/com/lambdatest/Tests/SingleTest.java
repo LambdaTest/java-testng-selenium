@@ -25,20 +25,14 @@ public class SingleTest {
 	///@BeforeTest
 	//public void setUp() throws Exception {
 
-	public static void main(String args[]) {
-		String browser = "firefox";
-				//Configuration.readConfig("browser");
-		String version = "60.0";
-		//Configuration.readConfig("version");
-		String os = "WIN7";
-		//Configuration.readConfig("os");
-		String res = "1024x768";
-		//Configuration.readConfig("resolution");
+	public static void main(String args[]) throws Exception {
+		String browser =Configuration.readConfig("browser");
+		String version = Configuration.readConfig("version");
+		String os = Configuration.readConfig("os");
+		String res = Configuration.readConfig("resolution");
 
-		String username = "qa";
-		//Configuration.readConfig("LambdaTest_UserName");
-		String accesskey = "rTqssUKaL2NeGRASxJDl9NrBUCn6g1vFCdwEdFO8d0ndjAaT9l";
-		//Configuration.readConfig("LambdaTest_AppKey");
+		String username = Configuration.readConfig("LambdaTest_UserName");
+		String accesskey = Configuration.readConfig("LambdaTest_AppKey");
 
 		DesiredCapabilities capability = new DesiredCapabilities();
 		capability.setCapability(CapabilityType.BROWSER_NAME, browser);
@@ -52,7 +46,7 @@ public class SingleTest {
 		capability.setCapability("console", true);
 		capability.setCapability("visual", true);
 
-		String gridURL = "http://" + username + ":" + accesskey + "@beta-hub.lambdatest.com/wd/hub";
+		String gridURL = "http://" + username + ":" + accesskey + "@hub.lambdatest.com/wd/hub";
 		try {
 			driver = new RemoteWebDriver(new URL(gridURL), capability);
 		} catch (Exception e) {
@@ -64,13 +58,12 @@ public class SingleTest {
 
 	}
 
-	//@Test
-	@Test
+	
 	public static void test() {
 		try {
 
 			// Launch the app
-			driver.get("https://4dvanceboy.github.io/lambdatest/lambdasampleapp.html");
+			driver.get("https://lambdatest.github.io/sample-todo-app/");
 
 			// Click on First Item
 			driver.findElement(By.name("li1")).click();
@@ -98,7 +91,6 @@ public class SingleTest {
 
 	}
 
-	//@AfterTest
 	public static void afterTest() {
 		((JavascriptExecutor) driver).executeScript("lambda-status=" + status + "");
 		driver.quit();

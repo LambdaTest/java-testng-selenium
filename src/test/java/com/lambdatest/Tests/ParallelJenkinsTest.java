@@ -43,7 +43,7 @@ public class ParallelJenkinsTest {
 		this.setUp(browser, version, os, resValue, method.getName());
 
 		// Launch the app
-		getWebDriver().get("https://4dvanceboy.github.io/lambdatest/lambdasampleapp.html");
+		getWebDriver().get("https://lambdatest.github.io/sample-todo-app/");
 
 		// Click on First Item
 		getWebDriver().findElement(By.name("li1")).click();
@@ -63,7 +63,7 @@ public class ParallelJenkinsTest {
 
 	}
 
-	@AfterTest
+	@AfterMethod
 	public void afterTest() {
 		((JavascriptExecutor) getWebDriver()).executeScript("lambda-status="+status+"");
 		getWebDriver().quit();

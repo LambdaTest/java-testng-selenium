@@ -47,7 +47,7 @@ public class LocalTest {
 		capability.setCapability("console", true);
 		capability.setCapability("visual", true);
 
-		String gridURL = "https://" + username + ":" + accesskey + "@stage-hub.lambdatest.com/wd/hub";
+		String gridURL = "https://" + username + ":" + accesskey + "@hub.lambdatest.com/wd/hub";
 
 		driver = new RemoteWebDriver(new URL(gridURL), capability);
 	}
@@ -56,7 +56,7 @@ public class LocalTest {
 	public void test() {
 
 		// Launch the app
-		driver.get("https://4dvanceboy.github.io/lambdatest/lambdasampleapp.html");
+		driver.get("https://lambdatest.github.io/sample-todo-app/");
 
 		// Click on First Item
 		driver.findElement(By.name("li1")).click();
