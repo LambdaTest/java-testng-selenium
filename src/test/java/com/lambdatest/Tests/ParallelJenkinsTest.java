@@ -1,5 +1,8 @@
 package com.lambdatest.Tests;
 
+import org.testng.annotations.Test;
+import org.testng.annotations.BeforeMethod;
+import org.testng.AssertJUnit;
 import java.lang.reflect.Method;
 import java.net.URL;
 import java.util.ArrayList;
@@ -16,6 +19,8 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Assert;
 import org.testng.ITestResult;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -29,16 +34,16 @@ public class ParallelJenkinsTest {
 	@Test(dataProvider = "browsersDetails")
 	public void test(String param, Method method) throws Exception {
 
-		// Launch the app
 		String[] envDeatails = param.split(",");
 		String os = envDeatails[1];
 		String version = envDeatails[2];
 		String browser = envDeatails[0];
 		String resValue = envDeatails[3];
-		
+
 		this.setUp(browser, version, os, resValue, method.getName());
-		
-		getWebDriver().get("https://lambdatest.github.io/sample-todo-app/");
+
+		// Launch the app
+		getWebDriver().get("https://4dvanceboy.github.io/lambdatest/lambdasampleapp.html");
 
 		// Click on First Item
 		getWebDriver().findElement(By.name("li1")).click();
@@ -53,7 +58,7 @@ public class ParallelJenkinsTest {
 
 		// Verify Added item
 		String item = getWebDriver().findElement(By.xpath("/html/body/div/div/div/ul/li[6]/span")).getText();
-		Assert.assertTrue(item.contains("Yey, Let's add it to list"));
+		AssertJUnit.assertTrue(item.contains("Yey, Let's add it to list"));
 		status = "passed";
 
 	}
@@ -63,9 +68,7 @@ public class ParallelJenkinsTest {
 		((JavascriptExecutor) getWebDriver()).executeScript("lambda-status="+status+"");
 		getWebDriver().quit();
 	}
-	
-	
-	
+
 	private ThreadLocal<WebDriver> webDriver = new ThreadLocal<WebDriver>();
 
 	@DataProvider(name = "browsersDetails", parallel = true)
@@ -121,7 +124,8 @@ public class ParallelJenkinsTest {
 	public WebDriver getWebDriver() {
 		return webDriver.get();
 	}
-	
+
+	@BeforeMethod
 	protected void setUp(String browser, String version, String os, String resolution, String methodName)
 			throws Exception {
 		DesiredCapabilities capabilities = new DesiredCapabilities();
@@ -138,7 +142,7 @@ public class ParallelJenkinsTest {
 		capabilities.setCapability("video", true);
 		capabilities.setCapability("console", true);
 		capabilities.setCapability("visual", true);
-		
+
 		// Launch remote browser and set it as the current thread
 		webDriver.set(new RemoteWebDriver(new URL(gridURL), capabilities));
 

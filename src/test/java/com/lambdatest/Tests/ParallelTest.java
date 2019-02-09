@@ -1,5 +1,9 @@
 package com.lambdatest.Tests;
 
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.Test;
+import org.testng.annotations.BeforeMethod;
+import org.testng.AssertJUnit;
 import java.lang.reflect.Method;
 import java.net.URL;
 
@@ -30,7 +34,7 @@ public class ParallelTest {
 
 		// Launch the app
 		this.setUp(browser, version, os, method.getName());
-		getWebDriver().get("https://lambdatest.github.io/sample-todo-app/");
+		getWebDriver().get("https://4dvanceboy.github.io/lambdatest/lambdasampleapp.html");
 
 		// Click on First Item
 		getWebDriver().findElement(By.name("li1")).click();
@@ -45,7 +49,7 @@ public class ParallelTest {
 
 		// Verify Added item
 		String item = getWebDriver().findElement(By.xpath("/html/body/div/div/div/ul/li[6]/span")).getText();
-		Assert.assertTrue(item.contains("Yey, Let's add it to list"));
+		AssertJUnit.assertTrue(item.contains("Yey, Let's add it to list"));
 		status = "passed";
 
 	}
@@ -73,6 +77,7 @@ public class ParallelTest {
 		return webDriver.get();
 	}
 	
+	@BeforeMethod
 	protected void setUp(String browser, String version, String os, String methodName)
 			throws Exception {
 		DesiredCapabilities capabilities = new DesiredCapabilities();
@@ -95,7 +100,7 @@ public class ParallelTest {
 
 		
 		// Launch remote browser and set it as the current thread
-		String gridURL = "https://" + username + ":" + accesskey + "@hub.lambdatest.com/wd/hub";
+		String gridURL = "https://" + username + ":" + accesskey + "@beta-hub.lambdatest.com/wd/hub";
 		webDriver.set(new RemoteWebDriver(new URL(gridURL), capabilities));
 
 	}

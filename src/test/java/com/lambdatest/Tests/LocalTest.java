@@ -1,5 +1,8 @@
 package com.lambdatest.Tests;
 
+import org.testng.annotations.Test;
+import org.testng.annotations.BeforeMethod;
+import org.testng.AssertJUnit;
 import java.net.URL;
 
 import org.openqa.selenium.By;
@@ -19,6 +22,7 @@ public class LocalTest {
 	public WebDriver driver;
 	public static String status = "failed";
 
+	@BeforeMethod
 	@BeforeClass
 	public void setUp() throws Exception {
 
@@ -37,12 +41,13 @@ public class LocalTest {
 		capability.setCapability("build", "TestNG Local Test");
 		capability.setCapability("screen_resolution", res);
 		capability.setCapability("tunnel", true);
+		capability.setCapability("tunnelIdentifier", "Tunnel_name");
 		capability.setCapability("network", true);
 		capability.setCapability("video", true);
 		capability.setCapability("console", true);
 		capability.setCapability("visual", true);
 
-		String gridURL = "https://" + username + ":" + accesskey + "@hub.lambdatest.com/wd/hub";
+		String gridURL = "https://" + username + ":" + accesskey + "@stage-hub.lambdatest.com/wd/hub";
 
 		driver = new RemoteWebDriver(new URL(gridURL), capability);
 	}
@@ -51,7 +56,7 @@ public class LocalTest {
 	public void test() {
 
 		// Launch the app
-		driver.get("https://lambdatest.github.io/sample-todo-app/");
+		driver.get("https://4dvanceboy.github.io/lambdatest/lambdasampleapp.html");
 
 		// Click on First Item
 		driver.findElement(By.name("li1")).click();
@@ -66,7 +71,7 @@ public class LocalTest {
 
 		// Verify Added item
 		String item = driver.findElement(By.xpath("/html/body/div/div/div/ul/li[6]/span")).getText();
-		Assert.assertTrue(item.contains("Yey, Let's add it to list"));
+		AssertJUnit.assertTrue(item.contains("Yey, Let's add it to list"));
 		status = "passed";
 
 	}

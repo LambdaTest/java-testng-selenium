@@ -1,5 +1,8 @@
 package com.lambdatest.Tests;
 
+import org.testng.annotations.Test;
+import org.testng.annotations.BeforeMethod;
+import org.testng.AssertJUnit;
 import java.net.URL;
 
 import org.openqa.selenium.By;
@@ -27,6 +30,7 @@ public class SingleJenkinsTest {
 	public static String version = System.getenv("LT_BROWSER_VERSION");
 	public static String res = System.getenv("LT_RESOLUTION");
 
+	@BeforeMethod
 	@BeforeTest
 	public void setUp() throws Exception {
 
@@ -35,7 +39,7 @@ public class SingleJenkinsTest {
 		capability.setCapability(CapabilityType.VERSION, version);
 		capability.setCapability(CapabilityType.PLATFORM, os);
 		capability.setCapability("build", System.getenv("LT_BUILD"));
-		capability.setCapability("name", "TestNG Single");
+		capability.setCapability("name", "Single Junit Jenkins Test");
 		capability.setCapability("screen_resolution", res);
 		capability.setCapability("network", true);
 		capability.setCapability("video", true);
@@ -50,7 +54,7 @@ public class SingleJenkinsTest {
 	public void test() {
 
 		// Launch the app
-		driver.get("https://lambdatest.github.io/sample-todo-app/");
+		driver.get("https://4dvanceboy.github.io/lambdatest/lambdasampleapp.html");
 
 		// Click on First Item
 		driver.findElement(By.name("li1")).click();
@@ -65,8 +69,10 @@ public class SingleJenkinsTest {
 
 		// Verify Added item
 		String item = driver.findElement(By.xpath("/html/body/div/div/div/ul/li[6]/span")).getText();
-		Assert.assertTrue(item.contains("Yey, Let's add it to list"));
+		AssertJUnit.assertTrue(item.contains("Yey, Let's add it to list"));
 		status = "passed";
+		((JavascriptExecutor) driver).executeScript("lambda-status=" + status + "");
+		driver.quit();
 
 	}
 
