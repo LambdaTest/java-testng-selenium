@@ -125,7 +125,6 @@ public class ParallelJenkinsTest {
 		return webDriver.get();
 	}
 
-	@BeforeMethod
 	protected void setUp(String browser, String version, String os, String resolution, String methodName)
 			throws Exception {
 		DesiredCapabilities capabilities = new DesiredCapabilities();
