@@ -143,7 +143,7 @@ public class ParallelJenkinsTest {
 		capabilities.setCapability("console", true);
 		capabilities.setCapability("visual", true);
 		capabilities.setCapability("fixedIP", "10.33.13.34");
-
+		System.out.println("capabilities"+capabilities);
 		// Launch remote browser and set it as the current thread
 		webDriver.set(new RemoteWebDriver(new URL(gridURL), capabilities));
 
