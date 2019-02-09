@@ -28,7 +28,7 @@ import org.testng.annotations.Test;
 public class ParallelJenkinsTest {
 
 	public static String status = "failed";
-	public String buildTag = System.getenv("LT_BUILD");
+	public String buildTag = System.getenv("LT_BUILD_NAME");
 	public String gridURL = System.getenv("LT_GRID_URL");
 
 	@Test(dataProvider = "browsersDetails")
