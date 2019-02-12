@@ -135,8 +135,8 @@ public class ParallelJenkinsTest {
 		capabilities.setCapability(CapabilityType.VERSION, version);
 		capabilities.setCapability(CapabilityType.PLATFORM, "Windows 8.1");
 		capabilities.setCapability("name", methodName);
-		capabilities.setCapability("build", "10.33.13.34");
-		capabilities.setCapability("name", "TestNG Parallel");
+		capabilities.setCapability("build", "TestNG Parallel Jenkins");
+		capabilities.setCapability("name", "TestNG Parallel Jenkins");
 		capabilities.setCapability("screen_resolution", resolution);
 		capabilities.setCapability("network", true);
 		capabilities.setCapability("video", true);

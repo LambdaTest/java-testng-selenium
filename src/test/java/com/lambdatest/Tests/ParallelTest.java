@@ -100,8 +100,8 @@ public class ParallelTest {
 		capabilities.setCapability(CapabilityType.VERSION, version);
 		capabilities.setCapability(CapabilityType.PLATFORM, os);
 		capabilities.setCapability("name", methodName);
-		capabilities.setCapability("build", "10.33.13.34");
-		capabilities.setCapability("name", "TestNG Parallel");
+		capabilities.setCapability("build", "TestNG Parallel");
+		capabilities.setCapability("name", "TestNG Parallel Tests");
 		capabilities.setCapability("screen_resolution", "1024x768");
 		capabilities.setCapability("network", false);
 		capabilities.setCapability("video", true);
