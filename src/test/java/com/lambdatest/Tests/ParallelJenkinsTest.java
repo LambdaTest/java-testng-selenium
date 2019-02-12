@@ -142,7 +142,7 @@ public class ParallelJenkinsTest {
 		// set desired capabilities to launch appropriate browser on Lambdatest
 		capabilities.setCapability(CapabilityType.BROWSER_NAME, browser);
 		capabilities.setCapability(CapabilityType.VERSION, version);
-		capabilities.setCapability(CapabilityType.PLATFORM, "Windows 8.1");
+		capabilities.setCapability(CapabilityType.PLATFORM, os);
 		capabilities.setCapability("name", methodName);
 		capabilities.setCapability("build", "TestNG Parallel Jenkins");
 		capabilities.setCapability("name", "TestNG Parallel Jenkins");
