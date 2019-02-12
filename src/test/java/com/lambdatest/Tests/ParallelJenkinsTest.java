@@ -72,10 +72,11 @@ public class ParallelJenkinsTest {
 	}
 
 	@AfterMethod
-	public void afterTest() throws InterruptedException {
-		((JavascriptExecutor) getWebDriver()).executeScript("lambda-status="+status+"");
-		getWebDriver().quit();
-		Thread.sleep(10000);
+	public void afterTest(ITestResult result) throws InterruptedException {
+		((JavascriptExecutor) webDriver.get()).executeScript("lambda-status="
+				+ (result.isSuccess() ? "passed" : "failed"));
+				webDriver.get().quit();
+				Thread.sleep(10000);
 	}
 
 	private ThreadLocal<WebDriver> webDriver = new ThreadLocal<WebDriver>();
