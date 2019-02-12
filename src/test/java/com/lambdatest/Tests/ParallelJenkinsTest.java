@@ -34,6 +34,8 @@ public class ParallelJenkinsTest {
 	@Test(dataProvider = "browsersDetails")
 	public void test(String param, Method method) throws Exception {
 
+		try {
+		
 		String[] envDeatails = param.split(",");
 		String os = envDeatails[1];
 		String version = envDeatails[2];
@@ -60,6 +62,12 @@ public class ParallelJenkinsTest {
 		String item = getWebDriver().findElement(By.xpath("/html/body/div/div/div/ul/li[6]/span")).getText();
 		AssertJUnit.assertTrue(item.contains("Yey, Let's add it to list"));
 		status = "passed";
+		}
+		
+		catch(Exception e) {
+			e.printStackTrace();
+	}
+
 
 	}
 

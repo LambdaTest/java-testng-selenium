@@ -2,12 +2,12 @@
 <testng-results skipped="0" failed="0" total="6" passed="6">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="64650" started-at="2019-02-12T15:05:04Z" finished-at="2019-02-12T15:06:08Z">
+  <suite name="Default suite" duration-ms="152434" started-at="2019-02-12T15:11:32Z" finished-at="2019-02-12T15:14:04Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="64650" started-at="2019-02-12T15:05:04Z" finished-at="2019-02-12T15:06:08Z">
+    <test name="Default test" duration-ms="152434" started-at="2019-02-12T15:11:32Z" finished-at="2019-02-12T15:14:04Z">
       <class name="com.lambdatest.Tests.ParallelTest">
-        <test-method status="PASS" signature="test(java.lang.String, java.lang.String, java.lang.String, java.lang.reflect.Method)[pri:0, instance:com.lambdatest.Tests.ParallelTest@18be83e4]" name="test" duration-ms="18779" started-at="2019-02-12T20:35:04Z" data-provider="browsersDetails" finished-at="2019-02-12T20:35:22Z">
+        <test-method status="PASS" signature="test(java.lang.String, java.lang.String, java.lang.String, java.lang.reflect.Method)[pri:0, instance:com.lambdatest.Tests.ParallelTest@18be83e4]" name="test" duration-ms="76264" started-at="2019-02-12T20:41:32Z" data-provider="browsersDetails" finished-at="2019-02-12T20:42:48Z">
           <params>
             <param index="0">
               <value>
@@ -33,7 +33,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- test -->
-        <test-method status="PASS" signature="test(java.lang.String, java.lang.String, java.lang.String, java.lang.reflect.Method)[pri:0, instance:com.lambdatest.Tests.ParallelTest@18be83e4]" name="test" duration-ms="18282" started-at="2019-02-12T20:35:04Z" data-provider="browsersDetails" finished-at="2019-02-12T20:35:22Z">
+        <test-method status="PASS" signature="test(java.lang.String, java.lang.String, java.lang.String, java.lang.reflect.Method)[pri:0, instance:com.lambdatest.Tests.ParallelTest@18be83e4]" name="test" duration-ms="21194" started-at="2019-02-12T20:41:32Z" data-provider="browsersDetails" finished-at="2019-02-12T20:41:53Z">
           <params>
             <param index="0">
               <value>
@@ -59,7 +59,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- test -->
-        <test-method status="PASS" signature="test(java.lang.String, java.lang.String, java.lang.String, java.lang.reflect.Method)[pri:0, instance:com.lambdatest.Tests.ParallelTest@18be83e4]" name="test" duration-ms="19376" started-at="2019-02-12T20:35:04Z" data-provider="browsersDetails" finished-at="2019-02-12T20:35:23Z">
+        <test-method status="PASS" signature="test(java.lang.String, java.lang.String, java.lang.String, java.lang.reflect.Method)[pri:0, instance:com.lambdatest.Tests.ParallelTest@18be83e4]" name="test" duration-ms="132434" started-at="2019-02-12T20:41:32Z" data-provider="browsersDetails" finished-at="2019-02-12T20:43:44Z">
           <params>
             <param index="0">
               <value>
@@ -85,7 +85,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- test -->
-        <test-method status="PASS" signature="test(java.lang.String, java.lang.String, java.lang.String, java.lang.reflect.Method)[pri:0, instance:com.lambdatest.Tests.ParallelTest@18be83e4]" name="test" duration-ms="32335" started-at="2019-02-12T20:35:04Z" data-provider="browsersDetails" finished-at="2019-02-12T20:35:36Z">
+        <test-method status="PASS" signature="test(java.lang.String, java.lang.String, java.lang.String, java.lang.reflect.Method)[pri:0, instance:com.lambdatest.Tests.ParallelTest@18be83e4]" name="test" duration-ms="49012" started-at="2019-02-12T20:41:32Z" data-provider="browsersDetails" finished-at="2019-02-12T20:42:21Z">
           <params>
             <param index="0">
               <value>
@@ -111,33 +111,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- test -->
-        <test-method status="PASS" signature="test(java.lang.String, java.lang.String, java.lang.String, java.lang.reflect.Method)[pri:0, instance:com.lambdatest.Tests.ParallelTest@18be83e4]" name="test" duration-ms="53694" started-at="2019-02-12T20:35:04Z" data-provider="browsersDetails" finished-at="2019-02-12T20:35:57Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[chrome]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[69.0]]>
-              </value>
-            </param>
-            <param index="2">
-              <value>
-                <![CDATA[OS X El Capitan]]>
-              </value>
-            </param>
-            <param index="3">
-              <value>
-                <![CDATA[public void com.lambdatest.Tests.ParallelTest.test(java.lang.String,java.lang.String,java.lang.String,java.lang.reflect.Method) throws java.lang.Exception]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- test -->
-        <test-method status="PASS" signature="test(java.lang.String, java.lang.String, java.lang.String, java.lang.reflect.Method)[pri:0, instance:com.lambdatest.Tests.ParallelTest@18be83e4]" name="test" duration-ms="34475" started-at="2019-02-12T20:35:04Z" data-provider="browsersDetails" finished-at="2019-02-12T20:35:38Z">
+        <test-method status="PASS" signature="test(java.lang.String, java.lang.String, java.lang.String, java.lang.reflect.Method)[pri:0, instance:com.lambdatest.Tests.ParallelTest@18be83e4]" name="test" duration-ms="141565" started-at="2019-02-12T20:41:32Z" data-provider="browsersDetails" finished-at="2019-02-12T20:43:53Z">
           <params>
             <param index="0">
               <value>
@@ -163,7 +137,33 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- test -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:com.lambdatest.Tests.ParallelTest@18be83e4]" name="tearDown" is-config="true" duration-ms="10898" started-at="2019-02-12T20:35:22Z" finished-at="2019-02-12T20:35:33Z">
+        <test-method status="PASS" signature="test(java.lang.String, java.lang.String, java.lang.String, java.lang.reflect.Method)[pri:0, instance:com.lambdatest.Tests.ParallelTest@18be83e4]" name="test" duration-ms="138937" started-at="2019-02-12T20:41:32Z" data-provider="browsersDetails" finished-at="2019-02-12T20:43:51Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[chrome]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[69.0]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[OS X El Capitan]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[public void com.lambdatest.Tests.ParallelTest.test(java.lang.String,java.lang.String,java.lang.String,java.lang.reflect.Method) throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test -->
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:com.lambdatest.Tests.ParallelTest@18be83e4]" name="tearDown" is-config="true" duration-ms="10911" started-at="2019-02-12T20:41:53Z" finished-at="2019-02-12T20:42:04Z">
           <params>
             <param index="0">
               <value>
@@ -174,7 +174,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:com.lambdatest.Tests.ParallelTest@18be83e4]" name="tearDown" is-config="true" duration-ms="10919" started-at="2019-02-12T20:35:22Z" finished-at="2019-02-12T20:35:33Z">
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:com.lambdatest.Tests.ParallelTest@18be83e4]" name="tearDown" is-config="true" duration-ms="10758" started-at="2019-02-12T20:42:21Z" finished-at="2019-02-12T20:42:32Z">
           <params>
             <param index="0">
               <value>
@@ -185,7 +185,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:com.lambdatest.Tests.ParallelTest@18be83e4]" name="tearDown" is-config="true" duration-ms="11501" started-at="2019-02-12T20:35:23Z" finished-at="2019-02-12T20:35:35Z">
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:com.lambdatest.Tests.ParallelTest@18be83e4]" name="tearDown" is-config="true" duration-ms="11038" started-at="2019-02-12T20:42:48Z" finished-at="2019-02-12T20:42:59Z">
           <params>
             <param index="0">
               <value>
@@ -196,7 +196,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:com.lambdatest.Tests.ParallelTest@18be83e4]" name="tearDown" is-config="true" duration-ms="10749" started-at="2019-02-12T20:35:36Z" finished-at="2019-02-12T20:35:47Z">
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:com.lambdatest.Tests.ParallelTest@18be83e4]" name="tearDown" is-config="true" duration-ms="11311" started-at="2019-02-12T20:43:44Z" finished-at="2019-02-12T20:43:56Z">
           <params>
             <param index="0">
               <value>
@@ -207,7 +207,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:com.lambdatest.Tests.ParallelTest@18be83e4]" name="tearDown" is-config="true" duration-ms="10792" started-at="2019-02-12T20:35:38Z" finished-at="2019-02-12T20:35:49Z">
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:com.lambdatest.Tests.ParallelTest@18be83e4]" name="tearDown" is-config="true" duration-ms="10868" started-at="2019-02-12T20:43:51Z" finished-at="2019-02-12T20:44:02Z">
           <params>
             <param index="0">
               <value>
@@ -218,7 +218,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:com.lambdatest.Tests.ParallelTest@18be83e4]" name="tearDown" is-config="true" duration-ms="10863" started-at="2019-02-12T20:35:57Z" finished-at="2019-02-12T20:36:08Z">
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:com.lambdatest.Tests.ParallelTest@18be83e4]" name="tearDown" is-config="true" duration-ms="10799" started-at="2019-02-12T20:43:53Z" finished-at="2019-02-12T20:44:04Z">
           <params>
             <param index="0">
               <value>
