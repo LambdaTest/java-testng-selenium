@@ -76,12 +76,14 @@ public class ParallelTest {
 	@DataProvider(name = "browsersDetails", parallel = true)
 	public static Object[][] ltBrowserDataProvider(Method testMethod) {
 		return new Object[][] {
-			
 				 new Object[] { "internet explorer", "11.0", "Windows 8.1" },
 				new Object[] { "chrome", "60.0", "Windows 8.1" },
-				new Object[] { "firefox", "60.0", "Windows 8.1" }, 
+				new Object[] { "firefox", "60.0", "Windows 8.1" },
 				
-		};
+				new Object[] { "Safari", "11.0", "macOS High Sierra" },
+				
+				new Object[] { "chrome", "69.0", "OS X El Capitan" },
+				new Object[] { "chrome", "67.0", "OS X Mavericks" }};
 	}
 
 	public WebDriver getWebDriver() {
@@ -105,7 +107,7 @@ public class ParallelTest {
 		capabilities.setCapability("video", true);
 		capabilities.setCapability("console", false);
 		capabilities.setCapability("visual", true);
-		capabilities.setCapability("fixedIP", "10.33.13.34");
+		//capabilities.setCapability("fixedIP", "10.33.13.34");
 		System.out.println("capabilities"+capabilities);
 		
 		String username = Configuration.readConfig("LambdaTest_UserName");
