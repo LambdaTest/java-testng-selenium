@@ -78,7 +78,7 @@ public class SingleJenkinsTest {
 		AssertJUnit.assertTrue(item.contains("Yey, Let's add it to list"));
 		status = "passed";
 		((JavascriptExecutor) driver).executeScript("lambda-status=" + status + "");
-		driver.quit();
+		//driver.quit();
 
 	}
 
