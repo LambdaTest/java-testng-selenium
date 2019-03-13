@@ -147,7 +147,7 @@ public class ParallelJenkinsTest {
 			throws Exception {
 		DesiredCapabilities capabilities = new DesiredCapabilities();
 		
-		context.getSuite().getXmlSuite().setThreadCount(10);
+		//context.getSuite().getXmlSuite().setThreadCount(10);
 		long id = Thread.currentThread().getId();
         Reporter.log("Before test-method. Thread id is: " + id);
 
