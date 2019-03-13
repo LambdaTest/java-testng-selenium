@@ -22,17 +22,32 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.Reporter;
+import org.testng.TestNG;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-public class ParallelJenkinsTest {
+public class ParallelJenkinsTestThreadControl {
 
 	public static String status = "failed";
 	public String buildTag = System.getenv("LT_BUILD_NAME");
 	public String gridURL = System.getenv("LT_GRID_URL");
+	
+	public static void main(String[] args) {
+
+        System.setProperty("threadcount", "20");
+
+        TestNG testng = new TestNG();
+
+        testng.setTestClasses(new Class<?>[]{ParallelJenkinsTestThreadControl.class});
+
+        testng.addListener(new SuiteAlterer());
+
+        testng.run();
+
+    }
 
 	@Test(dataProvider = "browsersDetails")
 	public void test(String param, Method method) throws Exception {
@@ -45,6 +60,7 @@ public class ParallelJenkinsTest {
 		String browser = envDeatails[0];
 		String resValue = envDeatails[3];
 
+		Reporter.log("Running with the value (" + param + ") on thread [" + Thread.currentThread().getId() + "]");
 		this.setUp(browser, version, os, resValue, method.getName());
 
 		// Launch the app
