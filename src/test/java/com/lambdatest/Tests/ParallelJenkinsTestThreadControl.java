@@ -35,7 +35,7 @@ public class ParallelJenkinsTestThreadControl {
 	public static String status = "failed";
 	public String buildTag = System.getenv("LT_BUILD_NAME");
 	public String gridURL = System.getenv("LT_GRID_URL");
-	public static String threadcount = System.getenv("threadcount");
+	public static String threadcount = System.getProperty("threadcount");
 	
 	public static void main(String[] args) {
 
