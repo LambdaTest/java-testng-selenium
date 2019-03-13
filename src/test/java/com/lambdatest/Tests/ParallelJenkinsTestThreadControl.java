@@ -35,7 +35,6 @@ public class ParallelJenkinsTestThreadControl {
 	public static String status = "failed";
 	public String buildTag = System.getenv("LT_BUILD_NAME");
 	public String gridURL = System.getenv("LT_GRID_URL");
-	public static String threadcount = System.getProperty("threadcount");
 	
 	public static void main(String[] args) {
 
@@ -71,7 +70,7 @@ public class ParallelJenkinsTestThreadControl {
 			 * 
 			 * Reporter.log("threadCount" + threadCount);
 			 */
-		Reporter.log("threadcountssss" + System.getProperty("threadcount"));
+		Reporter.log("threadcount" + System.getProperty("threadcount"));
 		Reporter.log("Running with the value (" + param + ") on thread [" + Thread.currentThread().getId() + "]");
 		this.setUp(browser, version, os, resValue, method.getName());
 
