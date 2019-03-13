@@ -3,6 +3,8 @@ package com.lambdatest.Tests;
 import org.testng.annotations.Test;
 import org.testng.annotations.BeforeMethod;
 import org.testng.AssertJUnit;
+import org.testng.ITestContext;
+
 import java.lang.reflect.Method;
 import java.net.URL;
 import java.util.ArrayList;
@@ -19,6 +21,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Assert;
 import org.testng.ITestResult;
+import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
@@ -32,7 +35,7 @@ public class ParallelJenkinsTest {
 	public String gridURL = System.getenv("LT_GRID_URL");
 
 	@Test(dataProvider = "browsersDetails")
-	public void test(String param, Method method) throws Exception {
+	public void test(String param, Method method, ITestContext context) throws Exception {
 
 		try {
 		
@@ -42,9 +45,11 @@ public class ParallelJenkinsTest {
 		String browser = envDeatails[0];
 		String resValue = envDeatails[3];
 
-		this.setUp(browser, version, os, resValue, method.getName());
+		this.setUp(browser, version, os, resValue, method.getName(), context);
 
 		// Launch the app
+		long id = Thread.currentThread().getId();
+		Reporter.log("Simple test-method One. Thread id is: " + id);
 		getWebDriver().get("https://lambdatest.github.io/sample-todo-app/");
 
 		// Click on First Item
@@ -73,6 +78,9 @@ public class ParallelJenkinsTest {
 
 	@AfterMethod
 	public void afterTest(ITestResult result) throws InterruptedException {
+		
+		long id = Thread.currentThread().getId();
+		Reporter.log("After test-method. Thread id is: " + id);
 		((JavascriptExecutor) webDriver.get()).executeScript("lambda-status="
 				+ (result.isSuccess() ? "passed" : "failed"));
 				webDriver.get().quit();
@@ -135,9 +143,13 @@ public class ParallelJenkinsTest {
 		return webDriver.get();
 	}
 
-	protected void setUp(String browser, String version, String os, String resolution, String methodName)
+	protected void setUp(String browser, String version, String os, String resolution, String methodName, ITestContext context)
 			throws Exception {
 		DesiredCapabilities capabilities = new DesiredCapabilities();
+		
+		context.getSuite().getXmlSuite().setThreadCount(10);
+		long id = Thread.currentThread().getId();
+        Reporter.log("Before test-method. Thread id is: " + id);
 
 		// set desired capabilities to launch appropriate browser on Lambdatest
 		capabilities.setCapability(CapabilityType.BROWSER_NAME, browser);

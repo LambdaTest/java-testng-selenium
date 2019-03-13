@@ -33,10 +33,7 @@ public class SingleJenkinsTest {
 	public static String res = System.getenv("LT_RESOLUTION");
 
 	@BeforeTest
-	public void setUp(ITestContext context) throws Exception {
-		context.getSuite().getXmlSuite().setThreadCount(10);
-		long id = Thread.currentThread().getId();
-        Reporter.log("Before test-method. Thread id is: " + id);
+	public void setUp() throws Exception {
 		DesiredCapabilities capability = new DesiredCapabilities();
 		capability.setCapability(CapabilityType.BROWSER_NAME, browser);
 		capability.setCapability(CapabilityType.VERSION, version);
@@ -55,10 +52,6 @@ public class SingleJenkinsTest {
 
 	@Test
 	public void test() {
-		
-		long id = Thread.currentThread().getId();
-		Reporter.log("Simple test-method One. Thread id is: " + id);
-
 		// Launch the app
 		driver.get("https://lambdatest.github.io/sample-todo-app/");
 
@@ -84,8 +77,6 @@ public class SingleJenkinsTest {
 
 	@AfterTest
 	public void afterTest() {
-		long id = Thread.currentThread().getId();
-		Reporter.log("After test-method. Thread id is: " + id);
 		((JavascriptExecutor) driver).executeScript("lambda-status=" + status + "");
 		driver.quit();
 	}
