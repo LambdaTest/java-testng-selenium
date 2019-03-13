@@ -26,6 +26,8 @@ public class SingleTest {
 	//public void setUp() throws Exception {
 
 	public static void main(String args[]) throws Exception {
+		
+		
 		String browser =Configuration.readConfig("browser");
 		String version = Configuration.readConfig("version");
 		String os = Configuration.readConfig("os");
