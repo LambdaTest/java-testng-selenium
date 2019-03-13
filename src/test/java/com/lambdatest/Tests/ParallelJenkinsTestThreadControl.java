@@ -10,6 +10,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Properties;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -34,11 +35,11 @@ public class ParallelJenkinsTestThreadControl {
 	public static String status = "failed";
 	public String buildTag = System.getenv("LT_BUILD_NAME");
 	public String gridURL = System.getenv("LT_GRID_URL");
-	public static String threadCount = System.getenv("threadCount");
+	public static String threadcount = System.getenv("threadcount");
 	
 	public static void main(String[] args) {
 
-        System.setProperty("threadcount", threadCount);
+        System.setProperty("threadcount", threadcount);
         
 
         TestNG testng = new TestNG();
@@ -61,7 +62,14 @@ public class ParallelJenkinsTestThreadControl {
 		String version = envDeatails[2];
 		String browser = envDeatails[0];
 		String resValue = envDeatails[3];
+		
+		java.io.InputStream is = this.getClass().getResourceAsStream("my.properties");
+		java.util.Properties p = new Properties();
+		p.load(is);
+		String threadCount = p.getProperty("threadcount");
+		
 		Reporter.log("threadCount" + threadCount);
+		Reporter.log("threadcount" + threadcount);
 		Reporter.log("Running with the value (" + param + ") on thread [" + Thread.currentThread().getId() + "]");
 		this.setUp(browser, version, os, resValue, method.getName());
 
