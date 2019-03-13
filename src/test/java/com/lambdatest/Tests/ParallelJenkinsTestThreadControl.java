@@ -39,7 +39,7 @@ public class ParallelJenkinsTestThreadControl {
 	
 	public static void main(String[] args) {
 
-        System.setProperty("threadcount", threadcount);
+        System.setProperty("threadcount", System.getProperty("threadcount"));
         
 
         TestNG testng = new TestNG();
@@ -71,7 +71,7 @@ public class ParallelJenkinsTestThreadControl {
 			 * 
 			 * Reporter.log("threadCount" + threadCount);
 			 */
-		Reporter.log("threadcount" + threadcount);
+		Reporter.log("threadcount" + System.getProperty("threadcount"));
 		Reporter.log("Running with the value (" + param + ") on thread [" + Thread.currentThread().getId() + "]");
 		this.setUp(browser, version, os, resValue, method.getName());
 
