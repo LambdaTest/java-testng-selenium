@@ -33,8 +33,9 @@ public class ParallelJenkinsTest {
 	public static String status = "failed";
 	public String buildTag = System.getenv("LT_BUILD_NAME");
 	public String gridURL = System.getenv("LT_GRID_URL");
+	public final int threeadSize =2;
 
-	@Test(dataProvider = "browsersDetails")
+	@Test(dataProvider = "browsersDetails", threadPoolSize = threeadSize)
 	public void test(String param, Method method, ITestContext context) throws Exception {
 
 		try {
