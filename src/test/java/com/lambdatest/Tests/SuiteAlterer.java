@@ -12,7 +12,7 @@ public class SuiteAlterer implements IAlterSuiteListener {
     @Override
     public void alter(List<XmlSuite> suites) {
 
-        int count = Integer.parseInt(System.getProperty("threadcount", "-a1"));
+        int count = Integer.parseInt(System.getProperty("threadcount", "-1"));
 
         XmlSuite suite = suites.get(0);
 

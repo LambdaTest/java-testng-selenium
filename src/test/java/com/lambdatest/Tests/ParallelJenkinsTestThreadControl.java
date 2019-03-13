@@ -34,10 +34,11 @@ public class ParallelJenkinsTestThreadControl {
 	public static String status = "failed";
 	public String buildTag = System.getenv("LT_BUILD_NAME");
 	public String gridURL = System.getenv("LT_GRID_URL");
+	public static String threadCount = System.getenv("threadCount");
 	
 	public static void main(String[] args) {
 
-        System.setProperty("threadcount", "20");
+        System.setProperty("threadcount", threadCount);
 
         TestNG testng = new TestNG();
 
