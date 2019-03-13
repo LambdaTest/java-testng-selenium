@@ -169,10 +169,13 @@
 								<suiteXmlFile>src/test/resources/parallelJenkinsThreadControl.xml</suiteXmlFile>
 							</suiteXmlFiles>
 
-							<property>
-								<name>threadcount</name>
-								<value>${threadcount}</value>
-							</property>
+							<systemProperties>
+								<systemProperty>
+									<name>threadcount</name>
+									<value>${threadcount}</value>
+
+								</systemProperty>
+							</systemProperties>
 						</configuration>
 					</plugin>
 				</plugins>
