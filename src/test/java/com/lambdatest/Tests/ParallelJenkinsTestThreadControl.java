@@ -63,12 +63,14 @@ public class ParallelJenkinsTestThreadControl {
 		String browser = envDeatails[0];
 		String resValue = envDeatails[3];
 		
-		java.io.InputStream is = this.getClass().getResourceAsStream("my.properties");
-		java.util.Properties p = new Properties();
-		p.load(is);
-		String threadCount = p.getProperty("threadcount");
-		
-		Reporter.log("threadCount" + threadCount);
+			/*
+			 * java.io.InputStream is =
+			 * this.getClass().getResourceAsStream("my.properties"); java.util.Properties p
+			 * = new Properties(); p.load(is); String threadCount =
+			 * p.getProperty("threadcount");
+			 * 
+			 * Reporter.log("threadCount" + threadCount);
+			 */
 		Reporter.log("threadcount" + threadcount);
 		Reporter.log("Running with the value (" + param + ") on thread [" + Thread.currentThread().getId() + "]");
 		this.setUp(browser, version, os, resValue, method.getName());
