@@ -39,6 +39,7 @@ public class ParallelJenkinsTestThreadControl {
 	public static void main(String[] args) {
 
         System.setProperty("threadcount", threadCount);
+        Reporter.log("threadCount" + threadCount);
 
         TestNG testng = new TestNG();
 
