@@ -14,6 +14,7 @@ public class Configuration {
 		try {
 			Properties prop = new Properties();
 			File f = new File(path + "/Config.properties");
+			System.out.println(path);
 			if (f.exists()) {
 				prop.load(new FileInputStream(f));
 				value = prop.getProperty(key);				

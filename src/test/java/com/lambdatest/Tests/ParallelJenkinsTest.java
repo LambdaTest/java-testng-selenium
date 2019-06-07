@@ -2,6 +2,7 @@ package com.lambdatest.Tests;
 
 import org.testng.annotations.Test;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
 import org.testng.AssertJUnit;
 import org.testng.ITestContext;
 
@@ -33,53 +34,52 @@ public class ParallelJenkinsTest {
 	public static String status = "failed";
 	public String buildTag = System.getenv("LT_BUILD_NAME");
 	public String gridURL = System.getenv("LT_GRID_URL");
-
+	
 	@Test(dataProvider = "browsersDetails")
 	public void test(String param, Method method) throws Exception {
 
 		try {
-		
-		String[] envDeatails = param.split(",");
-		String os = envDeatails[1];
-		String version = envDeatails[2];
-		String browser = envDeatails[0];
-		String resValue = envDeatails[3];
 
-		this.setUp(browser, version, os, resValue, method.getName());
+			String[] envDeatails = param.split(",");
+			String os = envDeatails[1];
+			String version = envDeatails[2];
+			String browser = envDeatails[0];
+			String resValue = envDeatails[3];
 
-		// Launch the app
-		getWebDriver().get("https://lambdatest.github.io/sample-todo-app/");
+			this.setUp(browser, version, os, resValue, method.getName());
 
-		// Click on First Item
-		getWebDriver().findElement(By.name("li1")).click();
+			// Launch the app
+			getWebDriver().get("https://lambdatest.github.io/sample-todo-app/");
 
-		// Click on Second Item
-		getWebDriver().findElement(By.name("li2")).click();
+			// Click on First Item
+			getWebDriver().findElement(By.name("li1")).click();
 
-		// Add new item is list
-		getWebDriver().findElement(By.id("sampletodotext")).clear();
-		getWebDriver().findElement(By.id("sampletodotext")).sendKeys("Yey, Let's add it to list");
-		getWebDriver().findElement(By.id("addbutton")).click();
+			// Click on Second Item
+			getWebDriver().findElement(By.name("li2")).click();
 
-		// Verify Added item
-		String item = getWebDriver().findElement(By.xpath("/html/body/div/div/div/ul/li[6]/span")).getText();
-		AssertJUnit.assertTrue(item.contains("Yey, Let's add it to list"));
-		status = "passed";
+			// Add new item is list
+			getWebDriver().findElement(By.id("sampletodotext")).clear();
+			getWebDriver().findElement(By.id("sampletodotext")).sendKeys("Yey, Let's add it to list");
+			getWebDriver().findElement(By.id("addbutton")).click();
+
+			// Verify Added item
+			String item = getWebDriver().findElement(By.xpath("/html/body/div/div/div/ul/li[6]/span")).getText();
+			AssertJUnit.assertTrue(item.contains("Yey, Let's add it to list"));
+			status = "passed";
 		}
-		
-		catch(Exception e) {
-			e.printStackTrace();
-	}
 
+		catch (Exception e) {
+			e.printStackTrace();
+		}
 
 	}
 
 	@AfterMethod
 	public void afterTest(ITestResult result) throws InterruptedException {
-		((JavascriptExecutor) webDriver.get()).executeScript("lambda-status="
-				+ (result.isSuccess() ? "passed" : "failed"));
-				webDriver.get().quit();
-				Thread.sleep(10000);
+		((JavascriptExecutor) webDriver.get())
+				.executeScript("lambda-status=" + (result.isSuccess() ? "passed" : "failed"));
+		webDriver.get().quit();
+		Thread.sleep(10000);
 	}
 
 	private ThreadLocal<WebDriver> webDriver = new ThreadLocal<WebDriver>();
@@ -138,6 +138,7 @@ public class ParallelJenkinsTest {
 		return webDriver.get();
 	}
 
+	@BeforeMethod(alwaysRun=true)
 	protected void setUp(String browser, String version, String os, String resolution, String methodName)
 			throws Exception {
 		DesiredCapabilities capabilities = new DesiredCapabilities();
@@ -153,8 +154,8 @@ public class ParallelJenkinsTest {
 		capabilities.setCapability("video", true);
 		capabilities.setCapability("console", true);
 		capabilities.setCapability("visual", true);
-		//capabilities.setCapability("fixedIP", "10.33.13.34");
-		System.out.println("capabilities"+capabilities);
+		capabilities.setCapability("tunnel", true);
+		System.out.println("capabilities" + capabilities);
 		// Launch remote browser and set it as the current thread
 		webDriver.set(new RemoteWebDriver(new URL(gridURL), capabilities));
 

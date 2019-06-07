@@ -25,7 +25,7 @@ public class SingleJenkinsTest {
 	public static String status = "failed";
 
 	public static String username = System.getenv("LT_USERNAME");
-	public static String accesskey = System.getenv("LT_APPKEY");
+	public static String accesskey = System.getenv("LT_ACCESS_KEY");
 	public static String gridURL = System.getenv("LT_GRID_URL");
 	public static String os = System.getenv("LT_OPERATING_SYSTEM");
 	public static String browser = System.getenv("LT_BROWSER_NAME");
@@ -45,6 +45,7 @@ public class SingleJenkinsTest {
 		capability.setCapability("video", true);
 		capability.setCapability("console", true);
 		capability.setCapability("visual", true);
+		capability.setCapability("tunnel", true);
 
 		driver = new RemoteWebDriver(new URL(gridURL), capability);
 

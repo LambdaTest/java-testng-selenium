@@ -24,6 +24,7 @@ import org.testng.annotations.Test;
 public class ParallelTest {
 
 	public static String status = "failed";
+	private ThreadLocal<WebDriver> webDriver = new ThreadLocal<WebDriver>();
 
 	@Test(dataProvider = "browsersDetails")
 	public void test(String browser, String version, String os, Method method) throws Exception {
@@ -55,7 +56,7 @@ public class ParallelTest {
 	}
 	}	
 
-	@AfterMethod(alwaysRun = true)
+	@AfterTest(alwaysRun = true)
 	public void tearDown(ITestResult result) throws Exception {
 		((JavascriptExecutor) webDriver.get()).executeScript("lambda-status="
 		+ (result.isSuccess() ? "passed" : "failed"));
@@ -63,9 +64,6 @@ public class ParallelTest {
 		Thread.sleep(10000);
 	}
 	
-	
-	
-	private ThreadLocal<WebDriver> webDriver = new ThreadLocal<WebDriver>();
 
 	@DataProvider(name = "browsersDetails", parallel = true)
 	public static Object[][] ltBrowserDataProvider(Method testMethod) {
@@ -84,7 +82,7 @@ public class ParallelTest {
 		return webDriver.get();
 	}
 	
-	
+	@BeforeTest(alwaysRun=true)
 	protected void setUp(String browser, String version, String os, String methodName)
 			throws Exception {
 		DesiredCapabilities capabilities = new DesiredCapabilities();
@@ -101,11 +99,12 @@ public class ParallelTest {
 		capabilities.setCapability("video", true);
 		capabilities.setCapability("console", false);
 		capabilities.setCapability("visual", true);
-		//capabilities.setCapability("fixedIP", "10.33.13.34");
+		capabilities.setCapability("tunnel", true);
+		
 		System.out.println("capabilities"+capabilities);
 		
-		String username = Configuration.readConfig("LambdaTest_UserName");
-		String accesskey = Configuration.readConfig("LambdaTest_AppKey");
+		String username = System.getenv("LT_USERNAME") != null ?System.getenv("LT_USERNAME"): Configuration.readConfig("LambdaTest_UserName");
+		String accesskey = System.getenv("LT_ACCESS_KEY") != null ?System.getenv("LT_ACCESS_KEY"):Configuration.readConfig("LambdaTest_AppKey");
 
 		
 		// Launch remote browser and set it as the current thread

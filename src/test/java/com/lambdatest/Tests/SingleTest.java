@@ -21,20 +21,18 @@ public class SingleTest {
 	public static WebDriver driver;
 	public static String status = "failed";
 
-	//@SuppressWarnings("deprecation")
-	///@BeforeTest
-	//public void setUp() throws Exception {
+	@BeforeTest(alwaysRun=true)
+	public void setUp() throws Exception {
 
-	public static void main(String args[]) throws Exception {
-		
-		
-		String browser =Configuration.readConfig("browser");
+		String browser = Configuration.readConfig("browser");
 		String version = Configuration.readConfig("version");
 		String os = Configuration.readConfig("os");
 		String res = Configuration.readConfig("resolution");
 
-		String username = Configuration.readConfig("LambdaTest_UserName");
-		String accesskey = Configuration.readConfig("LambdaTest_AppKey");
+		String username = System.getenv("LT_USERNAME") != null ? System.getenv("LT_USERNAME")
+				: Configuration.readConfig("LambdaTest_UserName");
+		String accesskey = System.getenv("LT_ACCESS_KEY") != null ? System.getenv("LT_ACCESS_KEY")
+				: Configuration.readConfig("LambdaTest_AppKey");
 
 		DesiredCapabilities capability = new DesiredCapabilities();
 		capability.setCapability(CapabilityType.BROWSER_NAME, browser);
@@ -55,12 +53,9 @@ public class SingleTest {
 			System.out.println("driver error");
 			System.out.println(e.getMessage());
 		}
-		test();
-		afterTest();
-
 	}
 
-	
+	@Test
 	public static void test() {
 		try {
 
@@ -87,11 +82,12 @@ public class SingleTest {
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		} catch (Error e) {
-			System.out.println("i am here assert failed");
+			System.out.println("Assert failed");
 		}
 
 	}
 
+	@AfterTest
 	public static void afterTest() {
 		((JavascriptExecutor) driver).executeScript("lambda-status=" + status + "");
 		driver.quit();

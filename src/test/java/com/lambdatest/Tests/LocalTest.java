@@ -2,6 +2,7 @@ package com.lambdatest.Tests;
 
 import org.testng.annotations.Test;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
 import org.testng.AssertJUnit;
 import java.net.URL;
 
@@ -22,7 +23,7 @@ public class LocalTest {
 	public WebDriver driver;
 	public static String status = "failed";
 
-	@BeforeMethod
+	@BeforeTest
 	@BeforeClass
 	public void setUp() throws Exception {
 
@@ -31,8 +32,8 @@ public class LocalTest {
 		String os = Configuration.readConfig("os");
 		String res = Configuration.readConfig("resolution");
 
-		String username = Configuration.readConfig("LambdaTest_UserName");
-		String accesskey = Configuration.readConfig("LambdaTest_AppKey");
+		String username = System.getenv("LT_USERNAME") != null ?System.getenv("LT_USERNAME"): Configuration.readConfig("LambdaTest_UserName");
+		String accesskey = System.getenv("LT_ACCESS_KEY") != null ?System.getenv("LT_ACCESS_KEY"):Configuration.readConfig("LambdaTest_AppKey");
 
 		DesiredCapabilities capability = new DesiredCapabilities();
 		capability.setCapability(CapabilityType.BROWSER_NAME, browser);
@@ -56,7 +57,7 @@ public class LocalTest {
 	public void test() {
 
 		// Launch the app
-		driver.get("https://lambdatest.github.io/sample-todo-app/");
+		driver.get("https//localhost.lambdatest.com/todo.html");
 
 		// Click on First Item
 		driver.findElement(By.name("li1")).click();
