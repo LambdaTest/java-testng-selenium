@@ -1,4 +1,4 @@
-# Java TestNG Selenium On LambdaTest
+# Java TestNG Selenium 
 
 ### Environment Setup
 
