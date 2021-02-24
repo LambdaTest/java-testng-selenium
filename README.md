@@ -23,19 +23,11 @@
 
 ```
 To run single test
-    $ mvn test -P single
-
-To run local test
-    $ mvn test -P local
+    $ mvn test -Dsuite=single.xml
 
 To run parallel test
-    $ mvn test -P parallel
+    $ mvn test -Dsuite=single.xml
 
-To run single test fron Jenkins
-    $ mvn test -P singleJenkins
-
-To run parallel test from Jenkins
-    $ mvn test -P parallelJenkins
 ```
 ## About LambdaTest
 
