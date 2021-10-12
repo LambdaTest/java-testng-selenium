@@ -26,7 +26,7 @@ To run single test
     $ mvn test -Dsuite=single.xml
 
 To run parallel test
-    $ mvn test -Dsuite=single.xml
+    $ mvn test -Dsuite=parallel.xml
 
 ```
 ## About LambdaTest
