@@ -35,10 +35,12 @@ set LT_ACCESS_KEY="YOUR ACCESS KEY"`
 
 ```
 To run single test
-    $ mvn test -Dsuite=single.xml
+    $ mvn test -D suite=single.xml
 
 To run parallel test
-    $ mvn test -Dsuite=parallel.xml
+
+    $ mvn test -D suite=single.xml
+
 
 ```
 ## About LambdaTest
