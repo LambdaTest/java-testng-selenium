@@ -41,21 +41,20 @@ public class TestNGTodo1 {
         DesiredCapabilities caps = new DesiredCapabilities();
         caps.setCapability("platform", "windows 10");
         caps.setCapability("browserName", "chrome");
-        caps.setCapability("version", "latest");
+        caps.setCapability("version", "94");
         caps.setCapability("build", "TestNG With Java");
         caps.setCapability("name", m.getName() + " - " + this.getClass().getName());
         caps.setCapability("plugin", "git-testng");
+        caps.setCapability("selenium_version", "4.0.0-beta-2");
 
         String[] Tags = new String[] { "Feature", "Falcon", "Severe" };
         caps.setCapability("tags", Tags);
-
         driver =  new RemoteWebDriver(new URL("https://" + username + ":" + authkey + hub), caps);
 
     }
 
     @Test
     public void toggleOffline() throws InterruptedException {
-        driver = (RemoteWebDriver) new Augmenter().augment(driver);
 
         driver = new Augmenter().augment(driver);
 
@@ -64,23 +63,20 @@ public class TestNGTodo1 {
         devTools.createSession();
 
         devTools.send(Log.enable());
-        devTools.send(Browser.setWindowBounds(new WindowID(1), new Bounds(
-                Optional.of(20),
-                Optional.of(20),
-                Optional.of(20),
-                Optional.of(20),
-                Optional.of(WindowState.NORMAL))));
-                
-       Thread.sleep(30000);
+        devTools.send(Browser.setWindowBounds(new WindowID(1), new Bounds(Optional.of(20), Optional.of(20),
+                Optional.of(20), Optional.of(20), Optional.of(WindowState.NORMAL))));
+
+        Thread.sleep(30000);
 
         WebDriver augmentedDriver = new Augmenter().augment(driver);
         ChromiumNetworkConditions networkConditions = new ChromiumNetworkConditions();
         networkConditions.setOffline(true);
-         ((HasNetworkConditions) augmentedDriver).setNetworkConditions(networkConditions);
+        ((HasNetworkConditions) augmentedDriver).setNetworkConditions(networkConditions);
 
         try {
             driver.get("https://www.lambdatest.com");
-           // "If Network is set to be offline, the previous line should throw an exception";
+            // "If Network is set to be offline, the previous line should throw an
+            // exception";
         } catch (WebDriverException ex) {
             ((HasNetworkConditions) augmentedDriver).setNetworkConditions(new ChromiumNetworkConditions());
         }
@@ -89,7 +85,7 @@ public class TestNGTodo1 {
 
     @AfterMethod
     public void tearDown() {
-        driver.executeScript("lambda-status=" + Status);
+        ((RemoteWebDriver) driver).executeScript("lambda-status=" + Status);
         driver.quit();
     }
 
