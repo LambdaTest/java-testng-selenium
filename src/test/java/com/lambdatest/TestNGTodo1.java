@@ -4,10 +4,13 @@ import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriverException;
+import org.openqa.selenium.chromium.ChromiumNetworkConditions;
+import org.openqa.selenium.chromium.HasNetworkConditions;
+import org.openqa.selenium.remote.Augmenter;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import org.testng.Assert;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -26,8 +29,8 @@ public class TestNGTodo1 {
         String hub = "@hub.lambdatest.com/wd/hub";
 
         DesiredCapabilities caps = new DesiredCapabilities();
-        caps.setCapability("platform", "MacOS Catalina");
-        caps.setCapability("browserName", "Safari");
+        caps.setCapability("platform", "windows 10");
+        caps.setCapability("browserName", "chrome");
         caps.setCapability("version", "latest");
         caps.setCapability("build", "TestNG With Java");
         caps.setCapability("name", m.getName() + " - " + this.getClass().getName());
@@ -41,63 +44,19 @@ public class TestNGTodo1 {
     }
 
     @Test
-    public void basicTest() throws InterruptedException {
-        String spanText;
-        System.out.println("Loading Url");
+    public void toggleOffline() {
+        WebDriver augmentedDriver = new Augmenter().augment(driver);
+        ChromiumNetworkConditions networkConditions = new ChromiumNetworkConditions();
+        networkConditions.setOffline(true);
+         ((HasNetworkConditions) augmentedDriver).setNetworkConditions(networkConditions);
 
-        driver.get("https://lambdatest.github.io/sample-todo-app/");
-
-        System.out.println("Checking Box");
-        driver.findElement(By.name("li1")).click();
-
-        System.out.println("Checking Another Box");
-        driver.findElement(By.name("li2")).click();
-
-        System.out.println("Checking Box");
-        driver.findElement(By.name("li9")).click();
-
-        System.out.println("Checking Another Box");
-        driver.findElement(By.name("li4")).click();
-
-        driver.findElement(By.id("sampletodotext")).sendKeys(" List Item 6");
-        driver.findElement(By.id("addbutton")).click();
-
-        driver.findElement(By.id("sampletodotext")).sendKeys(" List Item 7");
-        driver.findElement(By.id("addbutton")).click();
-
-        driver.findElement(By.id("sampletodotext")).sendKeys(" List Item 8");
-        driver.findElement(By.id("addbutton")).click();
-
-        System.out.println("Checking Another Box");
-        driver.findElement(By.name("li1")).click();
-
-        System.out.println("Checking Another Box");
-        driver.findElement(By.name("li3")).click();
-
-        System.out.println("Checking Another Box");
-        driver.findElement(By.name("li7")).click();
-
-        System.out.println("Checking Another Box");
-        driver.findElement(By.name("li8")).click();
-        Thread.sleep(300);
-
-        System.out.println("Entering Text");
-        driver.findElement(By.id("sampletodotext")).sendKeys("Get Taste of Lambda and Stick to It");
-
-        driver.findElement(By.id("addbutton")).click();
-
-        System.out.println("Checking Another Box");
-        driver.findElement(By.name("li9")).click();
-
-        // Let's also assert that the todo we added is present in the list.
-
-        spanText = driver.findElementByXPath("/html/body/div/div/div/ul/li[9]/span").getText();
-        Assert.assertEquals("Get Taste of Lambda and Stick to It", spanText);
-        Status = "passed";
-        Thread.sleep(150);
-
-        System.out.println("TestFinished");
-
+        try {
+            driver.get("https://www.lambdatest.com");
+           // "If Network is set to be offline, the previous line should throw an exception";
+        } catch (WebDriverException ex) {
+            ((HasNetworkConditions) augmentedDriver).setNetworkConditions(new ChromiumNetworkConditions());
+        }
+        driver.get("https://www.lambdatest.com");
     }
 
     @AfterMethod
