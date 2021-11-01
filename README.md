@@ -39,7 +39,7 @@ To run single test
 
 To run parallel test
 
-    $ mvn test -D suite=single.xml
+    $ mvn test -D suite=parallel.xml
 
 
 ```
