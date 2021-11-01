@@ -3,11 +3,21 @@ package com.lambdatest;
 import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Optional;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chromium.ChromiumDriver;
 import org.openqa.selenium.chromium.ChromiumNetworkConditions;
 import org.openqa.selenium.chromium.HasNetworkConditions;
+import org.openqa.selenium.devtools.DevTools;
+import org.openqa.selenium.devtools.HasDevTools;
+import org.openqa.selenium.devtools.v94.browser.Browser;
+import org.openqa.selenium.devtools.v94.browser.model.Bounds;
+import org.openqa.selenium.devtools.v94.browser.model.WindowID;
+import org.openqa.selenium.devtools.v94.browser.model.WindowState;
+import org.openqa.selenium.devtools.v94.log.Log;
 import org.openqa.selenium.remote.Augmenter;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -18,7 +28,7 @@ import org.testng.annotations.Test;
 
 public class TestNGTodo1 {
 
-    private RemoteWebDriver driver;
+    private WebDriver driver;
     private String Status = "failed";
 
     @BeforeMethod
@@ -39,12 +49,30 @@ public class TestNGTodo1 {
         String[] Tags = new String[] { "Feature", "Falcon", "Severe" };
         caps.setCapability("tags", Tags);
 
-        driver = new RemoteWebDriver(new URL("https://" + username + ":" + authkey + hub), caps);
+        driver =  new RemoteWebDriver(new URL("https://" + username + ":" + authkey + hub), caps);
 
     }
 
     @Test
-    public void toggleOffline() {
+    public void toggleOffline() throws InterruptedException {
+        driver = (RemoteWebDriver) new Augmenter().augment(driver);
+
+        driver = new Augmenter().augment(driver);
+
+        driver.get("https://www.duckduckgo.com");
+        DevTools devTools = ((HasDevTools) driver).getDevTools();
+        devTools.createSession();
+
+        devTools.send(Log.enable());
+        devTools.send(Browser.setWindowBounds(new WindowID(1), new Bounds(
+                Optional.of(20),
+                Optional.of(20),
+                Optional.of(20),
+                Optional.of(20),
+                Optional.of(WindowState.NORMAL))));
+                
+       Thread.sleep(30000);
+
         WebDriver augmentedDriver = new Augmenter().augment(driver);
         ChromiumNetworkConditions networkConditions = new ChromiumNetworkConditions();
         networkConditions.setOffline(true);
