@@ -4,6 +4,8 @@ import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -15,93 +17,47 @@ import org.testng.annotations.Test;
 
 public class TestNGTodo2 {
 
-    private RemoteWebDriver driver;
-    private String Status = "failed";
+  private AppiumDriver driver;
+  private String Status = "failed";
+  public static final String AUTOMATE_USERNAME = "gauravkumar";
+  public static final String AUTOMATE_KEY = "x3ACEbZEcIl6DHJp8ygtPrRNIgKmhlDwzWZl4QJJebcV6RWCbH";
+  public static final String hub = "@hub.lambdatest.com/wd/hub";
+  public static final String URL = "https://" + AUTOMATE_USERNAME + ":" + AUTOMATE_KEY + hub;
 
-    @BeforeMethod
-    public void setup(Method m, ITestContext ctx) throws MalformedURLException {
-        String username = System.getenv("LT_USERNAME") == null ? "Your LT Username" : System.getenv("LT_USERNAME");
-        String authkey = System.getenv("LT_ACCESS_KEY") == null ? "Your LT AccessKey" : System.getenv("LT_ACCESS_KEY");
-        ;
-        String hub = "@hub.lambdatest.com/wd/hub";
+  @BeforeMethod
+  public void setup(Method m, ITestContext ctx) throws MalformedURLException {
 
-        DesiredCapabilities caps = new DesiredCapabilities();
-        caps.setCapability("platform", "Windows 10");
-        caps.setCapability("browserName", "chrome");
-        caps.setCapability("version", "latest");
-        caps.setCapability("build", "TestNG With Java");
-        caps.setCapability("name", m.getName() + this.getClass().getName());
-        caps.setCapability("plugin", "git-testng");
+    DesiredCapabilities caps = new DesiredCapabilities();
+    caps.setCapability("platformName", "Android");
+    caps.setCapability("deviceName", "One Plus 6");
+    caps.setCapability("platformVersion", "9");
 
-        String[] Tags = new String[] { "Feature", "Magicleap", "Severe" };
-        caps.setCapability("tags", Tags);
+    driver = new AndroidDriver(new URL(URL), caps);
 
-        driver = new RemoteWebDriver(new URL("https://" + username + ":" + authkey + hub), caps);
-    }
+  }
 
-    @Test
-    public void basicTest() throws InterruptedException {
-        String spanText;
-        System.out.println("Loading Url");
+  @Test
+  public void basicTest() throws InterruptedException {
+    driver.get("https://webcamtests.com/check");
+    Thread.sleep(2000);
+    driver.findElement(By.id("webcam-launcher")).click();
+    Thread.sleep(2000);
+    // To accept/block the popup, you need to switch the context to “NATIVE_APP“ and click on the Allow/Block button.
+    driver.context("NATIVE_APP");
+    driver.findElement(By.xpath(".//android.widget.Button[@text='Allow']")).click();
+    Thread.sleep(5000);
+    driver.findElement(By.xpath(".//android.widget.Button[@text='ALLOW']")).click();
+    Thread.sleep(5000);
+    driver.context("CHROMIUM");
+    //Mic Test
+    driver.get("https://www.vidyard.com/mic-test/");
+    Thread.sleep(2000);
+  }
 
-        driver.get("https://lambdatest.github.io/sample-todo-app/");
+  @AfterMethod
+  public void tearDown() {
 
-        System.out.println("Checking Box");
-        driver.findElement(By.name("li1")).click();
-
-        System.out.println("Checking Another Box");
-        driver.findElement(By.name("li2")).click();
-
-        System.out.println("Checking Box");
-        driver.findElement(By.name("li3")).click();
-
-        System.out.println("Checking Another Box");
-        driver.findElement(By.name("li4")).click();
-
-        driver.findElement(By.id("sampletodotext")).sendKeys(" List Item 6");
-        driver.findElement(By.id("addbutton")).click();
-
-        driver.findElement(By.id("sampletodotext")).sendKeys(" List Item 7");
-        driver.findElement(By.id("addbutton")).click();
-
-        driver.findElement(By.id("sampletodotext")).sendKeys(" List Item 8");
-        driver.findElement(By.id("addbutton")).click();
-
-        System.out.println("Checking Another Box");
-        driver.findElement(By.name("li1")).click();
-
-        System.out.println("Checking Another Box");
-        driver.findElement(By.name("li3")).click();
-
-        System.out.println("Checking Another Box");
-        driver.findElement(By.name("li7")).click();
-
-        System.out.println("Checking Another Box");
-        driver.findElement(By.name("li8")).click();
-
-        System.out.println("Entering Text");
-        driver.findElement(By.id("sampletodotext")).sendKeys("Get Taste of Lambda and Stick to It");
-
-        driver.findElement(By.id("addbutton")).click();
-
-        System.out.println("Checking Another Box");
-        driver.findElement(By.name("li9")).click();
-
-        // Let's also assert that the todo we added is present in the list.
-
-        spanText = driver.findElementByXPath("/html/body/div/div/div/ul/li[9]/span").getText();
-        Assert.assertEquals("Get Taste of Lambda and Stick to It", spanText);
-        Status = "passed";
-        Thread.sleep(150);
-
-        System.out.println("TestFinished");
-
-    }
-
-    @AfterMethod
-    public void tearDown() {
-        driver.executeScript("lambda-status=" + Status);
-        driver.quit();
-    }
+    driver.quit();
+  }
 
 }
