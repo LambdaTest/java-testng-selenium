@@ -25,21 +25,25 @@ Set LambdaTest Username and Access Key in environment variables.
 
 * For Linux/macOS:
 `export LT_USERNAME="YOUR_USERNAME"
+
 export LT_ACCESS_KEY="YOUR ACCESS KEY"`
 
 * For Windows:
 `set LT_USERNAME="YOUR_USERNAME"
+
 set LT_ACCESS_KEY="YOUR ACCESS KEY"`
     
 ### Running Tests
 
 ```
 To run single test
-    $ mvn test -D suite=single.xml
+    $ mvn test -D suite=single.xml -Dtestng.dtd.http=true
 
 To run parallel test
+    $ mvn test -D suite=parallel.xml -Dtestng.dtd.http=true
 
-    $ mvn test -D suite=single.xml
+To run realdevice test
+    $ mvn test -D suite=mobile.xml -Dtestng.dtd.http=true
 
 
 ```

@@ -24,26 +24,27 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class TestNGTodo1 {
+public class toggleNetworkOffline {
 
     private WebDriver driver;
     private String Status = "failed";
 
-    @BeforeMethod
-    public void setup(Method m, ITestContext ctx) throws MalformedURLException {
+  
+  @BeforeMethod
+  public void setup(Method m, ITestContext ctx) throws MalformedURLException {
         String username = System.getenv("LT_USERNAME") == null ? "Your LT Username" : System.getenv("LT_USERNAME");
         String authkey = System.getenv("LT_ACCESS_KEY") == null ? "Your LT AccessKey" : System.getenv("LT_ACCESS_KEY");
         ;
         String hub = "@hub.lambdatest.com/wd/hub";
 
         DesiredCapabilities caps = new DesiredCapabilities();
-        caps.setCapability("platform", "windows 10");
+        caps.setCapability("platform", "Windows 10");
         caps.setCapability("browserName", "chrome");
         caps.setCapability("version", "94");
-        caps.setCapability("build", "TestNG With Java");
-        caps.setCapability("name", m.getName() + " - " + this.getClass().getName());
+        caps.setCapability("build", "Selenium 4");
+        caps.setCapability("name", this.getClass().getName());
         caps.setCapability("plugin", "git-testng");
-        caps.setCapability("selenium_version", "4.0.0-beta-2");
+        caps.setCapability("selenium_version", "4.0.0");
 
         String[] Tags = new String[] { "Feature", "Falcon", "Severe" };
         caps.setCapability("tags", Tags);

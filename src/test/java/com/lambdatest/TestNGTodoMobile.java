@@ -18,8 +18,9 @@ public class TestNGTodoMobile {
     private RemoteWebDriver driver;
     private String Status = "failed";
 
-    @BeforeMethod
-    public void setup(Method m, ITestContext ctx) throws MalformedURLException {
+  
+  @BeforeMethod
+  public void setup(Method m, ITestContext ctx) throws MalformedURLException {
         String username = System.getenv("LT_USERNAME") == null ? "Your LT Username" : System.getenv("LT_USERNAME");
         String authkey = System.getenv("LT_ACCESS_KEY") == null ? "Your LT AccessKey" : System.getenv("LT_ACCESS_KEY");
         ;
@@ -27,10 +28,11 @@ public class TestNGTodoMobile {
 
         DesiredCapabilities caps = new DesiredCapabilities();
         caps.setCapability("deviceName", "Google Pixel 4a");
-        caps.setCapability("build", "TestNG With Java");
-        caps.setCapability("name", m.getName() + this.getClass().getName());
+        caps.setCapability("build", "Selenium 4");
+        caps.setCapability("name", this.getClass().getName());
         caps.setCapability("plugin", "git-testng");
         caps.setCapability("isRealMobile", true);
+        caps.setCapability("selenium_version", "4.0.0");
 
         String[] Tags = new String[] { "Feature", "Tag", "Moderate" };
         caps.setCapability("tags", Tags);
