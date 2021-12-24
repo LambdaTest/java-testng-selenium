@@ -24,14 +24,16 @@
 Set LambdaTest Username and Access Key in environment variables.
 
 * For Linux/macOS:
-`export LT_USERNAME="YOUR_USERNAME"
-
-export LT_ACCESS_KEY="YOUR ACCESS KEY"`
+   ```
+   $ export LT_USERNAME="YOUR_USERNAME"
+   $ export LT_ACCESS_KEY="YOUR ACCESS KEY"
+   ```
 
 * For Windows:
-`set LT_USERNAME="YOUR_USERNAME"
-
-set LT_ACCESS_KEY="YOUR ACCESS KEY"`
+   ```
+   $ set LT_USERNAME="YOUR_USERNAME"
+   $ set LT_ACCESS_KEY="YOUR ACCESS KEY"
+   ```
     
 ### Running Tests
 
