@@ -4,16 +4,16 @@
   <test thread-count="20" parallel="classes" name="Test">
     <classes>
       <class name="com.lambdatest.BasicAuthentication" />
-      <!-- <class name="com.lambdatest.CapturePerformanceMetrics" />
+      <!-- <class name="com.lambdatest.CapturePerformanceMetrics" /> -->
       <class name="com.lambdatest.CDPTestConsole" />
-      <class name="com.lambdatest.EmulateGeolocation" />
+      <!-- <class name="com.lambdatest.EmulateGeolocation" />
       <class name="com.lambdatest.EmulateNetworkConditions" />
       <class name="com.lambdatest.InterceptNetwork" />
       <class name="com.lambdatest.JavaScriptExceptions" />
       <class name="com.lambdatest.OverrideDeviceMode" /> -->
       <class name="com.lambdatest.TestNGRelativeLocator" />
-      <class name="com.lambdatest.TestNGTodoTest" />
-      <class name="com.lambdatest.TestNGTodoMobile" />
+      <!-- <class name="com.lambdatest.TestNGTodoTest" />
+      <class name="com.lambdatest.TestNGTodoMobile" /> -->
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
