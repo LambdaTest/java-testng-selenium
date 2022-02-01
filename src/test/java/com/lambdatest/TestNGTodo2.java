@@ -3,8 +3,14 @@ package com.lambdatest;
 import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.List;
+import java.util.logging.Level;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.logging.LogEntry;
+import org.openqa.selenium.logging.LogType;
+import org.openqa.selenium.logging.LoggingPreferences;
+import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Assert;
@@ -27,11 +33,16 @@ public class TestNGTodo2 {
 
         DesiredCapabilities caps = new DesiredCapabilities();
         caps.setCapability("platform", "Windows 10");
-        caps.setCapability("browserName", "chrome");
+        caps.setCapability("browserName", "firefox");
         caps.setCapability("version", "latest");
         caps.setCapability("build", "TestNG With Java");
         caps.setCapability("name", m.getName() + this.getClass().getName());
         caps.setCapability("plugin", "git-testng");
+
+        LoggingPreferences logP = new LoggingPreferences();
+        logP.enable(LogType.PERFORMANCE, Level.ALL);
+        caps.setCapability(CapabilityType.LOGGING_PREFS, logP);
+        // options.setCapability( "goog:loggingPrefs", logPrefs );
 
         String[] Tags = new String[] { "Feature", "Magicleap", "Severe" };
         caps.setCapability("tags", Tags);
@@ -45,7 +56,14 @@ public class TestNGTodo2 {
         System.out.println("Loading Url");
 
         driver.get("https://lambdatest.github.io/sample-todo-app/");
+        
+        System.out.println(driver.manage().logs().getAvailableLogTypes());
 
+        List<LogEntry> entries = driver.manage().logs().get(LogType.BROWSER).getAll();
+   
+    for (LogEntry entry : entries) {
+    System.out.println(entry);
+    }
         System.out.println("Checking Box");
         driver.findElement(By.name("li1")).click();
 
