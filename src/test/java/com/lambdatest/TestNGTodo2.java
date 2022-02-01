@@ -33,16 +33,18 @@ public class TestNGTodo2 {
 
         DesiredCapabilities caps = new DesiredCapabilities();
         caps.setCapability("platform", "Windows 10");
-        caps.setCapability("browserName", "firefox");
+        caps.setCapability("browserName", "chrome");
         caps.setCapability("version", "latest");
         caps.setCapability("build", "TestNG With Java");
         caps.setCapability("name", m.getName() + this.getClass().getName());
-        caps.setCapability("plugin", "git-testng");
+        caps.setCapability("selenium_version", "3.141.59");
+        caps.setCapability("console", true);
 
         LoggingPreferences logP = new LoggingPreferences();
-        logP.enable(LogType.PERFORMANCE, Level.ALL);
-        caps.setCapability(CapabilityType.LOGGING_PREFS, logP);
-        // options.setCapability( "goog:loggingPrefs", logPrefs );
+        logP.enable(LogType.PERFORMANCE, Level.INFO);
+        logP.enable(LogType.BROWSER, Level.ALL);
+        // caps.setCapability(CapabilityType.LOGGING_PREFS, logP);
+        caps.setCapability( "goog:loggingPrefs", logP );
 
         String[] Tags = new String[] { "Feature", "Magicleap", "Severe" };
         caps.setCapability("tags", Tags);
