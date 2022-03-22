@@ -20,16 +20,17 @@ public class TestNGTodo1 {
 
     @BeforeMethod
     public void setup(Method m, ITestContext ctx) throws MalformedURLException {
-        String username = System.getenv("LT_USERNAME") == null ? "Your LT Username" : System.getenv("LT_USERNAME");
-        String authkey = System.getenv("LT_ACCESS_KEY") == null ? "Your LT AccessKey" : System.getenv("LT_ACCESS_KEY");
+        String username = System.getenv("LT_USERNAME") == null ? "madhanshanmugam234" : System.getenv("LT_USERNAME");
+        String authkey = System.getenv("LT_ACCESS_KEY") == null ? "1tkRas4MYfc3VIj4N9E16QIh8ZEUixjK4IPgX4DXiob3CdkBuV" : System.getenv("LT_ACCESS_KEY");
         ;
-        String hub = "@hub.lambdatest.com/wd/hub";
-
-        DesiredCapabilities caps = new DesiredCapabilities();
-        caps.setCapability("platform", "MacOS Catalina");
-        caps.setCapability("browserName", "Safari");
-        caps.setCapability("version", "latest");
-        caps.setCapability("build", "TestNG With Java");
+        String hub = "https://madhanshanmugam234:1tkRas4MYfc3VIj4N9E16QIh8ZEUixjK4IPgX4DXiob3CdkBuV@hub.lambdatest.com/wd/hub";
+	
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+		capabilities.setCapability("build", "Lambda Test");
+		capabilities.setCapability("name", "simple form demo test");
+		capabilities.setCapability("platform", "Windows 10");
+		capabilities.setCapability("browserName", "Firefox");
+		capabilities.setCapability("version","97.0");
         caps.setCapability("name", m.getName() + " - " + this.getClass().getName());
         caps.setCapability("plugin", "git-testng");
 
@@ -42,59 +43,34 @@ public class TestNGTodo1 {
 
     @Test
     public void basicTest() throws InterruptedException {
-        String spanText;
-        System.out.println("Loading Url");
+        String url = " https://www.lambdatest.com/selenium-playground/ ";
+		String ExpectedText = "welcome to lambda test";
 
-        driver.get("https://lambdatest.github.io/sample-todo-app/");
-
-        System.out.println("Checking Box");
-        driver.findElement(By.name("li1")).click();
-
-        System.out.println("Checking Another Box");
-        driver.findElement(By.name("li2")).click();
-
-        System.out.println("Checking Box");
-        driver.findElement(By.name("li3")).click();
-
-        System.out.println("Checking Another Box");
-        driver.findElement(By.name("li4")).click();
-
-        driver.findElement(By.id("sampletodotext")).sendKeys(" List Item 6");
-        driver.findElement(By.id("addbutton")).click();
-
-        driver.findElement(By.id("sampletodotext")).sendKeys(" List Item 7");
-        driver.findElement(By.id("addbutton")).click();
-
-        driver.findElement(By.id("sampletodotext")).sendKeys(" List Item 8");
-        driver.findElement(By.id("addbutton")).click();
-
-        System.out.println("Checking Another Box");
-        driver.findElement(By.name("li1")).click();
-
-        System.out.println("Checking Another Box");
-        driver.findElement(By.name("li3")).click();
-
-        System.out.println("Checking Another Box");
-        driver.findElement(By.name("li7")).click();
-
-        System.out.println("Checking Another Box");
-        driver.findElement(By.name("li8")).click();
-        Thread.sleep(300);
-
-        System.out.println("Entering Text");
-        driver.findElement(By.id("sampletodotext")).sendKeys("Get Taste of Lambda and Stick to It");
-
-        driver.findElement(By.id("addbutton")).click();
-
-        System.out.println("Checking Another Box");
-        driver.findElement(By.name("li9")).click();
-
-        // Let's also assert that the todo we added is present in the list.
-
-        spanText = driver.findElementByXPath("/html/body/div/div/div/ul/li[9]/span").getText();
-        Assert.assertEquals("Get Taste of Lambda and Stick to It", spanText);
-        Status = "passed";
-        Thread.sleep(150);
+		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+		driver.get(url);
+		driver.findElement(By.linkText("Simple Form Demo")).click();	
+		String actualUrl = driver.getCurrentUrl();
+		if (actualUrl.equals("https://www.lambdatest.com/selenium-playground/simple-form-demo"))  
+		{  
+		System.out.println("Verification Successful - The correct Url is opened.");  
+		}  
+		else  
+		{  
+		System.out.println("Verification Failed - An incorrect Url is opened.");  
+		}  
+	   WebElement Text = driver.findElement(By.id("user-message"));  
+	   Text.sendKeys(ExpectedText);
+	   String ActualText = Text.getText();
+	   driver.findElement(By.id("showInput")).click();
+		
+		if (ActualText.equals(ExpectedText))
+		{
+			System.out.println("valid text");
+		}
+		else
+		{
+			System.out.println("invalid text");
+		}		
 
         System.out.println("TestFinished");
 
