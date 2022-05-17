@@ -33,7 +33,7 @@ public class SampleAutomation {
         caps.setCapability("platform", "win10");
         caps.setCapability("browserName", "chrome");
         caps.setCapability("version", "latest");
-        caps.setCapability("build", "TestNG With Java");
+        caps.setCapability("build", System.getProperty("Build_Name") == null ? m.getName() + " - " + this.getClass().getName() : System.getProperty("Build_Name"));
         caps.setCapability("name", m.getName() + " - " + this.getClass().getName());
         caps.setCapability("plugin", "git-testng");
 
