@@ -2,11 +2,8 @@ package com.lambdatest;
 
 import Utills.UtilsMethods;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import org.openqa.selenium.support.ui.Select;
-import org.testng.Assert;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -23,16 +20,14 @@ public class RegisterAccount {
 
     @BeforeMethod
     public void setup(Method m, ITestContext ctx) throws MalformedURLException {
-        //        String username = System.getenv("LT_USERNAME") == null ? "Your LT Username" : System.getenv("LT_USERNAME");
-        String username = System.getProperty("LT_USERNAME");
-        //        String authKey = System.getenv("LT_ACCESS_KEY") == null ? "Your LT AccessKey" : System.getenv("LT_ACCESS_KEY");
-        String authKey = System.getProperty("LT_ACCESS_KEY");
+        String username = System.getenv("LT_USERNAME") == null ? "Your LT Username" : System.getenv("LT_USERNAME");
+        String authKey = System.getenv("LT_ACCESS_KEY") == null ? "Your LT AccessKey" : System.getenv("LT_ACCESS_KEY");
         String hub = "@hub.lambdatest.com/wd/hub";
         DesiredCapabilities caps = new DesiredCapabilities();
         caps.setCapability("platform", "win10");
         caps.setCapability("browserName", "chrome");
         caps.setCapability("version", "latest");
-        caps.setCapability("build", System.getProperty("Build_Name") == null ? m.getName() + " - " + this.getClass().getName() : System.getProperty("Build_Name"));
+        caps.setCapability("build", "TestNG With Java");
         caps.setCapability("name", m.getName() + " - " + this.getClass().getName());
         caps.setCapability("plugin", "git-testng");
         String[] Tags = new String[] { "Feature", "Falcon", "Severe" };
@@ -54,7 +49,7 @@ public class RegisterAccount {
         driver.findElement(By.id("input-confirm")).sendKeys("Confirm password");
         //        driver.findElement(By.id("input-agree")).click();
         driver.findElement(By.cssSelector("input[type='submit']")).click();
-        System.out.println("TestFinished");
+        Status = "Passed";
     }
 
     @AfterMethod
