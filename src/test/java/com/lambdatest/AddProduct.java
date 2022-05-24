@@ -1,9 +1,11 @@
 package com.lambdatest;
 
 import Utills.UtilsMethods;
+import Utills.WebDriverHelper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.testng.Assert;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -15,7 +17,7 @@ import java.net.URL;
 
 public class AddProduct {
     private RemoteWebDriver driver;
-    UtilsMethods methods = new UtilsMethods();
+    WebDriverHelper driverHelper;
 
     private String Status = "failed";
 
@@ -33,23 +35,27 @@ public class AddProduct {
         String[] Tags = new String[] { "Feature", "Falcon", "Severe" };
         caps.setCapability("tags", Tags);
         driver = new RemoteWebDriver(new URL("https://" + username + ":" + authKey + hub), caps);
+        driverHelper = new WebDriverHelper(driver);
     }
 
     @Test public void addProducts() {
-        driver.get("https://ecommerce-playground.lambdatest.io/");
-        methods.wait(driver, By.className("shop-by-category"), 30);
-        driver.findElement(By.className("shop-by-category")).click();
-        driver.findElement(By.cssSelector(".mz-pure-drawer:first-of-type .navbar-nav>li:nth-of-type(3)")).click();
-        driver.findElement(By.cssSelector("#container .manufacturer .mz-filter-group-content div:first-of-type div"))
-            .click();
-        driver.findElement(By.cssSelector(".carousel-item:first-of-type [title='HTC Touch HD']"));
-        driver.findElement(
-                By.cssSelector("div[data-view_id='grid'] .product-layout:first-of-type button[title='Add to Cart']"))
-            .click();
-        driver.findElement(By.cssSelector("#notification-box-top .btn-primary")).click();
-        driver.findElement(By.cssSelector("#content .btn-secondary")).click();
-        driver.findElement(By.xpath("//strong[contains(text(),'This is a dummy website for Web Automation Testing')]"))
-            .isSelected();
+        driverHelper.getURL("https://ecommerce-playground.lambdatest.io/");
+        driverHelper.waitForPresence(By.className("shop-by-category"), 30);
+        driverHelper.click(By.className("shop-by-category"));
+        driverHelper.click(By.cssSelector(".mz-pure-drawer:first-of-type .navbar-nav>li:nth-of-type(3)"));
+        driverHelper.click(By.cssSelector("#container .manufacturer .mz-filter-group-content div:first-of-type div"));
+        driverHelper.mouseHoverOnElement(By.cssSelector(".carousel-item:first-of-type [title='iPod Touch']"));
+        driverHelper.staleElementRefresh(By.cssSelector(".carousel-item:first-of-type [title='iPod Touch']"));
+        driverHelper.waitForTime(5);
+        driverHelper.mouseHoverOnElement(By.cssSelector(".carousel-item:first-of-type [title='iPod Touch']"));
+        driverHelper.waitForClickable(By.cssSelector("div[data-view_id='grid'] .product-layout:first-of-type button[title='Add to Cart']"), 30);
+        driverHelper.click(By.cssSelector("div[data-view_id='grid'] .product-layout:first-of-type button[title='Add to Cart']"));
+        driverHelper.click(By.cssSelector("#notification-box-top .btn-primary"));
+        driverHelper.waitForVisibility(By.cssSelector("#content .btn-secondary"), 30);
+        driverHelper.click(By.cssSelector("#content .btn-secondary"));
+        driverHelper.waitForVisibility(By.xpath("//strong[contains(text(),'This is a dummy website for Web Automation Testing')]"), 30);
+        boolean value = driver.findElement(By.xpath("//strong[contains(text(),'This is a dummy website for Web Automation Testing')]")).isDisplayed();
+        Assert.assertTrue(value, "Element is not displayed.");
         Status = "Passed";
     }
 
