@@ -20,7 +20,17 @@ public class AddProduct {
 
 
     //Elements
-    protected static final By SHOP_BY_CATEGORY_NAVIGATION = By.cssSelector("shop-by-category");
+    protected static final By SHOP_BY_CATEGORY_NAVIGATION = By.className("shop-by-category");
+    protected static final By PHONE_TABLETS_IPOD_NAVIGATION = By.cssSelector(".mz-pure-drawer:first-of-type .navbar-nav>li:nth-of-type(3)");
+    protected static final By APPLE_MANUFACTURER_FILTER = By.cssSelector("#container .manufacturer .mz-filter-group-content div:first-of-type div");
+    private static final By FIRST_IPOD_PRODUCT = By.cssSelector(".carousel-item:first-of-type [title='iPod Touch']");
+    private static final By ADD_TO_CART_FIRST_PRODUCT = By.cssSelector("div[data-view_id='grid'] .product-layout:first-of-type button[title='Add to Cart']");
+    private static final By VIEW_CART_BUTTON_IN_BOX = By.cssSelector("#notification-box-top .btn-primary");
+    private static final By CONTINUE_SHOPPING_BUTTON = By.cssSelector("#content .btn-secondary");
+    private static final By WEBSITE_DISCLAIMER_HEADING_ON_HOME_PAGE = By.xpath("//strong[contains(text(),'This is a dummy website for Web Automation Testing')]");
+
+
+
 
     private String Status = "failed";
 
@@ -44,20 +54,20 @@ public class AddProduct {
     @Test public void addProducts() {
         driverHelper.getURL("https://ecommerce-playground.lambdatest.io/");
         driverHelper.waitForPresence(SHOP_BY_CATEGORY_NAVIGATION, 30);
-        driverHelper.click(By.className("shop-by-category"));
-        driverHelper.click(By.cssSelector(".mz-pure-drawer:first-of-type .navbar-nav>li:nth-of-type(3)"));
-        driverHelper.click(By.cssSelector("#container .manufacturer .mz-filter-group-content div:first-of-type div"));
-        driverHelper.mouseHoverOnElement(By.cssSelector(".carousel-item:first-of-type [title='iPod Touch']"));
-        driverHelper.staleElementRefresh(By.cssSelector(".carousel-item:first-of-type [title='iPod Touch']"));
+        driverHelper.click(SHOP_BY_CATEGORY_NAVIGATION);
+        driverHelper.click(PHONE_TABLETS_IPOD_NAVIGATION);
+        driverHelper.click(APPLE_MANUFACTURER_FILTER);
+        driverHelper.mouseHoverOnElement(FIRST_IPOD_PRODUCT);
+        driverHelper.staleElementRefresh(FIRST_IPOD_PRODUCT);
         driverHelper.waitForTime(5);
-        driverHelper.mouseHoverOnElement(By.cssSelector(".carousel-item:first-of-type [title='iPod Touch']"));
-        driverHelper.waitForClickable(By.cssSelector("div[data-view_id='grid'] .product-layout:first-of-type button[title='Add to Cart']"), 30);
-        driverHelper.click(By.cssSelector("div[data-view_id='grid'] .product-layout:first-of-type button[title='Add to Cart']"));
-        driverHelper.click(By.cssSelector("#notification-box-top .btn-primary"));
-        driverHelper.waitForVisibility(By.cssSelector("#content .btn-secondary"), 30);
-        driverHelper.click(By.cssSelector("#content .btn-secondary"));
-        driverHelper.waitForVisibility(By.xpath("//strong[contains(text(),'This is a dummy website for Web Automation Testing')]"), 30);
-        boolean value = driver.findElement(By.xpath("//strong[contains(text(),'This is a dummy website for Web Automation Testing')]")).isDisplayed();
+        driverHelper.mouseHoverOnElement(FIRST_IPOD_PRODUCT);
+        driverHelper.waitForClickable(ADD_TO_CART_FIRST_PRODUCT, 30);
+        driverHelper.click(ADD_TO_CART_FIRST_PRODUCT);
+        driverHelper.click(VIEW_CART_BUTTON_IN_BOX);
+        driverHelper.waitForVisibility(CONTINUE_SHOPPING_BUTTON, 30);
+        driverHelper.click(CONTINUE_SHOPPING_BUTTON);
+        driverHelper.waitForVisibility(WEBSITE_DISCLAIMER_HEADING_ON_HOME_PAGE, 30);
+        boolean value = driver.findElement(WEBSITE_DISCLAIMER_HEADING_ON_HOME_PAGE).isDisplayed();
         Assert.assertTrue(value, "Element is not displayed.");
         Status = "Passed";
     }
