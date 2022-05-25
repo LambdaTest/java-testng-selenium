@@ -1,6 +1,6 @@
 package com.lambdatest;
 
-import Utills.UtilsMethods;
+import Utills.WebDriverHelper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -15,7 +15,7 @@ import java.net.URL;
 
 public class RegisterAccount {
     private RemoteWebDriver driver;
-    UtilsMethods methods = new UtilsMethods();
+    WebDriverHelper driverHelper;
     private String Status = "failed";
 
     @BeforeMethod
@@ -33,22 +33,23 @@ public class RegisterAccount {
         String[] Tags = new String[] { "Feature", "Falcon", "Severe" };
         caps.setCapability("tags", Tags);
         driver = new RemoteWebDriver(new URL("https://" + username + ":" + authKey + hub), caps);
+        driverHelper = new WebDriverHelper(driver);
     }
 
     @Test(priority = 1)
     public void register() {
-        driver.get("https://ecommerce-playground.lambdatest.io/");
-        driver.findElement(By.cssSelector("#main-navigation a[href*='account/account']")).click();
-        driver.findElement(By.cssSelector("#column-right a[href*='account/register']")).click();
-        methods.wait(driver, By.id("input-firstname"), 30);
-        driver.findElement(By.id("input-firstname")).sendKeys("name");
-        driver.findElement(By.id("input-lastname")).sendKeys("LastName");
-        driver.findElement(By.id("input-email")).sendKeys("Email");
-        driver.findElement(By.id("input-telephone")).sendKeys("Number");
-        driver.findElement(By.id("input-password")).sendKeys("Password");
-        driver.findElement(By.id("input-confirm")).sendKeys("Confirm password");
-        //        driver.findElement(By.id("input-agree")).click();
-        driver.findElement(By.cssSelector("input[type='submit']")).click();
+        driverHelper.getURL("https://ecommerce-playground.lambdatest.io/");
+        driverHelper.click(By.cssSelector("#main-navigation a[href*='account/account']"));
+        driverHelper.click(By.cssSelector("#column-right a[href*='account/register']"));
+        driverHelper.waitForPresence(By.id("input-firstname"), 30);
+        driverHelper.sendKeys(By.id("input-firstname"), "name");
+        driverHelper.sendKeys(By.id("input-lastname"), "LastName");
+        driverHelper.sendKeys(By.id("input-email"), "Email");
+        driverHelper.sendKeys(By.id("input-telephone"), "Number");
+        driverHelper.sendKeys(By.id("input-password"), "Password");
+        driverHelper.sendKeys(By.id("input-confirm"), "Confirm password");
+//        driverHelper.click(By.id("input-agree"));
+        driverHelper.click(By.cssSelector("input[type='submit']"));
         Status = "Passed";
     }
 

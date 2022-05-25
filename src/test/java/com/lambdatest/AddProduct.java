@@ -1,6 +1,5 @@
 package com.lambdatest;
 
-import Utills.UtilsMethods;
 import Utills.WebDriverHelper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -18,6 +17,10 @@ import java.net.URL;
 public class AddProduct {
     private RemoteWebDriver driver;
     WebDriverHelper driverHelper;
+
+
+    //Elements
+    protected static final By SHOP_BY_CATEGORY_NAVIGATION = By.cssSelector("shop-by-category");
 
     private String Status = "failed";
 
@@ -40,7 +43,7 @@ public class AddProduct {
 
     @Test public void addProducts() {
         driverHelper.getURL("https://ecommerce-playground.lambdatest.io/");
-        driverHelper.waitForPresence(By.className("shop-by-category"), 30);
+        driverHelper.waitForPresence(SHOP_BY_CATEGORY_NAVIGATION, 30);
         driverHelper.click(By.className("shop-by-category"));
         driverHelper.click(By.cssSelector(".mz-pure-drawer:first-of-type .navbar-nav>li:nth-of-type(3)"));
         driverHelper.click(By.cssSelector("#container .manufacturer .mz-filter-group-content div:first-of-type div"));

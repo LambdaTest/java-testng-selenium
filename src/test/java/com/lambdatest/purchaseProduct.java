@@ -1,10 +1,9 @@
 package com.lambdatest;
 
-import Utills.UtilsMethods;
+import Utills.WebDriverHelper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
@@ -17,7 +16,7 @@ import java.net.URL;
 
 public class purchaseProduct {
     private RemoteWebDriver driver;
-    UtilsMethods methods = new UtilsMethods();
+    WebDriverHelper driverHelper;
 
     private String Status = "failed";
 
@@ -36,41 +35,42 @@ public class purchaseProduct {
         String[] Tags = new String[] { "Feature", "Falcon", "Severe" };
         caps.setCapability("tags", Tags);
         driver = new RemoteWebDriver(new URL("https://" + username + ":" + authKey + hub), caps);
+        driverHelper = new WebDriverHelper(driver);
     }
 
     @Test
     public void purchaseProduct() {
-        driver.get("https://ecommerce-playground.lambdatest.io/");
-        driver.findElement(By.cssSelector("shop-by-category")).click();
-        driver.findElement(By.cssSelector(".mz-pure-drawer:first-of-type .navbar-nav>li:nth-of-type(3)")).click();
-        driver.findElement(By.cssSelector("#container .manufacturer .mz-filter-group-content div:first-of-type div")).click();
-        methods.mouseHoverOnElement(driver, By.cssSelector(".carousel-item:first-of-type [title='iPod Touch']"));
-        driver.findElement(By.cssSelector("div[data-view_id='grid'] .product-layout:first-of-type button[title='Add to Cart']")).click();
-        driver.findElement(By.cssSelector("#notification-box-top .btn-primary")).click();
-        driver.findElement(By.cssSelector("#content a[href*='checkout/checkout']")).click();
-        methods.wait(driver, By.id("input-payment-firstname"), 30);
-        driver.findElement(By.id("input-payment-firstname")).sendKeys("name");
-        driver.findElement(By.id("input-payment-lastname")).sendKeys("LastName");
-        driver.findElement(By.id("input-payment-email")).sendKeys("Email");
-        driver.findElement(By.id("input-payment-telephone")).sendKeys("Number");
-        driver.findElement(By.id("input-payment-password")).sendKeys("Password");
-        driver.findElement(By.id("input-payment-confirm")).sendKeys("Confirm password");
+        driverHelper.getURL("https://ecommerce-playground.lambdatest.io/");
+        driverHelper.click(By.cssSelector("shop-by-category"));
+        driverHelper.click(By.cssSelector(".mz-pure-drawer:first-of-type .navbar-nav>li:nth-of-type(3)"));
+        driverHelper.click(By.cssSelector("#container .manufacturer .mz-filter-group-content div:first-of-type div"));
+        driverHelper.mouseHoverOnElement(By.cssSelector(".carousel-item:first-of-type [title='iPod Touch']"));
+        driverHelper.click(By.cssSelector("div[data-view_id='grid'] .product-layout:first-of-type button[title='Add to Cart']"));
+        driverHelper.click(By.cssSelector("#notification-box-top .btn-primary"));
+        driverHelper.click(By.cssSelector("#content a[href*='checkout/checkout']"));
+        driverHelper.waitForPresence(By.id("input-payment-firstname"), 30);
+        driverHelper.sendKeys(By.id("input-payment-firstname"), "Name");
+        driverHelper.sendKeys(By.id("input-payment-lastname"), "LastName");
+        driverHelper.sendKeys(By.id("input-payment-email"), "Email");
+        driverHelper.sendKeys(By.id("input-payment-telephone"), "Number");
+        driverHelper.sendKeys(By.id("input-payment-password"), "Password");
+        driverHelper.sendKeys(By.id("input-payment-confirm"), "Confirm password");
 
-        driver.findElement(By.id("input-payment-company")).sendKeys("Company name");
-        driver.findElement(By.id("input-payment-address-1")).sendKeys("Address One");
-        driver.findElement(By.id("input-payment-address-2")).sendKeys("Address Two");
-        driver.findElement(By.id("input-payment-city")).sendKeys("City");
-        driver.findElement(By.id("input-payment-postcode")).sendKeys("Postal code");
-        Select select = new Select(driver.findElement(By.id("input-payment-country")));
-        select.selectByValue("India");
-        Select select1 = new Select(driver.findElement(By.id("input-payment-zone")));
-        select1.selectByValue("Delhi");
-        driver.findElement(By.id("input-account-agree")).click();
-        driver.findElement(By.id("input-agree")).click();
-        driver.findElement(By.id("button-save")).click();
-        driver.findElement(By.className("page-title")).isDisplayed();
-        driver.findElement(By.id("button-confirm")).click();
-        String orderStatus = driver.findElement(By.id("page-title")).getText();
+        driverHelper.sendKeys(By.id("input-payment-company"), "Company name");
+        driverHelper.sendKeys(By.id("input-payment-address-1"), "Address One");
+        driverHelper.sendKeys(By.id("input-payment-address-2"), "Address Two");
+        driverHelper.sendKeys(By.id("input-payment-city"), "City");
+        driverHelper.sendKeys(By.id("input-payment-postcode"), "Postal code");
+
+        driverHelper.selectDropDownByValue(By.id("input-payment-country"), "India");
+        driverHelper.selectDropDownByValue(By.id("input-payment-zone"), "Delhi");
+
+        driverHelper.click(By.id("input-account-agree"));
+        driverHelper.click(By.id("input-agree"));
+        driverHelper.click(By.id("button-save"));
+        driverHelper.isDisplayed(By.className("page-title"));
+        driverHelper.click(By.id("button-confirm"));
+        String orderStatus = driverHelper.getText(By.id("page-title"));
         Assert.assertEquals(orderStatus, "Your order has been placed!");
         Status = "Passed";
     }

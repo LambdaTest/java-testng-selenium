@@ -1,10 +1,12 @@
 package Utills;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class WebDriverHelper {
@@ -21,6 +23,28 @@ public class WebDriverHelper {
 
     public void click(By locator) {
         driver.findElement(locator).click();
+    }
+
+    public void sendKeys(By locator , String str) {
+        driver.findElement(locator).sendKeys(str);
+    }
+
+    public void clearInputField(By locator) {
+        driver.findElement(locator).clear();
+    }
+
+    public void sendKeysByKeyBoard(By locator, Keys keys) {
+        driver.findElement(locator).sendKeys(keys);
+    }
+
+    public String getText(By locator) {
+        return driver.findElement(locator).getText();
+    }
+
+    public void selectDropDownByValue(By locator, String value) {
+        Select select = new Select(driver.findElement(locator));
+        select.selectByValue(value);
+
     }
 
     public boolean isDisplayed(By locator) {

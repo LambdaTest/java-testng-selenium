@@ -1,5 +1,6 @@
 package com.lambdatest;
 
+import Utills.WebDriverHelper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -15,6 +16,8 @@ import java.net.URL;
 
 public class ProductFilters {
     private RemoteWebDriver driver;
+    WebDriverHelper driverHelper;
+
     private String Status = "failed";
 
     @BeforeMethod
@@ -32,18 +35,19 @@ public class ProductFilters {
         String[] Tags = new String[] { "Feature", "Falcon", "Severe" };
         caps.setCapability("tags", Tags);
         driver = new RemoteWebDriver(new URL("https://" + username + ":" + authKey + hub), caps);
+        driverHelper = new WebDriverHelper(driver);
     }
 
     @Test
     public void productFilters() {
-        driver.get("https://ecommerce-playground.lambdatest.io/");
-        driver.findElement(By.cssSelector("#container input[name='mz_fp[min]']")).clear();
-        driver.findElement(By.cssSelector("#container input[name='mz_fp[min]']")).sendKeys("0");
-        driver.findElement(By.cssSelector("#container input[name='mz_fp[max]']")).clear();
-        driver.findElement(By.cssSelector("#container input[name='mz_fp[max]']")).sendKeys("200");
-        driver.findElement(By.cssSelector("#container input[name='mz_fp[max]']")).sendKeys(Keys.ENTER);
-        driver.findElement(By.cssSelector("#container .manufacturer .mz-filter-group-content div:first-of-type div")).click();
-        driver.findElement(By.cssSelector("#container .module-category a:nth-of-type(5)")).click();
+        driverHelper.getURL("https://ecommerce-playground.lambdatest.io/");
+        driverHelper.click(By.cssSelector("#container input[name='mz_fp[min]']"));
+        driverHelper.sendKeys(By.cssSelector("#container input[name='mz_fp[min]']"), "0");
+        driverHelper.clearInputField(By.cssSelector("#container input[name='mz_fp[max]']"));
+        driverHelper.sendKeys(By.cssSelector("#container input[name='mz_fp[max]']"), "200");
+        driverHelper.sendKeysByKeyBoard(By.cssSelector("#container input[name='mz_fp[max]']"), Keys.ENTER);
+        driverHelper.click(By.cssSelector("#container .manufacturer .mz-filter-group-content div:first-of-type div"));
+        driverHelper.click(By.cssSelector("#container .module-category a:nth-of-type(5)"));
         Status = "Passed";
     }
 

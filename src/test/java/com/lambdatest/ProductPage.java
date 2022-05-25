@@ -1,5 +1,6 @@
 package com.lambdatest;
 
+import Utills.WebDriverHelper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -14,6 +15,8 @@ import java.net.URL;
 
 public class ProductPage {
     private RemoteWebDriver driver;
+    WebDriverHelper driverHelper;
+
     private String Status = "failed";
 
     @BeforeMethod
@@ -31,15 +34,16 @@ public class ProductPage {
         String[] Tags = new String[] { "Feature", "Falcon", "Severe" };
         caps.setCapability("tags", Tags);
         driver = new RemoteWebDriver(new URL("https://" + username + ":" + authKey + hub), caps);
+        driverHelper = new WebDriverHelper(driver);
     }
 
     @Test
     public void searchProduct() {
-        driver.get("https://ecommerce-playground.lambdatest.io/");
-        driver.findElement(By.cssSelector("shop-by-category")).click();
-        driver.findElement(By.cssSelector(".mz-pure-drawer:first-of-type .navbar-nav>li:nth-of-type(3)")).click();
-        driver.findElement(By.cssSelector("#container .manufacturer .mz-filter-group-content div:first-of-type div")).click();
-        driver.findElement(By.cssSelector(".order-1 .btn-cart")).click();
+        driverHelper.getURL("https://ecommerce-playground.lambdatest.io/");
+        driverHelper.click(By.cssSelector("shop-by-category"));
+        driverHelper.click(By.cssSelector(".mz-pure-drawer:first-of-type .navbar-nav>li:nth-of-type(3)"));
+        driverHelper.click(By.cssSelector("#container .manufacturer .mz-filter-group-content div:first-of-type div"));
+        driverHelper.click(By.cssSelector(".order-1 .btn-cart"));
         Status = "Passed";
     }
 

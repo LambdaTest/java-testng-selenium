@@ -1,6 +1,6 @@
 package com.lambdatest;
 
-import Utills.UtilsMethods;
+import Utills.WebDriverHelper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -15,7 +15,8 @@ import java.net.URL;
 
 public class CompareProducts {
     private RemoteWebDriver driver;
-    UtilsMethods methods = new UtilsMethods();
+    WebDriverHelper driverHelper;
+
 
     private String Status = "failed";
 
@@ -34,21 +35,22 @@ public class CompareProducts {
         String[] Tags = new String[] { "Feature", "Falcon", "Severe" };
         caps.setCapability("tags", Tags);
         driver = new RemoteWebDriver(new URL("https://" + username + ":" + authKey + hub), caps);
+        driverHelper = new WebDriverHelper(driver);
     }
 
     @Test
     public void compareProducts() {
-        driver.get("https://ecommerce-playground.lambdatest.io/");
-        driver.findElement(By.cssSelector("shop-by-category")).click();
-        driver.findElement(By.cssSelector(".mz-pure-drawer:first-of-type .navbar-nav>li:nth-of-type(3)")).click();
-        driver.findElement(By.cssSelector(".carousel-item:first-of-type [title='HTC Touch HD']"));
-        methods.mouseHoverOnElement(driver, By.cssSelector(".carousel-item:first-of-type [title='HTC Touch HD']"));
-        driver.findElement(By.cssSelector("div[data-view_id='grid'] .product-layout:first-of-type button[title='Compare this Product']")).click();
-        driver.findElement(By.cssSelector("#container .manufacturer .mz-filter-group-content div:first-of-type div")).click();
-        methods.mouseHoverOnElement(driver, By.cssSelector(".carousel-item:first-of-type [title='iPod Touch']"));
-        driver.findElement(By.cssSelector("div[data-view_id='grid'] .product-layout:first-of-type button[title='Compare this Product']")).click();
-        driver.findElement(By.cssSelector("#notification-box-top a.btn-secondary")).click();
-        methods.wait(driver, By.cssSelector(".h4"), 30);
+        driverHelper.getURL("https://ecommerce-playground.lambdatest.io/");
+        driverHelper.click(By.cssSelector("shop-by-category"));
+        driverHelper.click(By.cssSelector(".mz-pure-drawer:first-of-type .navbar-nav>li:nth-of-type(3)"));
+        driverHelper.click(By.cssSelector(".carousel-item:first-of-type [title='HTC Touch HD']"));
+        driverHelper.mouseHoverOnElement(By.cssSelector(".carousel-item:first-of-type [title='HTC Touch HD']"));
+        driverHelper.click(By.cssSelector("div[data-view_id='grid'] .product-layout:first-of-type button[title='Compare this Product']"));
+        driverHelper.click(By.cssSelector("#container .manufacturer .mz-filter-group-content div:first-of-type div"));
+        driverHelper.mouseHoverOnElement(By.cssSelector(".carousel-item:first-of-type [title='iPod Touch']"));
+        driverHelper.click(By.cssSelector("div[data-view_id='grid'] .product-layout:first-of-type button[title='Compare this Product']"));
+        driverHelper.click(By.cssSelector("#notification-box-top a.btn-secondary"));
+        driverHelper.isDisplayed(By.cssSelector(".h4"));
         Status = "Passed";
     }
 
