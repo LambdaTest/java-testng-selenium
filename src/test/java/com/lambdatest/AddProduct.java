@@ -23,14 +23,11 @@ public class AddProduct {
     protected static final By SHOP_BY_CATEGORY_NAVIGATION = By.className("shop-by-category");
     protected static final By PHONE_TABLETS_IPOD_NAVIGATION = By.cssSelector(".mz-pure-drawer:first-of-type .navbar-nav>li:nth-of-type(3)");
     protected static final By APPLE_MANUFACTURER_FILTER = By.cssSelector("#container .manufacturer .mz-filter-group-content div:first-of-type div");
-    private static final By FIRST_IPOD_PRODUCT = By.cssSelector(".carousel-item:first-of-type [title='iPod Touch']");
-    private static final By ADD_TO_CART_FIRST_PRODUCT = By.cssSelector("div[data-view_id='grid'] .product-layout:first-of-type button[title='Add to Cart']");
-    private static final By VIEW_CART_BUTTON_IN_BOX = By.cssSelector("#notification-box-top .btn-primary");
-    private static final By CONTINUE_SHOPPING_BUTTON = By.cssSelector("#content .btn-secondary");
-    private static final By WEBSITE_DISCLAIMER_HEADING_ON_HOME_PAGE = By.xpath("//strong[contains(text(),'This is a dummy website for Web Automation Testing')]");
-
-
-
+    protected static final By FIRST_IPOD_PRODUCT = By.cssSelector(".carousel-item:first-of-type [title='iPod Touch']");
+    protected static final By ADD_TO_CART_FIRST_PRODUCT = By.cssSelector("div[data-view_id='grid'] .product-layout:first-of-type button[title='Add to Cart']");
+    protected static final By VIEW_CART_BUTTON_IN_BOX = By.cssSelector("#notification-box-top .btn-primary");
+    protected static final By CONTINUE_SHOPPING_BUTTON = By.cssSelector("#content .btn-secondary");
+    protected static final By WEBSITE_DISCLAIMER_HEADING_ON_HOME_PAGE = By.xpath("//strong[contains(text(),'This is a dummy website for Web Automation Testing')]");
 
     private String Status = "failed";
 

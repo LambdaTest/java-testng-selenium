@@ -4,6 +4,7 @@ import Utills.WebDriverHelper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.testng.Assert;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -17,10 +18,17 @@ public class ProductPage {
     private RemoteWebDriver driver;
     WebDriverHelper driverHelper;
 
+    //Elements
+    protected static final By SHOP_BY_CATEGORY_NAVIGATION = By.className("shop-by-category");
+    protected static final By PHONE_TABLETS_IPOD_NAVIGATION = By.cssSelector(
+        ".mz-pure-drawer:first-of-type .navbar-nav>li:nth-of-type(3)");
+    protected static final By APPLE_MANUFACTURER_FILTER = By.cssSelector(
+        "#container .manufacturer .mz-filter-group-content div:first-of-type div");
+    protected static final By PRODUCT_PAGE_IMAGE = By.cssSelector("[title='Tablets']");
+
     private String Status = "failed";
 
-    @BeforeMethod
-    public void setup(Method m, ITestContext ctx) throws MalformedURLException {
+    @BeforeMethod public void setup(Method m, ITestContext ctx) throws MalformedURLException {
         String username = System.getenv("LT_USERNAME") == null ? "Your LT Username" : System.getenv("LT_USERNAME");
         String authKey = System.getenv("LT_ACCESS_KEY") == null ? "Your LT AccessKey" : System.getenv("LT_ACCESS_KEY");
         String hub = "@hub.lambdatest.com/wd/hub";
@@ -37,18 +45,17 @@ public class ProductPage {
         driverHelper = new WebDriverHelper(driver);
     }
 
-    @Test
-    public void searchProduct() {
+    @Test public void productPage() {
         driverHelper.getURL("https://ecommerce-playground.lambdatest.io/");
-        driverHelper.click(By.cssSelector("shop-by-category"));
-        driverHelper.click(By.cssSelector(".mz-pure-drawer:first-of-type .navbar-nav>li:nth-of-type(3)"));
-        driverHelper.click(By.cssSelector("#container .manufacturer .mz-filter-group-content div:first-of-type div"));
-        driverHelper.click(By.cssSelector(".order-1 .btn-cart"));
+        driverHelper.click(SHOP_BY_CATEGORY_NAVIGATION);
+        driverHelper.click(PHONE_TABLETS_IPOD_NAVIGATION);
+        driverHelper.click(APPLE_MANUFACTURER_FILTER);
+        Assert.assertTrue(driverHelper.isDisplayed(PRODUCT_PAGE_IMAGE), "Product page is not displayed.");
+        ;
         Status = "Passed";
     }
 
-    @AfterMethod
-    public void tearDown() {
+    @AfterMethod public void tearDown() {
         driver.executeScript("lambda-status=" + Status);
         driver.quit();
     }

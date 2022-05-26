@@ -18,10 +18,17 @@ public class ProductFilters {
     private RemoteWebDriver driver;
     WebDriverHelper driverHelper;
 
+    // ELEMENTS
+    protected static final By SHOP_BY_CATEGORY_NAVIGATION = By.className("shop-by-category");
+    protected static final By MINIMUM_PRICE_FILTER_INPUT_FIELD = By.cssSelector("#container input[name='mz_fp[min]']");
+    protected static final By MAXIMUM_PRICE_FILTER_INPUT_FIELD = By.cssSelector("#container input[name='mz_fp[min]']");
+    protected static final By APPLE_MANUFACTURER_FILTER = By.cssSelector(
+        "#container .manufacturer .mz-filter-group-content div:first-of-type div");
+    protected static final By PHONES_AND_PDAs_FILTER = By.cssSelector("#container .module-category a:nth-of-type(5)");
+
     private String Status = "failed";
 
-    @BeforeMethod
-    public void setup(Method m, ITestContext ctx) throws MalformedURLException {
+    @BeforeMethod public void setup(Method m, ITestContext ctx) throws MalformedURLException {
         String username = System.getenv("LT_USERNAME") == null ? "Your LT Username" : System.getenv("LT_USERNAME");
         String authKey = System.getenv("LT_ACCESS_KEY") == null ? "Your LT AccessKey" : System.getenv("LT_ACCESS_KEY");
         String hub = "@hub.lambdatest.com/wd/hub";
@@ -38,21 +45,22 @@ public class ProductFilters {
         driverHelper = new WebDriverHelper(driver);
     }
 
-    @Test
-    public void productFilters() {
+    @Test public void productFilters() {
         driverHelper.getURL("https://ecommerce-playground.lambdatest.io/");
-        driverHelper.click(By.cssSelector("#container input[name='mz_fp[min]']"));
-        driverHelper.sendKeys(By.cssSelector("#container input[name='mz_fp[min]']"), "0");
-        driverHelper.clearInputField(By.cssSelector("#container input[name='mz_fp[max]']"));
-        driverHelper.sendKeys(By.cssSelector("#container input[name='mz_fp[max]']"), "200");
-        driverHelper.sendKeysByKeyBoard(By.cssSelector("#container input[name='mz_fp[max]']"), Keys.ENTER);
-        driverHelper.click(By.cssSelector("#container .manufacturer .mz-filter-group-content div:first-of-type div"));
-        driverHelper.click(By.cssSelector("#container .module-category a:nth-of-type(5)"));
+        driverHelper.waitForPresence(SHOP_BY_CATEGORY_NAVIGATION, 30);
+        driverHelper.click(SHOP_BY_CATEGORY_NAVIGATION);
+        driverHelper.waitForPresence(MINIMUM_PRICE_FILTER_INPUT_FIELD, 30);
+        driverHelper.clearInputField(MINIMUM_PRICE_FILTER_INPUT_FIELD);
+        driverHelper.sendKeys(MINIMUM_PRICE_FILTER_INPUT_FIELD, "0");
+        driverHelper.clearInputField(MAXIMUM_PRICE_FILTER_INPUT_FIELD);
+        driverHelper.sendKeys(MAXIMUM_PRICE_FILTER_INPUT_FIELD, "200");
+        driverHelper.sendKeysByKeyBoard(MAXIMUM_PRICE_FILTER_INPUT_FIELD, Keys.ENTER);
+        driverHelper.click(APPLE_MANUFACTURER_FILTER);
+        driverHelper.click(PHONES_AND_PDAs_FILTER);
         Status = "Passed";
     }
 
-    @AfterMethod
-    public void tearDown() {
+    @AfterMethod public void tearDown() {
         driver.executeScript("lambda-status=" + Status);
         driver.quit();
     }
