@@ -2,6 +2,7 @@ package Utills;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -76,8 +77,12 @@ public class WebDriverHelper {
     }
 
     public void staleElementRefresh(By locator) {
-        WebDriverWait wait = new WebDriverWait(driver, 30);
-        wait.until(ExpectedConditions.stalenessOf(driver.findElement(locator)));
+       try {
+           WebDriverWait wait = new WebDriverWait(driver, 30);
+           wait.until(ExpectedConditions.stalenessOf(driver.findElement(locator)));
+       } catch (StaleElementReferenceException exception) {
+           exception.printStackTrace();
+       }
     }
 
     public void waitForTime(int timeout) {

@@ -54,15 +54,16 @@ public class CompareProducts {
         driverHelper.getURL("https://ecommerce-playground.lambdatest.io/");
         driverHelper.click(SHOP_BY_CATEGORY_NAVIGATION);
         driverHelper.click(PHONE_TABLETS_IPOD_NAVIGATION);
-        driverHelper.click(HTC_TOUCH_ID_FIRST_PRODUCT);
         driverHelper.mouseHoverOnElement(HTC_TOUCH_ID_FIRST_PRODUCT);
         driverHelper.click(COMPARE_TO_THIS_PRODUCT_OPTION);
         driverHelper.click(APPLE_MANUFACTURER_FILTER);
+        driverHelper.waitForVisibility(FIRST_IPOD_PRODUCT, 30);
+        driverHelper.staleElementRefresh(FIRST_IPOD_PRODUCT);
         driverHelper.mouseHoverOnElement(FIRST_IPOD_PRODUCT);
         driverHelper.click(COMPARE_TO_THIS_PRODUCT_OPTION);
         driverHelper.click(COMPARE_PRODUCT_BUTTON);
         driverHelper.isDisplayed(PRODUCT_COMPARISON_HEADING);
-        Status = "Passed";
+        Status = "passed";
     }
 
     @AfterMethod public void tearDown() {

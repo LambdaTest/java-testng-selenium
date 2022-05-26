@@ -66,7 +66,7 @@ public class AddProduct {
         driverHelper.waitForVisibility(WEBSITE_DISCLAIMER_HEADING_ON_HOME_PAGE, 30);
         boolean value = driver.findElement(WEBSITE_DISCLAIMER_HEADING_ON_HOME_PAGE).isDisplayed();
         Assert.assertTrue(value, "Element is not displayed.");
-        Status = "Passed";
+        Status = "passed";
     }
 
     @AfterMethod public void tearDown() {
