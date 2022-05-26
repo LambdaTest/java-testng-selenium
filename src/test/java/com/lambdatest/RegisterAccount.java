@@ -67,8 +67,10 @@ public class RegisterAccount {
         driverHelper.click(PRIVACY_POLICY_CHECKBOX);
         driverHelper.submit(CONTINUE_BUTTON);
         driverHelper.waitForVisibility(PAGE_TITLE, 30);
-        Assert.assertTrue(driverHelper.getText(PAGE_TITLE).equalsIgnoreCase("Your Account Has Been Created!"), "Not Registered successfully. Expected : Your Account Has Been Created! but found " + driverHelper.getText(PAGE_TITLE));
-        Status = "Passed";
+        Assert.assertTrue(driverHelper.getText(PAGE_TITLE).equalsIgnoreCase("Your Account Has Been Created!"),
+            "Not Registered successfully. Expected : Your Account Has Been Created! but found " + driverHelper.getText(
+                PAGE_TITLE));
+        Status = "passed";
     }
 
     @AfterMethod public void tearDown() {
