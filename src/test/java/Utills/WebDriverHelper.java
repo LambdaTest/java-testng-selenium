@@ -25,6 +25,10 @@ public class WebDriverHelper {
         driver.findElement(locator).click();
     }
 
+    public void submit(By locator) {
+        driver.findElement(locator).submit();
+    }
+
     public void sendKeys(By locator, String str) {
         driver.findElement(locator).sendKeys(str);
     }
