@@ -20,8 +20,10 @@ public class ProductFilters {
 
     // ELEMENTS
     protected static final By SHOP_BY_CATEGORY_NAVIGATION = By.className("shop-by-category");
+    protected static final By PHONE_TABLETS_IPOD_NAVIGATION = By.cssSelector(
+        ".mz-pure-drawer:first-of-type .navbar-nav>li:nth-of-type(3)");
     protected static final By MINIMUM_PRICE_FILTER_INPUT_FIELD = By.cssSelector("#container input[name='mz_fp[min]']");
-    protected static final By MAXIMUM_PRICE_FILTER_INPUT_FIELD = By.cssSelector("#container input[name='mz_fp[min]']");
+    protected static final By MAXIMUM_PRICE_FILTER_INPUT_FIELD = By.cssSelector("#container input[name='mz_fp[max]']");
     protected static final By APPLE_MANUFACTURER_FILTER = By.cssSelector(
         "#container .manufacturer .mz-filter-group-content div:first-of-type div");
     protected static final By PHONES_AND_PDAs_FILTER = By.cssSelector("#container .module-category a:nth-of-type(5)");
@@ -49,15 +51,18 @@ public class ProductFilters {
         driverHelper.getURL("https://ecommerce-playground.lambdatest.io/");
         driverHelper.waitForPresence(SHOP_BY_CATEGORY_NAVIGATION, 30);
         driverHelper.click(SHOP_BY_CATEGORY_NAVIGATION);
+        driverHelper.click(PHONE_TABLETS_IPOD_NAVIGATION);
         driverHelper.waitForPresence(MINIMUM_PRICE_FILTER_INPUT_FIELD, 30);
         driverHelper.clearInputField(MINIMUM_PRICE_FILTER_INPUT_FIELD);
         driverHelper.sendKeys(MINIMUM_PRICE_FILTER_INPUT_FIELD, "0");
+        driverHelper.waitForClickable(MAXIMUM_PRICE_FILTER_INPUT_FIELD, 30);
         driverHelper.clearInputField(MAXIMUM_PRICE_FILTER_INPUT_FIELD);
         driverHelper.sendKeys(MAXIMUM_PRICE_FILTER_INPUT_FIELD, "200");
+        driverHelper.waitForClickable(MAXIMUM_PRICE_FILTER_INPUT_FIELD, 30);
         driverHelper.sendKeysByKeyBoard(MAXIMUM_PRICE_FILTER_INPUT_FIELD, Keys.ENTER);
         driverHelper.click(APPLE_MANUFACTURER_FILTER);
         driverHelper.click(PHONES_AND_PDAs_FILTER);
-        Status = "Passed";
+        Status = "passed";
     }
 
     @AfterMethod public void tearDown() {

@@ -42,6 +42,7 @@ public class WebDriverHelper {
         driver.findElement(locator).sendKeys(keys);
     }
 
+
     public String getText(By locator) {
         return driver.findElement(locator).getText();
     }
