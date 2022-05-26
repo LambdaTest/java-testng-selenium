@@ -11,11 +11,11 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class WebDriverHelper {
     private RemoteWebDriver driver;
+
     public WebDriverHelper(RemoteWebDriver driver) {
         super();
         this.driver = driver;
     }
-
 
     public void getURL(String url) {
         driver.get(url);
@@ -25,7 +25,7 @@ public class WebDriverHelper {
         driver.findElement(locator).click();
     }
 
-    public void sendKeys(By locator , String str) {
+    public void sendKeys(By locator, String str) {
         driver.findElement(locator).sendKeys(str);
     }
 
@@ -44,12 +44,12 @@ public class WebDriverHelper {
     public void selectDropDownByValue(By locator, String value) {
         Select select = new Select(driver.findElement(locator));
         select.selectByValue(value);
-
     }
 
     public boolean isDisplayed(By locator) {
         return driver.findElement(locator).isDisplayed();
     }
+
     public void waitForPresence(By locator, int waitTime) {
         WebDriverWait wait = new WebDriverWait(driver, waitTime);
         wait.until(ExpectedConditions.presenceOfElementLocated(locator));
@@ -83,6 +83,4 @@ public class WebDriverHelper {
             exception.printStackTrace();
         }
     }
-
-
 }

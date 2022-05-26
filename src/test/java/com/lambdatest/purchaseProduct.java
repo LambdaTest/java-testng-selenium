@@ -1,5 +1,6 @@
 package com.lambdatest;
 
+import Utills.UtilsMethods;
 import Utills.WebDriverHelper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -17,6 +18,7 @@ import java.net.URL;
 public class purchaseProduct {
     private RemoteWebDriver driver;
     WebDriverHelper driverHelper;
+    UtilsMethods methods = new UtilsMethods();
     //Elements
     protected static final By SHOP_BY_CATEGORY_NAVIGATION = By.className("shop-by-category");
     protected static final By PHONE_TABLETS_IPOD_NAVIGATION = By.cssSelector(
@@ -76,17 +78,19 @@ public class purchaseProduct {
         driverHelper.click(VIEW_CART_BUTTON_IN_BOX);
         driverHelper.click(CHECKOUT_BUTTON);
         driverHelper.waitForPresence(FIRST_NAME_INPUT_FIELD, 30);
-        driverHelper.sendKeys(FIRST_NAME_INPUT_FIELD, "Name");
-        driverHelper.sendKeys(LAST_NAME_INPUT_FIELD, "LastName");
-        driverHelper.sendKeys(EMAIL_NAME_INPUT_FIELD, "Email");
-        driverHelper.sendKeys(TELEPHONE_NAME_INPUT_FIELD, "Number");
-        driverHelper.sendKeys(PASSWORD_NAME_INPUT_FIELD, "Password");
-        driverHelper.sendKeys(CONFIRM_PASSWORD_NAME_INPUT_FIELD, "Confirm password");
-        driverHelper.sendKeys(COMPANY_NAME_NAME_INPUT_FIELD, "Company name");
-        driverHelper.sendKeys(ADDRESS_ONE_NAME_INPUT_FIELD, "Address One");
-        driverHelper.sendKeys(ADDRESS_TWO_NAME_INPUT_FIELD, "Address Two");
-        driverHelper.sendKeys(CITY_NAME_INPUT_FIELD, "City");
-        driverHelper.sendKeys(POST_CODE_NAME_INPUT_FIELD, "Postal code");
+        String name = methods.getRandomString(8);
+        String number = methods.generateRandomNumber(10);
+        driverHelper.sendKeys(FIRST_NAME_INPUT_FIELD, methods.getRandomString(5));
+        driverHelper.sendKeys(LAST_NAME_INPUT_FIELD, methods.getRandomString(5));
+        driverHelper.sendKeys(EMAIL_NAME_INPUT_FIELD, name + "@LT.com");
+        driverHelper.sendKeys(TELEPHONE_NAME_INPUT_FIELD, number);
+        driverHelper.sendKeys(PASSWORD_NAME_INPUT_FIELD, number);
+        driverHelper.sendKeys(CONFIRM_PASSWORD_NAME_INPUT_FIELD, number);
+        driverHelper.sendKeys(COMPANY_NAME_NAME_INPUT_FIELD, "LambdaTest");
+        driverHelper.sendKeys(ADDRESS_ONE_NAME_INPUT_FIELD, "Noida One");
+        driverHelper.sendKeys(ADDRESS_TWO_NAME_INPUT_FIELD, "Noida One Sector 62");
+        driverHelper.sendKeys(CITY_NAME_INPUT_FIELD, "Noida");
+        driverHelper.sendKeys(POST_CODE_NAME_INPUT_FIELD, "201301");
         driverHelper.selectDropDownByValue(COUNTRY_DROP_DOWN, "India");
         driverHelper.selectDropDownByValue(REGION_DROP_DOWN, "Delhi");
         driverHelper.click(I_AGREE_PRIVACY_POLICY_CHECKBOX);

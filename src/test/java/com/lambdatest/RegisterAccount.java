@@ -1,5 +1,6 @@
 package com.lambdatest;
 
+import Utills.UtilsMethods;
 import Utills.WebDriverHelper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -16,6 +17,7 @@ import java.net.URL;
 public class RegisterAccount {
     private RemoteWebDriver driver;
     WebDriverHelper driverHelper;
+    UtilsMethods methods = new UtilsMethods();
 
     //Elements
     protected static final By MY_ACCOUNT_DROP_DOWN = By.cssSelector("#main-navigation a[href*='account/account']");
@@ -52,12 +54,14 @@ public class RegisterAccount {
         driverHelper.click(MY_ACCOUNT_DROP_DOWN);
         driverHelper.click(REGISTER_LINK_TEXT);
         driverHelper.waitForPresence(FIRST_NAME_INPUT_FIELD, 30);
-        driverHelper.sendKeys(FIRST_NAME_INPUT_FIELD, "name");
-        driverHelper.sendKeys(LAST_NAME_INPUT_FIELD, "LastName");
-        driverHelper.sendKeys(EMAIL_INPUT_FIELD, "Email");
-        driverHelper.sendKeys(TELEPHONE_INPUT_FIELD, "Number");
-        driverHelper.sendKeys(PASSWORD_INPUT_FIELD, "Password");
-        driverHelper.sendKeys(CONFIRM_PASSWORD_INPUT_FIELD, "Confirm password");
+        String name = methods.getRandomString(8);
+        String number = methods.generateRandomNumber(10);
+        driverHelper.sendKeys(FIRST_NAME_INPUT_FIELD, name);
+        driverHelper.sendKeys(LAST_NAME_INPUT_FIELD, methods.getRandomString(5));
+        driverHelper.sendKeys(EMAIL_INPUT_FIELD, name + "@LT.com");
+        driverHelper.sendKeys(TELEPHONE_INPUT_FIELD, number);
+        driverHelper.sendKeys(PASSWORD_INPUT_FIELD, number);
+        driverHelper.sendKeys(CONFIRM_PASSWORD_INPUT_FIELD, number);
         //        driverHelper.click(PRIVACY_POLICY_CHECKBOX);
         driverHelper.click(CONTINUE_BUTTON);
         Status = "Passed";

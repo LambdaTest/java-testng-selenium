@@ -1,26 +1,9 @@
 package Utills;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.remote.RemoteWebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.nio.charset.StandardCharsets;
 import java.util.Random;
 
 public class UtilsMethods {
-    public void wait(RemoteWebDriver driver, By locator, int waitTime) {
-        WebDriverWait wait = new WebDriverWait(driver, waitTime);
-        wait.until(ExpectedConditions.presenceOfElementLocated(locator));
-    }
-
-    public void mouseHoverOnElement(RemoteWebDriver driver, By locator) {
-        Actions actions = new Actions(driver);
-        WebElement ele = driver.findElement(locator);
-        actions.moveToElement(ele).build().perform();
-    }
 
     public String getRandomString(int size) {
         byte[] bytArray = new byte[256];
@@ -38,5 +21,16 @@ public class UtilsMethods {
             size--;
         }
         return strBuilder.toString();
+    }
+
+    public String generateRandomNumber(int length) {
+        StringBuilder builder = new StringBuilder();
+        Random objGenerator = new Random();
+        while (length > 0) {
+            int randomNumber = objGenerator.nextInt(9);
+            builder.append(randomNumber);
+            length--;
+        }
+        return builder.toString();
     }
 }
