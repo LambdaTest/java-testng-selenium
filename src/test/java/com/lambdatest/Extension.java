@@ -38,6 +38,7 @@ public class Extension {
         String[] Tags = new String[] { "Feature", "Falcon", "Severe" };
         caps.setCapability("tags", Tags);
 
+        // Extension upload here using chrome options
         ChromeOptions options = new ChromeOptions ();
         options.addExtensions (new File("./LambdatestScreenshotExtension.crx"));
         caps.setCapability(ChromeOptions.CAPABILITY, options);

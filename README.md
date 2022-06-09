@@ -1,4 +1,4 @@
-# Run Selenium Tests With TestNG On LambdaTest
+# Run Selenium Tests With TestNG On LambdaTest (Extension Upload Example)
 
 ![image](https://user-images.githubusercontent.com/70570645/171934563-4806efd2-1154-494c-a01d-1def95657383.png)
 
@@ -86,12 +86,34 @@ Make sure you have your LambdaTest credentials with you to run test automation s
 ```java
 DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("browserName", "chrome");
-        capabilities.setCapability("version", "70.0");
-        capabilities.setCapability("platform", "win10"); // If this cap isn't specified, it will just get the any available one
+        capabilities.setCapability("version", "latest");
+        capabilities.setCapability("platform", "Windows 10"); // If this cap isn't specified, it will just get the any available one
         capabilities.setCapability("build", "LambdaTestSampleApp");
         capabilities.setCapability("name", "LambdaTestJavaSample");
+
+        // Chrome options to add extension file (Works with file size upto 10MB)
+        ChromeOptions options = new ChromeOptions ();
+        options.addExtensions (new File("./LambdatestScreenshotExtension.crx"));
+        caps.setCapability(ChromeOptions.CAPABILITY, options);
 ```
 
+https://api.lambdatest.com/automation/api/v1/files/extensions
+
+### Upload extension on to Lambda Storage and use in automation tests for Large extensions
+- To upload the extension.zip file onto the lambda storage, you can use the extensions API we have : 
+- Apid Doc URL: https://www.lambdatest.com/support/docs/api-doc/#/extensions/UploadExtensions
+    Authorization: Basic Auth (LambdaTest Credentials)
+    Body: form-data{ key: extensions value: file.zip }
+ 
+You have to upload the original extension zip file instead of the crx file.Note.
+Attaching a sample LT extension for your reference. 
+Extension: https://drive.google.com/file/d/1dvq4bhEOfmCrpG6ekdaIg9UB8tr9z3NJ/view?usp=sharing
+Once you have uploaded the Zip file, you'll get the `s3_url` which can be used in the respective capability.
+
+java``` 
+String[] extention = {"https://automation-prod-user-files.s3.amazonaws.com/extensions/orgId-XXXX/2.1.0_0.zip"};
+capabilities.setCapability("lambda:loadExtension", extention);
+```
 You can generate capabilities for your test requirements with the help of our inbuilt [Desired Capability Generator](https://www.lambdatest.com/capabilities-generator/).
 
 ### Executing The Test
