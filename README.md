@@ -1,4 +1,4 @@
-# Run Selenium Tests With TestNG On LambdaTest (Locating element with text and partial text Example)
+# Run Selenium Tests With TestNG On LambdaTest (Scrolling element into view and scroll by pixel testng selenium Example)
 
 ![image](https://user-images.githubusercontent.com/70570645/171934563-4806efd2-1154-494c-a01d-1def95657383.png)
 
@@ -92,15 +92,22 @@ DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("name", "LambdaTestJavaSample");
 
 ```
-### Locating element with text and partial text testng java
+### Scrolling element into view and scroll by pixel testng selenium code
 ```java
- // Locating element with text()
-        WebElement e = driver.findElement(By.xpath("//*[text()='5 of 5 remaining']"));
-        System.out.println(e.getText());
+// Locating element by link text 
+        WebElement Element = driver.findElement(By.linkText("Book a Demo"));
 
-        // located element with contains()
-        WebElement m = driver.findElement(By.xpath("//*[contains(text(),'5 of 5')]"));
-        System.out.println(m.getText());
+        // Scrolling down the page till the element is found
+        driver.executeScript("arguments[0].scrollIntoView();", Element);
+        Thread.sleep(1500);
+
+        // Scrolling down by pixels
+        driver.executeScript("window.scrollBy(0,-500)", "");
+
+        Thread.sleep(1500);
+
+        // Scrolling up by pixels
+        driver.executeScript("window.scrollBy(0,500)", "");
 ```
 
 
