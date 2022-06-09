@@ -1,4 +1,4 @@
-# Run Selenium Tests With TestNG On LambdaTest (Timezone setting Example)
+# Run Selenium Tests With TestNG On LambdaTest (GeoLocation setting Example)
 
 ![image](https://user-images.githubusercontent.com/70570645/171934563-4806efd2-1154-494c-a01d-1def95657383.png)
 
@@ -91,7 +91,7 @@ DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("build", "LambdaTestSampleApp");
         capabilities.setCapability("name", "LambdaTestJavaSample");
 
-        caps.setCapability("timezone","UTC+03:00"); //Timezone capability to set the timezone
+        caps.setCapability("geoLocation","AR"); //Geolocation capability, check LambdaTest Capability Generator
 
 ```
 

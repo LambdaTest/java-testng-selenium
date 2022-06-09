@@ -13,7 +13,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 
-public class Timezone {
+public class GeoLocation {
 
     private RemoteWebDriver driver;
     private String Status = "failed";
@@ -32,7 +32,7 @@ public class Timezone {
         caps.setCapability("build", "Extension Test");
         caps.setCapability("name", m.getName() + " - " + this.getClass().getName());
         caps.setCapability("plugin", "git-testng");
-        caps.setCapability("timezone","UTC+03:00"); //Timezone capability to set the timezone
+        caps.setCapability("geoLocation","AR"); //Geolocation capability, check LambdaTest Capability Generator
 
         String[] Tags = new String[] { "Feature", "Falcon", "Severe" };
         caps.setCapability("tags", Tags);
@@ -42,11 +42,11 @@ public class Timezone {
     }
 
     @Test
-    public void timezoneTest() throws InterruptedException {
+    public void geoLocationTest() throws InterruptedException {
 
         System.out.println("Loading Url");
 
-        driver.get("https://webbrowsertools.com/timezone/");
+        driver.get("https://www.iplocation.net/");
 
        
         Status = "passed";
