@@ -1,4 +1,4 @@
-# Run Selenium Tests With TestNG On LambdaTest (Incogito mode Example)
+# Run Selenium Tests With TestNG On LambdaTest (Cookies Handling Example)
 
 ![image](https://user-images.githubusercontent.com/70570645/171934563-4806efd2-1154-494c-a01d-1def95657383.png)
 
@@ -95,6 +95,23 @@ DesiredCapabilities capabilities = new DesiredCapabilities();
         // Setting chrome flag for incognito mode
         options.AddArgument("--incognito");
         caps.setCapability(ChromeOptions.CAPABILITY, options);
+```
+### Handling cookies in java TestNg
+```java
+driver.manage().addCookie(new Cookie("cookieName", "lambdatest")); // Creates and adds the cookie
+
+        Set<Cookie> cookiesSet = driver.manage().getCookies(); // Returns the List of all Cookies
+
+        for (Cookie itemCookie : cookiesSet) {
+            System.out.println((itemCookie.getName() + ";" + itemCookie.getValue() + ";" + itemCookie.getDomain() + ";"
+                    + itemCookie.getPath() + ";" + itemCookie.getExpiry() + ";" + itemCookie.isSecure()));
+        }
+
+        driver.manage().getCookieNamed("cookieName"); // Returns the specific cookie according to name
+
+        driver.manage().deleteCookie(driver.manage().getCookieNamed("cookieName")); // Deletes the specific cookie
+        driver.manage().deleteCookieNamed("cookieName"); // Deletes the specific cookie according to the Name
+        driver.manage().deleteAllCookies(); // Deletes all the cookies
 ```
 
 
