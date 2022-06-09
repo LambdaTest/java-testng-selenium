@@ -93,8 +93,8 @@ DesiredCapabilities capabilities = new DesiredCapabilities();
 
          ChromeOptions options = new ChromeOptions ();
         // Setting chrome flag for incognito mode
-        options.AddArgument("--incognito");
-        caps.setCapability(ChromeOptions.CAPABILITY, options);
+        options.addArguments("--incognito");
+        capabilities.setCapability(ChromeOptions.CAPABILITY, options);
 ```
 
 
