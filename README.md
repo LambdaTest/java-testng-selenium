@@ -1,4 +1,4 @@
-# Run Selenium Tests With TestNG On LambdaTest (Browser Cache Clearing Example)
+# Run Selenium Tests With TestNG On LambdaTest (Locating element with text and partial text Example)
 
 ![image](https://user-images.githubusercontent.com/70570645/171934563-4806efd2-1154-494c-a01d-1def95657383.png)
 
@@ -92,11 +92,15 @@ DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("name", "LambdaTestJavaSample");
 
 ```
-### Clearing Browser Cache after Test
+### Locating element with text and partial text testng java
 ```java
- // Clearing browser Cache after Test
-        driver.manage().deleteAllCookies(); // delete all cookies
-        Thread.sleep(7000); // wait 7 seconds to clear cookies.
+ // Locating element with text()
+        WebElement e = driver.findElement(By.xpath("//*[text()='5 of 5 remaining']"));
+        System.out.println(e.getText());
+
+        // located element with contains()
+        WebElement m = driver.findElement(By.xpath("//*[contains(text(),'5 of 5')]"));
+        System.out.println(m.getText());
 ```
 
 
