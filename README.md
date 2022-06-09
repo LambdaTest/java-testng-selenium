@@ -97,20 +97,18 @@ DesiredCapabilities capabilities = new DesiredCapabilities();
         caps.setCapability(ChromeOptions.CAPABILITY, options);
 ```
 
-https://api.lambdatest.com/automation/api/v1/files/extensions
-
 ### Upload extension on to Lambda Storage and use in automation tests for Large extensions
 - To upload the extension.zip file onto the lambda storage, you can use the extensions API we have : 
 - Apid Doc URL: https://www.lambdatest.com/support/docs/api-doc/#/extensions/UploadExtensions
     Authorization: Basic Auth (LambdaTest Credentials)
     Body: form-data{ key: extensions value: file.zip }
- 
+    
 You have to upload the original extension zip file instead of the crx file.Note.
 Attaching a sample LT extension for your reference. 
 Extension: https://drive.google.com/file/d/1dvq4bhEOfmCrpG6ekdaIg9UB8tr9z3NJ/view?usp=sharing
 Once you have uploaded the Zip file, you'll get the `s3_url` which can be used in the respective capability.
 
-java``` 
+```java 
 String[] extention = {"https://automation-prod-user-files.s3.amazonaws.com/extensions/orgId-XXXX/2.1.0_0.zip"};
 capabilities.setCapability("lambda:loadExtension", extention);
 ```
@@ -138,8 +136,8 @@ Here is an example `xml` file which would help you to run a single test on vario
 
   <test name="WIN8TEST">
   <parameter name="browser" value="firefox"/>
-  <parameter name="version" value="62.0"/>
-  <parameter name="platform" value="WIN8"/>
+  <parameter name="version" value="latest"/>
+  <parameter name="platform" value="Windows 10"/>
     <classes>
       <class name="LambdaTest.TestNGToDo"/>
     </classes>
@@ -147,8 +145,8 @@ Here is an example `xml` file which would help you to run a single test on vario
 
   <test name="WIN10TEST">
   <parameter name="browser" value="chrome"/>
-  <parameter name="version" value="79.0"/>
-  <parameter name="platform" value="WIN10"/>
+  <parameter name="version" value="latest"/>
+  <parameter name="platform" value="Windows 10"/>
     <classes>
       <class name="LambdaTest.TestNGToDo"/>
     </classes>
