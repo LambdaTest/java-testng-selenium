@@ -3,7 +3,7 @@
 <suite thread-count="1" parallel="tests" name="Suite">
   <test thread-count="1" parallel="classes" name="Test">
     <classes>
-      <class name="com.lambdatest.TestNGTodoTest"/>
+      <class name="com.lambdatest.toggleNetworkOffline"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
