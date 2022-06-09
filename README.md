@@ -39,15 +39,7 @@ Set LambdaTest Username and Access Key in environment variables.
 
 ```
 To run single test
-    $ mvn test -D suite=single.xml -Dtestng.dtd.http=true
-
-To run parallel test
-    $ mvn test -D suite=parallel.xml -Dtestng.dtd.http=true
-
-To run realdevice test
     $ mvn test -D suite=mobile.xml -Dtestng.dtd.http=true
-
-
 ```
 ## About LambdaTest
 
