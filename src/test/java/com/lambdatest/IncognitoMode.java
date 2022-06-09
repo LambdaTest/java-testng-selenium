@@ -15,7 +15,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.openqa.selenium.chrome.ChromeOptions;
 
-public class Extension {
+public class IncognitoMode {
 
     private RemoteWebDriver driver;
     private String Status = "failed";
@@ -41,7 +41,7 @@ public class Extension {
       
         ChromeOptions options = new ChromeOptions ();
         // Setting chrome flag for incognito mode
-        options.AddArgument("--incognito");
+        options.addArguments("--incognito");
         caps.setCapability(ChromeOptions.CAPABILITY, options);
 
         driver = new RemoteWebDriver(new URL("https://" + username + ":" + authkey + hub), caps);
@@ -49,7 +49,7 @@ public class Extension {
     }
 
     @Test
-    public void extensionTest() throws InterruptedException {
+    public void incognitoTest() throws InterruptedException {
         String spanText;
         System.out.println("Loading Url");
 
