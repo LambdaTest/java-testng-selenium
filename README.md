@@ -1,4 +1,4 @@
-# Run Selenium Tests With TestNG On LambdaTest (Incogito mode Example)
+# Run Selenium Tests With TestNG On LambdaTest (Headless mode Example)
 
 ![image](https://user-images.githubusercontent.com/70570645/171934563-4806efd2-1154-494c-a01d-1def95657383.png)
 
@@ -91,10 +91,24 @@ DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("build", "LambdaTestSampleApp");
         capabilities.setCapability("name", "LambdaTestJavaSample");
 
-         ChromeOptions options = new ChromeOptions ();
-        // Setting chrome flag for incognito mode
-        options.AddArgument("--incognito");
+        // Chrome flag for headless using chrome options
+        ChromeOptions options = new ChromeOptions();
+
+        options.addArguments("--no-sandbox");
+        options.addArguments("--headless"); // headless flag for chrome
+        options.addArguments("disable-gpu");
+
         caps.setCapability(ChromeOptions.CAPABILITY, options);
+
+        /*
+         * At lambdatest you can execute headless tests via `headless` capability on
+         * chrome, firefox and microsoft edge browser
+         */
+
+        // lambdatest Headless mode capability
+        // caps.setCapability("headless",true);
+
+
 ```
 
 
