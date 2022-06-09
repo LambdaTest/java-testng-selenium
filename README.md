@@ -91,10 +91,6 @@ DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("build", "LambdaTestSampleApp");
         capabilities.setCapability("name", "LambdaTestJavaSample");
 
-         ChromeOptions options = new ChromeOptions ();
-        // Setting chrome flag for incognito mode
-        options.AddArgument("--incognito");
-        caps.setCapability(ChromeOptions.CAPABILITY, options);
 ```
 ### Handling cookies in java TestNg
 ```java
