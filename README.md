@@ -4,15 +4,15 @@
 
 
 <p align="center">
-  <a href="https://www.lambdatest.com/blog/?utm_source=github&utm_medium=repo&utm_campaign=Java-TestNG-Selenium" target="_bank">Blog</a>
+  <a href="https://www.lambdatest.com/support/docs/?utm_source=github&utm_medium=repo&utm_campaign=Java-TestNG-Selenium&utm_term=sk&utm_content=blog" target="_bank">Blog</a>
   &nbsp; &#8901; &nbsp;
-  <a href="https://www.lambdatest.com/support/docs/?utm_source=github&utm_medium=repo&utm_campaign=Java-TestNG-Selenium" target="_bank">Docs</a>
+  <a href="https://www.lambdatest.com/learning-hub/?utm_source=github&utm_medium=repo&utm_campaign=Java-TestNG-Selenium&utm_term=sk&utm_content=docs" target="_bank">Docs</a>
   &nbsp; &#8901; &nbsp;
-  <a href="https://www.lambdatest.com/learning-hub/?utm_source=github&utm_medium=repo&utm_campaign=Java-TestNG-Selenium" target="_bank">Learning Hub</a>
+  <a href="https://www.lambdatest.com/learning-hub/?utm_source=github&utm_medium=repo&utm_campaign=Java-TestNG-Selenium&utm_term=sk&utm_content=hub" target="_bank">Learning Hub</a>
   &nbsp; &#8901; &nbsp;
-  <a href="https://www.lambdatest.com/newsletter/?utm_source=github&utm_medium=repo&utm_campaign=Java-TestNG-Selenium" target="_bank">Newsletter</a>
+  <a href="https://www.lambdatest.com/learning-hub/?utm_source=github&utm_medium=repo&utm_campaign=Java-TestNG-Selenium&utm_term=sk&utm_content=newsletter" target="_bank">Newsletter</a>
   &nbsp; &#8901; &nbsp;
-  <a href="https://www.lambdatest.com/certifications/?utm_source=github&utm_medium=repo&utm_campaign=Java-TestNG-Selenium" target="_bank">Certifications</a>
+  <a href="https://www.lambdatest.com/learning-hub/?utm_source=github&utm_medium=repo&utm_campaign=Java-TestNG-Selenium&utm_term=sk&utm_content=certifications" target="_bank">Certifications</a>
   &nbsp; &#8901; &nbsp;
   <a href="https://www.youtube.com/c/LambdaTest" target="_bank">YouTube</a>
 </p>
@@ -22,7 +22,7 @@
 
 *Learn how to use TestNG framework to configure and run your Java automation testing scripts on the LambdaTest platform*
 
-[<img height="58" width="200" src="https://user-images.githubusercontent.com/70570645/171866795-52c11b49-0728-4229-b073-4b704209ddde.png">](https://accounts.lambdatest.com/register)
+[<img height="58" width="200" src="https://user-images.githubusercontent.com/70570645/171866795-52c11b49-0728-4229-b073-4b704209ddde.png">](https://accounts.lambdatest.com/register?utm_source=github&utm_medium=repo&utm_campaign=Java-TestNG-Selenium&utm_term=sk&utm_content=register)
 
 ## Table Of Contents
 
@@ -58,7 +58,7 @@ mvn versions:display-dependency-updates
 
 ### Setting Up Your Authentication
 
-Make sure you have your LambdaTest credentials with you to run test automation scripts. You can get these credentials from the [LambdaTest Automation Dashboard](https://automation.lambdatest.com/build) or by your [LambdaTest Profile](https://accounts.lambdatest.com/login).
+Make sure you have your LambdaTest credentials with you to run test automation scripts. You can get these credentials from the [LambdaTest Automation Dashboard](https://automation.lambdatest.com/build?utm_source=github&utm_medium=repo&utm_campaign=Java-TestNG-Selenium&utm_term=sk&utm_content=build) or by your [LambdaTest Profile](https://accounts.lambdatest.com/login?utm_source=github&utm_medium=repo&utm_campaign=Java-TestNG-Selenium&utm_term=sk&utm_content=login).
 
 **Step 2:** Set LambdaTest **Username** and **Access Key** in environment variables.
 
@@ -102,7 +102,7 @@ You can generate capabilities for your test requirements with the help of our in
 mvn test -D suite=single.xml
 ```
 
-Your test results would be displayed on the test console (or command-line interface if you are using terminal/cmd) and on [LambdaTest automation dashboard](https://automation.lambdatest.com/build). 
+Your test results would be displayed on the test console (or command-line interface if you are using terminal/cmd) and on LambdaTest automation dashboard. 
 
 ## Run Parallel Tests Using TestNG
 
@@ -160,7 +160,7 @@ To run parallel tests using **TestNG**, we would have to execute the below comma
 
 You can test your locally hosted or privately hosted projects with LambdaTest Selenium grid using LambdaTest Tunnel. All you would have to do is set up an SSH tunnel using tunnel and pass toggle `tunnel = True` via desired capabilities. LambdaTest Tunnel establishes a secure SSH protocol based tunnel that allows you in testing your locally hosted or privately hosted pages, even before they are live.
 
-Refer our [LambdaTest Tunnel documentation](https://www.lambdatest.com/support/docs/testing-locally-hosted-pages/) for more information.
+Refer our [LambdaTest Tunnel documentation](https://www.lambdatest.com/support/docs/testing-locally-hosted-pages/?utm_source=github&utm_medium=repo&utm_campaign=Java-TestNG-Selenium&utm_term=sk&utm_content=docs) for more information.
 
 Here’s how you can establish LambdaTest Tunnel.
 
@@ -194,25 +194,25 @@ DesiredCapabilities capabilities = new DesiredCapabilities();
 
 Check out our latest tutorials on TestNG automation testing 👇
 
-* [JUnit 5 vs TestNG: Choosing the Right Framework for Automation Testing](https://www.lambdatest.com/blog/junit-5-vs-testng/)
-* [How To Install TestNG?](https://www.lambdatest.com/blog/how-to-install-testng-in-eclipse-step-by-step-guide/)
-* [Create TestNG Project in Eclipse & Run Selenium Test Script](https://www.lambdatest.com/blog/create-testng-project-in-eclipse-run-selenium-test-script/)
-* [A Complete Guide for Your First TestNG Automation Script](https://www.lambdatest.com/blog/a-complete-guide-for-your-first-testng-automation-script/)
-* [How to Automate using TestNG in Selenium?](https://www.lambdatest.com/blog/testng-in-selenium/)
-* [How to Perform Parallel Test Execution in TestNG with Selenium](https://www.lambdatest.com/blog/parallel-test-execution-in-testng/)
-* [Creating TestNG XML File & Execute Parallel Testing](https://www.lambdatest.com/blog/create-testng-xml-file-execute-parallel-testing/)
-* [Speed Up Automated Parallel Testing in Selenium with TestNG](https://www.lambdatest.com/blog/speed-up-automated-parallel-testing-in-selenium-with-testng/)
-* [Automation Testing With Selenium, Cucumber & TestNG](https://www.lambdatest.com/blog/automation-testing-with-selenium-cucumber-testng/)
-* [How to Run JUnit Selenium Tests using TestNG](https://www.lambdatest.com/blog/test-example-junit-and-testng-in-selenium/)
-* [How to Group Test Cases in TestNG [With Examples]](https://www.lambdatest.com/blog/grouping-test-cases-in-testng/)
-* [How to Set Test Case Priority in TestNG with Selenium](https://www.lambdatest.com/blog/prioritizing-tests-in-testng-with-selenium/)
-* [How to Use Assertions in TestNG with Selenium](https://www.lambdatest.com/blog/asserts-in-testng/)
-* [How to Use DataProviders in TestNG [With Examples]](https://www.lambdatest.com/blog/how-to-use-dataproviders-in-testng-with-examples/)
-* [Parameterization in TestNG - DataProvider and TestNG XML [With Examples]](https://www.lambdatest.com/blog/parameterization-in-testng-dataprovider-and-testng-xml-examples/)
-* [TestNG Listeners in Selenium WebDriver [With Examples]](https://www.lambdatest.com/blog/testng-listeners-in-selenium-webdriver-with-examples/)
-* [TestNG Annotations Tutorial with Examples for Selenium Automation](https://www.lambdatest.com/blog/complete-guide-on-testng-annotations-for-selenium-webdriver/)
-* [How to Use TestNG Reporter Log in Selenium](https://www.lambdatest.com/blog/how-to-use-testng-reporter-log-in-selenium/)
-* [How to Generate TestNG Reports in Jenkins](https://www.lambdatest.com/blog/how-to-generate-testng-reports-in-jenkins/)
+* [JUnit 5 vs TestNG: Choosing the Right Framework for Automation Testing](https://www.lambdatest.com/blog/junit-5-vs-testng/?utm_source=github&utm_medium=repo&utm_campaign=Java-TestNG-Selenium&utm_term=sk&utm_content=blog)
+* [How To Install TestNG?](https://www.lambdatest.com/blog/how-to-install-testng-in-eclipse-step-by-step-guide/?utm_source=github&utm_medium=repo&utm_campaign=Java-TestNG-Selenium&utm_term=sk&utm_content=blog)
+* [Create TestNG Project in Eclipse & Run Selenium Test Script](https://www.lambdatest.com/blog/create-testng-project-in-eclipse-run-selenium-test-script/?utm_source=github&utm_medium=repo&utm_campaign=Java-TestNG-Selenium&utm_term=sk&utm_content=blog)
+* [A Complete Guide for Your First TestNG Automation Script](https://www.lambdatest.com/blog/a-complete-guide-for-your-first-testng-automation-script/?utm_source=github&utm_medium=repo&utm_campaign=Java-TestNG-Selenium&utm_term=sk&utm_content=blog)
+* [How to Automate using TestNG in Selenium?](https://www.lambdatest.com/blog/testng-in-selenium/?utm_source=github&utm_medium=repo&utm_campaign=Java-TestNG-Selenium&utm_term=sk&utm_content=blog)
+* [How to Perform Parallel Test Execution in TestNG with Selenium](https://www.lambdatest.com/blog/parallel-test-execution-in-testng/?utm_source=github&utm_medium=repo&utm_campaign=Java-TestNG-Selenium&utm_term=sk&utm_content=blog)
+* [Creating TestNG XML File & Execute Parallel Testing](https://www.lambdatest.com/blog/create-testng-xml-file-execute-parallel-testing/?utm_source=github&utm_medium=repo&utm_campaign=Java-TestNG-Selenium&utm_term=sk&utm_content=blog)
+* [Speed Up Automated Parallel Testing in Selenium with TestNG](https://www.lambdatest.com/blog/speed-up-automated-parallel-testing-in-selenium-with-testng/?utm_source=github&utm_medium=repo&utm_campaign=Java-TestNG-Selenium&utm_term=sk&utm_content=blog)
+* [Automation Testing With Selenium, Cucumber & TestNG](https://www.lambdatest.com/blog/automation-testing-with-selenium-cucumber-testng/?utm_source=github&utm_medium=repo&utm_campaign=Java-TestNG-Selenium&utm_term=sk&utm_content=blog)
+* [How to Run JUnit Selenium Tests using TestNG](https://www.lambdatest.com/blog/test-example-junit-and-testng-in-selenium/?utm_source=github&utm_medium=repo&utm_campaign=Java-TestNG-Selenium&utm_term=sk&utm_content=blog)
+* [How to Group Test Cases in TestNG [With Examples]](https://www.lambdatest.com/blog/grouping-test-cases-in-testng/?utm_source=github&utm_medium=repo&utm_campaign=Java-TestNG-Selenium&utm_term=sk&utm_content=blog)
+* [How to Set Test Case Priority in TestNG with Selenium](https://www.lambdatest.com/blog/prioritizing-tests-in-testng-with-selenium/?utm_source=github&utm_medium=repo&utm_campaign=Java-TestNG-Selenium&utm_term=sk&utm_content=blog)
+* [How to Use Assertions in TestNG with Selenium](https://www.lambdatest.com/blog/asserts-in-testng/?utm_source=github&utm_medium=repo&utm_campaign=Java-TestNG-Selenium&utm_term=sk&utm_content=blog)
+* [How to Use DataProviders in TestNG [With Examples]](https://www.lambdatest.com/blog/how-to-use-dataproviders-in-testng-with-examples/?utm_source=github&utm_medium=repo&utm_campaign=Java-TestNG-Selenium&utm_term=sk&utm_content=blog)
+* [Parameterization in TestNG - DataProvider and TestNG XML [With Examples]](https://www.lambdatest.com/blog/parameterization-in-testng-dataprovider-and-testng-xml-examples/?utm_source=github&utm_medium=repo&utm_campaign=Java-TestNG-Selenium&utm_term=sk&utm_content=blog)
+* [TestNG Listeners in Selenium WebDriver [With Examples]](https://www.lambdatest.com/blog/testng-listeners-in-selenium-webdriver-with-examples/?utm_source=github&utm_medium=repo&utm_campaign=Java-TestNG-Selenium&utm_term=sk&utm_content=blog)
+* [TestNG Annotations Tutorial with Examples for Selenium Automation](https://www.lambdatest.com/blog/complete-guide-on-testng-annotations-for-selenium-webdriver/?utm_source=github&utm_medium=repo&utm_campaign=Java-TestNG-Selenium&utm_term=sk&utm_content=blog)
+* [How to Use TestNG Reporter Log in Selenium](https://www.lambdatest.com/blog/how-to-use-testng-reporter-log-in-selenium/?utm_source=github&utm_medium=repo&utm_campaign=Java-TestNG-Selenium&utm_term=sk&utm_content=blog)
+* [How to Generate TestNG Reports in Jenkins](https://www.lambdatest.com/blog/how-to-generate-testng-reports-in-jenkins/?utm_source=github&utm_medium=repo&utm_campaign=Java-TestNG-Selenium&utm_term=sk&utm_content=blog)
 
 
 ## Documentation & Resources :books:
@@ -220,21 +220,21 @@ Check out our latest tutorials on TestNG automation testing 👇
       
 Visit the following links to learn more about LambdaTest's features, setup and tutorials around test automation, mobile app testing, responsive testing, and manual testing.
 
-* [LambdaTest Documentation](https://www.lambdatest.com/support/docs/?utm_source=github&utm_medium=repo&utm_campaign=Java-TestNG-Selenium)
-* [LambdaTest Blog](https://www.lambdatest.com/blog/?utm_source=github&utm_medium=repo&utm_campaign=Java-TestNG-Selenium)
-* [LambdaTest Learning Hub](https://www.lambdatest.com/learning-hub/?utm_source=github&utm_medium=repo&utm_campaign=Java-TestNG-Selenium)    
+* [LambdaTest Documentation](https://www.lambdatest.com/support/docs/?utm_source=github&utm_medium=repo&utm_campaign=Java-TestNG-Selenium&utm_term=sk&utm_content=docs)
+* [LambdaTest Blog](https://www.lambdatest.com/blog/?utm_source=github&utm_medium=repo&utm_campaign=Java-TestNG-Selenium&utm_term=sk&utm_content=blog)
+* [LambdaTest Learning Hub](https://www.lambdatest.com/learning-hub/?utm_source=github&utm_medium=repo&utm_campaign=Java-TestNG-Selenium&utm_term=sk&utm_content=hub)    
 
 ## LambdaTest Community :busts_in_silhouette:
 
-The [LambdaTest Community](https://community.lambdatest.com/) allows people to interact with tech enthusiasts. Connect, ask questions, and learn from tech-savvy people. Discuss best practises in web development, testing, and DevOps with professionals from across the globe 🌎
+The [LambdaTest Community](https://community.lambdatest.com/?utm_source=github&utm_medium=repo&utm_campaign=Java-TestNG-Selenium&utm_term=sk&utm_content=community) allows people to interact with tech enthusiasts. Connect, ask questions, and learn from tech-savvy people. Discuss best practises in web development, testing, and DevOps with professionals from across the globe 🌎
 
 ## What's New At LambdaTest ❓
 
-To stay updated with the latest features and product add-ons, visit [Changelog](https://changelog.lambdatest.com/) 
+To stay updated with the latest features and product add-ons, visit [Changelog](https://changelog.lambdatest.com/?utm_source=github&utm_medium=repo&utm_campaign=Java-TestNG-Selenium&utm_term=sk&utm_content=changelog) 
       
 ## About LambdaTest
 
-[LambdaTest](https://www.lambdatest.com/?utm_source=github&utm_medium=repo&utm_campaign=Java-TestNG-Selenium) is a leading test execution and orchestration platform that is fast, reliable, scalable, and secure. It allows users to run both manual and automated testing of web and mobile apps across 3000+ different browsers, operating systems, and real device combinations. Using LambdaTest, businesses can ensure quicker developer feedback and hence achieve faster go to market. Over 500 enterprises and 1 Million + users across 130+ countries rely on LambdaTest for their testing needs.    
+[LambdaTest](https://www.lambdatest.com/?utm_source=github&utm_medium=repo&utm_campaign=Java-TestNG-Selenium&utm_term=sk&utm_content=home) is a leading test execution and orchestration platform that is fast, reliable, scalable, and secure. It allows users to run both manual and automated testing of web and mobile apps across 3000+ different browsers, operating systems, and real device combinations. Using LambdaTest, businesses can ensure quicker developer feedback and hence achieve faster go to market. Over 500 enterprises and 1 Million + users across 130+ countries rely on LambdaTest for their testing needs.    
 
 ### Features
 
@@ -252,11 +252,11 @@ To stay updated with the latest features and product add-ons, visit [Changelog](
 * LT Browser - for responsive testing across 50+ pre-installed mobile, tablets, desktop, and laptop viewports
 
     
-[<img height="58" width="200" src="https://user-images.githubusercontent.com/70570645/171866795-52c11b49-0728-4229-b073-4b704209ddde.png">](https://accounts.lambdatest.com/register)
+[<img height="58" width="200" src="https://user-images.githubusercontent.com/70570645/171866795-52c11b49-0728-4229-b073-4b704209ddde.png">](https://accounts.lambdatest.com/register?utm_source=github&utm_medium=repo&utm_campaign=Java-TestNG-Selenium&utm_term=sk&utm_content=register)
 
 
       
 ## We are here to help you :headphones:
 
-* Got a query? we are available 24x7 to help. [Contact Us](support@lambdatest.com)
-* For more info, visit - [LambdaTest](https://www.lambdatest.com/?utm_source=github&utm_medium=repo&utm_campaign=Java-TestNG-Selenium)
+* Got a query? we are available 24x7 to help. [Contact Us](mailto:support@lambdatest.com)
+* For more info, visit - [LambdaTest](https://www.lambdatest.com?utm_source=github&utm_medium=repo&utm_campaign=Java-TestNG-Selenium&utm_term=sk&utm_content=home)
