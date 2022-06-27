@@ -11,8 +11,8 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.devtools.DevTools;
 import org.openqa.selenium.devtools.HasDevTools;
-import org.openqa.selenium.devtools.v94.performance.Performance;
-import org.openqa.selenium.devtools.v94.performance.model.Metric;
+import org.openqa.selenium.devtools.v102.performance.Performance;
+import org.openqa.selenium.devtools.v102.performance.model.Metric;
 import org.openqa.selenium.remote.Augmenter;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -32,7 +32,7 @@ public class CapturePerformanceMetrics {
   public void setup(Method m, ITestContext ctx) throws MalformedURLException  {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("browserName", "Chrome");
-        capabilities.setCapability("browserVersion", "latest");
+        capabilities.setCapability("browserVersion", "102");
         HashMap<String, Object> ltOptions = new HashMap<String, Object>();
         ltOptions.put("user", System.getenv("LT_USERNAME"));
         ltOptions.put("accessKey", System.getenv("LT_ACCESS_KEY"));
