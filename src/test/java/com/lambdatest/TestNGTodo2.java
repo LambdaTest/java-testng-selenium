@@ -44,7 +44,7 @@ public class TestNGTodo2 {
 
         /*
         Enable Smart UI Project
-        caps.setCapability("smartUI.project", "<Project Name Java>");
+        caps.setCapability("smartUI.project", "<Project Name>");
         */
 
         String[] Tags = new String[] { "Feature", "Magicleap", "Severe" };
