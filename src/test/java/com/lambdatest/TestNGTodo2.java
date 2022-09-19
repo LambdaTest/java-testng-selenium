@@ -23,6 +23,15 @@ public class TestNGTodo2 {
         String username = System.getenv("LT_USERNAME") == null ? "Your LT Username" : System.getenv("LT_USERNAME");
         String authkey = System.getenv("LT_ACCESS_KEY") == null ? "Your LT AccessKey" : System.getenv("LT_ACCESS_KEY");
         ;
+        
+        /*
+        Steps to run Smart UI project (https://beta-smartui.lambdatest.com/)
+        Step - 1 : Change the hub URL to @beta-smartui-hub.lambdatest.com/wd/hub
+        Step - 2 : Add "smartUI.project": "<Project Name>" as a capability above
+        Step - 3 : Add "((JavascriptExecutor) driver).executeScript("smartui.takeScreenshot");" code wherever you need to take a screenshot
+        Note: for additional capabilities navigate to https://www.lambdatest.com/support/docs/test-settings-options/
+        */
+
         String hub = "@hub.lambdatest.com/wd/hub";
 
         DesiredCapabilities caps = new DesiredCapabilities();
@@ -32,6 +41,11 @@ public class TestNGTodo2 {
         caps.setCapability("build", "TestNG With Java");
         caps.setCapability("name", m.getName() + this.getClass().getName());
         caps.setCapability("plugin", "git-testng");
+
+        /*
+        Enable Smart UI Project
+        caps.setCapability("smartUI.project", "<Project Name>");
+        */
 
         String[] Tags = new String[] { "Feature", "Magicleap", "Severe" };
         caps.setCapability("tags", Tags);
