@@ -36,8 +36,9 @@
 				</executions>
 				<configuration>
 					<suiteXmlFiles>
-						<!--suppress UnresolvedMavenProperty -->
-						<suiteXmlFile>${suite}</suiteXmlFile>
+						<suiteXmlFile>single.xml</suiteXmlFile>
+                            			<suiteXmlFile>parallel.xml</suiteXmlFile>
+                            		 	<suiteXmlFile>mobile.xml</suiteXmlFile>
 					</suiteXmlFiles>
 				</configuration>
 			</plugin>
