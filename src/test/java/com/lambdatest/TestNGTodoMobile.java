@@ -23,14 +23,16 @@ public class TestNGTodoMobile {
         String username = System.getenv("LT_USERNAME") == null ? "Your LT Username" : System.getenv("LT_USERNAME");
         String authkey = System.getenv("LT_ACCESS_KEY") == null ? "Your LT AccessKey" : System.getenv("LT_ACCESS_KEY");
         ;
-        String hub = "@hub.lambdatest.com/wd/hub";
+        String hub = "@mobile-hub.lambdatest.com/wd/hub";
 
         DesiredCapabilities caps = new DesiredCapabilities();
-        caps.setCapability("deviceName", "Google Pixel 4a");
+        caps.setCapability("platformName", "android");
+        caps.setCapability("deviceName", "Pixel 4a");
+        caps.setCapability("platformVersion", "11");
+        caps.setCapability("isRealMobile", true);
         caps.setCapability("build", "TestNG With Java");
         caps.setCapability("name", m.getName() + this.getClass().getName());
         caps.setCapability("plugin", "git-testng");
-        caps.setCapability("isRealMobile", true);
 
         String[] Tags = new String[] { "Feature", "Tag", "Moderate" };
         caps.setCapability("tags", Tags);
