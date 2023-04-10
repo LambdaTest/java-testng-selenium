@@ -156,6 +156,14 @@ To run parallel tests using **TestNG**, we would have to execute the below comma
   mvn test -D suite=parallel.xml
   ```
 
+### Executing SmartUI Tests
+
+The tests can be executed in the terminal using the following command.
+
+```bash
+mvn test -D suite=smartui.xml
+```
+
 ## Testing Locally Hosted Or Privately Hosted Projects
 
 You can test your locally hosted or privately hosted projects with LambdaTest Selenium grid using LambdaTest Tunnel. All you would have to do is set up an SSH tunnel using tunnel and pass toggle `tunnel = True` via desired capabilities. LambdaTest Tunnel establishes a secure SSH protocol based tunnel that allows you in testing your locally hosted or privately hosted pages, even before they are live.
