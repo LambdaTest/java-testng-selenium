@@ -98,7 +98,7 @@ public class TestNGTodo2 {
         System.out.println("Checking Another Box");
         driver.findElement(By.name("li8")).click();
 
-        driver.executeScript("lambdatest_executor: {\"action\": \"stepcontext\", \"arguments\": {\"data\": \"Writing Todo\", \"level\": \"debug\"}}");
+        driver.executeScript("lambdatest_executor: {\"action\": \"stepcontext\", \"arguments\": {\"data\": \"Writing Todo\", \"level\": \"warn\"}}");
         System.out.println("Entering Text");
         driver.findElement(By.id("sampletodotext")).sendKeys("Get Taste of Lambda and Stick to It");
 
