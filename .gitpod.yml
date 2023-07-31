@@ -5,5 +5,5 @@ ports:
 
 # List the start up tasks. You can start them in parallel in multiple terminals. See https://www.gitpod.io/docs/config-start-tasks/
 tasks:
-  - init: mvn install -Dsuite=parallel.xml # runs during prebuild
+  - init: mvn install -Dsuite=annotation.xml # runs during prebuild
     command: echo 'Please check your test on https://automation.lambdatest.com/'

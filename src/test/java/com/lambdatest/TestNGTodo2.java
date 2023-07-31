@@ -50,7 +50,7 @@ public class TestNGTodo2 {
         String[] Tags = new String[] { "Feature", "Magicleap", "Severe" };
         caps.setCapability("tags", Tags);
 
-        driver = new RemoteWebDriver(new URL("https://" + username + ":" + authkey + hub), caps);
+        driver = new RemoteWebDriver(new URL("https://sirajk:oz85RZKxbqX6X8aCQXuQgUDnojP8OwY3wx2SAkEswtgRuxl8n0@stage-hub.lambdatestinternal.com/wd/hub"), caps);
     }
 
     @Test
@@ -58,9 +58,12 @@ public class TestNGTodo2 {
         String spanText;
         System.out.println("Loading Url");
 
+        driver.executeScript("lambdatest_executor: {\"action\": \"stepcontext\", \"arguments\": {\"data\": \"Loading URL\", \"level\": \"info\"}}");
         driver.get("https://lambdatest.github.io/sample-todo-app/");
 
         System.out.println("Checking Box");
+
+        driver.executeScript("lambdatest_executor: {\"action\": \"stepcontext\", \"arguments\": {\"data\": \"Marking Checkboxes\", \"level\": \"info\"}}");
         driver.findElement(By.name("li1")).click();
 
         System.out.println("Checking Another Box");
@@ -72,6 +75,7 @@ public class TestNGTodo2 {
         System.out.println("Checking Another Box");
         driver.findElement(By.name("li4")).click();
 
+        driver.executeScript("lambdatest_executor: {\"action\": \"stepcontext\", \"arguments\": {\"data\": \"Adding List Items\", \"level\": \"info\"}}");
         driver.findElement(By.id("sampletodotext")).sendKeys(" List Item 6");
         driver.findElement(By.id("addbutton")).click();
 
@@ -81,6 +85,7 @@ public class TestNGTodo2 {
         driver.findElement(By.id("sampletodotext")).sendKeys(" List Item 8");
         driver.findElement(By.id("addbutton")).click();
 
+        driver.executeScript("lambdatest_executor: {\"action\": \"stepcontext\", \"arguments\": {\"data\": \"Adding List Items\", \"level\": \"warn\"}}");
         System.out.println("Checking Another Box");
         driver.findElement(By.name("li1")).click();
 
@@ -93,10 +98,13 @@ public class TestNGTodo2 {
         System.out.println("Checking Another Box");
         driver.findElement(By.name("li8")).click();
 
+        driver.executeScript("lambdatest_executor: {\"action\": \"stepcontext\", \"arguments\": {\"data\": \"Writing Todo\", \"level\": \"debug\"}}");
         System.out.println("Entering Text");
         driver.findElement(By.id("sampletodotext")).sendKeys("Get Taste of Lambda and Stick to It");
 
         driver.findElement(By.id("addbutton")).click();
+
+        driver.executeScript("lambdatest_executor: {\"action\": \"stepcontext\", \"arguments\": {\"data\": \"Assert error\", \"level\": \"error\"}}");
 
         System.out.println("Checking Another Box");
         driver.findElement(By.name("li9")).click();
