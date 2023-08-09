@@ -4,26 +4,31 @@ import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import com.epam.reportportal.testng.ReportPortalTestNGListener;
 import org.openqa.selenium.By;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
-public class TestNGTodo2 {
+@Listeners({ ReportPortalTestNGListener.class }) public class TestNGTodo2 {
 
-    private RemoteWebDriver driver;
-    private String Status = "failed";
+  private RemoteWebDriver driver;
+  private String Status = "failed";
 
-    @BeforeMethod
-    public void setup(Method m, ITestContext ctx) throws MalformedURLException {
-        String username = System.getenv("LT_USERNAME") == null ? "Your LT Username" : System.getenv("LT_USERNAME");
-        String authkey = System.getenv("LT_ACCESS_KEY") == null ? "Your LT AccessKey" : System.getenv("LT_ACCESS_KEY");
-        ;
-        
+  private static final Logger ltLogger = LoggerFactory.getLogger(TestNGTodo2.class);
+
+  @BeforeMethod
+  public void setup(Method m, ITestContext ctx) throws MalformedURLException {
+    String username = System.getenv("LT_USERNAME") == null ? "Your LT Username" : System.getenv("LT_USERNAME");
+    String authkey = System.getenv("LT_ACCESS_KEY") == null ? "Your LT AccessKey" : System.getenv("LT_ACCESS_KEY");
+    ;
         /*
         Steps to run Smart UI project (https://beta-smartui.lambdatest.com/)
         Step - 1 : Change the hub URL to @beta-smartui-hub.lambdatest.com/wd/hub
@@ -32,90 +37,101 @@ public class TestNGTodo2 {
         Note: for additional capabilities navigate to https://www.lambdatest.com/support/docs/test-settings-options/
         */
 
-        String hub = "@hub.lambdatest.com/wd/hub";
-
-        DesiredCapabilities caps = new DesiredCapabilities();
-        caps.setCapability("platform", "Windows 10");
-        caps.setCapability("browserName", "chrome");
-        caps.setCapability("version", "latest");
-        caps.setCapability("build", "TestNG With Java");
-        caps.setCapability("name", m.getName() + this.getClass().getName());
-        caps.setCapability("plugin", "git-testng");
+    String hub = "@hub.lambdatest.com/wd/hub";
+    ltLogger.info("Creating Driver");
+    DesiredCapabilities caps = new DesiredCapabilities();
+    caps.setCapability("platform", "Windows 10");
+    caps.setCapability("browserName", "chrome");
+    caps.setCapability("version", "latest");
+    caps.setCapability("build", "TestNG With Java");
+    caps.setCapability("name", m.getName() + this.getClass().getName());
+    caps.setCapability("plugin", "git-testng");
 
         /*
         Enable Smart UI Project
         caps.setCapability("smartUI.project", "<Project Name>");
         */
 
-        String[] Tags = new String[] { "Feature", "Magicleap", "Severe" };
-        caps.setCapability("tags", Tags);
+    String[] Tags = new String[] { "Feature", "Magicleap", "Severe" };
+    caps.setCapability("tags", Tags);
 
-        driver = new RemoteWebDriver(new URL("https://" + username + ":" + authkey + hub), caps);
-    }
+    driver = new RemoteWebDriver(new URL("https://" + username + ":" + authkey + hub), caps);
+  }
 
-    @Test
-    public void basicTest() throws InterruptedException {
-        String spanText;
-        System.out.println("Loading Url");
+  @Test
+  public void basicTest() throws InterruptedException {
+    String spanText;
+    ltLogger.info("Loading Url");
+    System.out.println("Loading Url");
 
-        driver.get("https://lambdatest.github.io/sample-todo-app/");
+    driver.get("https://lambdatest.github.io/sample-todo-app/");
 
-        System.out.println("Checking Box");
-        driver.findElement(By.name("li1")).click();
+    ltLogger.info("Checking Box");
+    System.out.println("Checking Box");
+    driver.findElement(By.name("li1")).click();
 
-        System.out.println("Checking Another Box");
-        driver.findElement(By.name("li2")).click();
+    ltLogger.info("Checking Another Box");
+    System.out.println("Checking Another Box");
+    driver.findElement(By.name("li2")).click();
 
-        System.out.println("Checking Box");
-        driver.findElement(By.name("li3")).click();
+    ltLogger.info("Checking Box");
+    System.out.println("Checking Box");
+    driver.findElement(By.name("li3")).click();
 
-        System.out.println("Checking Another Box");
-        driver.findElement(By.name("li4")).click();
+    ltLogger.info("Checking Another Box");
+    System.out.println("Checking Another Box");
+    driver.findElement(By.name("li4")).click();
 
-        driver.findElement(By.id("sampletodotext")).sendKeys(" List Item 6");
-        driver.findElement(By.id("addbutton")).click();
+    driver.findElement(By.id("sampletodotext")).sendKeys(" List Item 6");
+    driver.findElement(By.id("addbutton")).click();
 
-        driver.findElement(By.id("sampletodotext")).sendKeys(" List Item 7");
-        driver.findElement(By.id("addbutton")).click();
+    driver.findElement(By.id("sampletodotext")).sendKeys(" List Item 7");
+    driver.findElement(By.id("addbutton")).click();
 
-        driver.findElement(By.id("sampletodotext")).sendKeys(" List Item 8");
-        driver.findElement(By.id("addbutton")).click();
+    driver.findElement(By.id("sampletodotext")).sendKeys(" List Item 8");
+    driver.findElement(By.id("addbutton")).click();
 
-        System.out.println("Checking Another Box");
-        driver.findElement(By.name("li1")).click();
+    ltLogger.info("Checking Another Box");
+    System.out.println("Checking Another Box");
+    driver.findElement(By.name("li1")).click();
 
-        System.out.println("Checking Another Box");
-        driver.findElement(By.name("li3")).click();
+    ltLogger.info("Checking Another Box");
+    System.out.println("Checking Another Box");
+    driver.findElement(By.name("li3")).click();
 
-        System.out.println("Checking Another Box");
-        driver.findElement(By.name("li7")).click();
+    ltLogger.info("Checking Another Box");
+    System.out.println("Checking Another Box");
+    driver.findElement(By.name("li7")).click();
 
-        System.out.println("Checking Another Box");
-        driver.findElement(By.name("li8")).click();
+    ltLogger.info("Checking Another Box");
+    System.out.println("Checking Another Box");
+    driver.findElement(By.name("li8")).click();
 
-        System.out.println("Entering Text");
-        driver.findElement(By.id("sampletodotext")).sendKeys("Get Taste of Lambda and Stick to It");
+    ltLogger.info("Entering Text");
+    System.out.println("Entering Text");
+    driver.findElement(By.id("sampletodotext")).sendKeys("Get Taste of Lambda and Stick to It");
 
-        driver.findElement(By.id("addbutton")).click();
+    driver.findElement(By.id("addbutton")).click();
 
-        System.out.println("Checking Another Box");
-        driver.findElement(By.name("li9")).click();
+    ltLogger.info("Checking Another Box");
+    System.out.println("Checking Another Box");
+    driver.findElement(By.name("li9")).click();
 
-        // Let's also assert that the todo we added is present in the list.
+    // Let's also assert that the todo we added is present in the list.
 
-        spanText = driver.findElementByXPath("/html/body/div/div/div/ul/li[9]/span").getText();
-        Assert.assertEquals("Get Taste of Lambda and Stick to It", spanText);
-        Status = "passed";
-        Thread.sleep(150);
+    spanText = driver.findElementByXPath("/html/body/div/div/div/ul/li[9]/span").getText();
+    Assert.assertEquals("Get Taste of Lambda and Stick to It", spanText);
+    Status = "passed";
+    Thread.sleep(150);
 
-        System.out.println("TestFinished");
+    ltLogger.info("TestFinished");
+    System.out.println("TestFinished");
 
-    }
+  }
 
-    @AfterMethod
-    public void tearDown() {
-        driver.executeScript("lambda-status=" + Status);
-        driver.quit();
-    }
-
+  @AfterMethod
+  public void tearDown() {
+    driver.executeScript("lambda-status=" + Status);
+    driver.quit();
+  }
 }
