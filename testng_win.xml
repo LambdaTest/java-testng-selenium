@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Windows: TestNG Execution"  thread-count="1" parallel="methods">
+
+	<test name="Test_1">
+			<parameter name="browser" value="Chrome"/>
+			<parameter name="version" value="latest"/>
+			<parameter name="platform" value="Windows 10"/>
+			<parameter name="resolution" value="1024x768"/>
+			<classes>
+				<class name="com.lambdatest.AutoHealingDemo" />
+			</classes>
+	</test>
+	
+</suite>

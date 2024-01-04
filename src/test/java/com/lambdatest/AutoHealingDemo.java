@@ -1,0 +1,122 @@
+package com.lambdatest;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.*;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.time.Duration;
+
+import java.lang.reflect.Method;
+import org.testng.Assert;
+import org.testng.ITestContext;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+
+public class AutoHealingDemo
+{
+    RemoteWebDriver driver = null;
+    public static String status = "passed";
+    public static String username = System.getenv("LT_USERNAME");
+    public static String access_key = System.getenv("LT_ACCESS_KEY");
+
+
+    @BeforeMethod
+    @Parameters(value={"browser","version","platform", "resolution"})
+    public void testSetUp(String browser, String version, String platform, String resolution,Method m, ITestContext ctx) throws Exception
+    {
+        
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+
+        capabilities.setCapability("build", "Demonstration of the AutoHeal");
+        // capabilities.setCapability("platform", "Windows 10"));
+        capabilities.setCapability("browserName", browser);
+        capabilities.setCapability("name",m.getName() );
+        // capabilities.setCapability("version", version);
+
+        // capabilities.setCapability("tunnel",false);
+        // capabilities.setCapability("network",true);
+        // capabilities.setCapability("console",true);
+        capabilities.setCapability("visual",true);
+        capabilities.setCapability("autoHeal", true);
+
+        try
+        {
+            driver = new RemoteWebDriver(new URL("https://" + username + ":" + access_key + "@hub.lambdatest.com/wd/hub"), capabilities);
+        }
+        catch (MalformedURLException e)
+        {
+            System.out.println("Invalid grid URL");
+        }
+        System.out.println("Started session");
+    }
+
+    @Test()
+    public void autoHealBaseTestWithoutChangedDOM() throws InterruptedException
+    {
+
+        try {
+
+            driver.get("https://www.lambdatest.com/selenium-playground/auto-healing");
+            Thread.sleep(5000);
+    
+            WebElement changedom = driver.findElementByXPath("//*[contains(text(), 'Change DOM ID')]");
+            // changedom.click();      //Uncomment this line in the 2nd test run for the autoheal to work. 
+    
+            WebElement username = driver.findElementById("username");
+            username.sendKeys("test@gmail.com");
+        
+            WebElement password = driver.findElementById("password");
+            password.sendKeys("password");
+    
+            WebElement login = driver.findElementByXPath("//*[contains(text(), 'Submit')]");
+            login.click();
+
+        } catch (Exception e) {
+            status = "failed";
+        }
+    }
+
+     @Test()
+    public void autoHealedWithChangedDOM() throws InterruptedException
+    {
+
+        try {
+
+            driver.get("https://www.lambdatest.com/selenium-playground/auto-healing");
+            Thread.sleep(5000);
+    
+            WebElement changedom = driver.findElementByXPath("//*[contains(text(), 'Change DOM ID')]");
+            changedom.click();      //Uncomment this line in the 2nd test run for the autoheal to work. 
+    
+            WebElement username = driver.findElementById("username");
+            username.sendKeys("test@gmail.com");
+        
+            WebElement password = driver.findElementById("password");
+            password.sendKeys("password");
+    
+            WebElement login = driver.findElementByXPath("//*[contains(text(), 'Submit')]");
+            login.click();
+
+        } catch (Exception e) {
+            status = "failed";
+        }
+
+
+
+    }
+
+    @AfterMethod
+    public void tearDown()
+    {
+        if (driver != null)
+        {
+            ((JavascriptExecutor) driver).executeScript("lambda-status=" + status);
+            driver.quit();
+        }
+    }
+}
