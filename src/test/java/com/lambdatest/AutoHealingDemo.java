@@ -1,17 +1,12 @@
 package com.lambdatest;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.*;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.*;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.time.Duration;
-
 import java.lang.reflect.Method;
-import org.testng.Assert;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -63,6 +58,8 @@ public class AutoHealingDemo
 
             driver.get("https://www.lambdatest.com/selenium-playground/auto-healing");
             Thread.sleep(5000);
+
+            driver.executeScript("lambdatest_executor: {\"action\": \"stepcontext\", \"arguments\": {\"data\": \"AutoHealWithoutDomChanged-Login Case\", \"level\": \"info\"}}");
     
             WebElement changedom = driver.findElementByXPath("//*[contains(text(), 'Change DOM ID')]");
             // changedom.click();      //Uncomment this line in the 2nd test run for the autoheal to work. 
@@ -81,7 +78,7 @@ public class AutoHealingDemo
         }
     }
 
-     @Test()
+    @Test()
     public void autoHealedWithChangedDOM() throws InterruptedException
     {
 
@@ -89,9 +86,11 @@ public class AutoHealingDemo
 
             driver.get("https://www.lambdatest.com/selenium-playground/auto-healing");
             Thread.sleep(5000);
-    
+            
+            driver.executeScript("lambdatest_executor: {\"action\": \"stepcontext\", \"arguments\": {\"data\": \"AutoHealDomChanged-Login Case\", \"level\": \"info\"}}");
+
             WebElement changedom = driver.findElementByXPath("//*[contains(text(), 'Change DOM ID')]");
-            changedom.click();      //Uncomment this line in the 2nd test run for the autoheal to work. 
+            changedom.click();     
     
             WebElement username = driver.findElementById("username");
             username.sendKeys("test@gmail.com");
@@ -114,8 +113,8 @@ public class AutoHealingDemo
     public void tearDown()
     {
         if (driver != null)
-        {
-            ((JavascriptExecutor) driver).executeScript("lambda-status=" + status);
+        {    driver.executeScript("lambdatest_executor: {\"action\": \"stepcontext\", \"arguments\": {\"data\": \"Completed-Login Case - Closing Browser\", \"level\": \"info\"}}");
+             driver.executeScript("lambda-status=" + status);
             driver.quit();
         }
     }
