@@ -3,8 +3,19 @@ package com.lambdatest;
 import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.time.Duration;
+import java.util.Arrays;
+import java.util.HashMap;
 
+import io.appium.java_client.ios.IOSDriver;
+import org.json.simple.JSONObject;
+//import org.json.JSONObject;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.By;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.interactions.PointerInput;
+import org.openqa.selenium.interactions.Sequence;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Assert;
@@ -15,7 +26,7 @@ import org.testng.annotations.Test;
 
 public class TestNGTodoMobile {
 
-    private RemoteWebDriver driver;
+    private IOSDriver driver;
     private String Status = "failed";
 
     @BeforeMethod
@@ -26,77 +37,49 @@ public class TestNGTodoMobile {
         String hub = "@mobile-hub.lambdatest.com/wd/hub";
 
         DesiredCapabilities caps = new DesiredCapabilities();
-        caps.setCapability("platformName", "android");
-        caps.setCapability("deviceName", "Pixel 4a");
-        caps.setCapability("platformVersion", "11");
-        caps.setCapability("isRealMobile", true);
-        caps.setCapability("build", "TestNG With Java");
-        caps.setCapability("name", m.getName() + this.getClass().getName());
-        caps.setCapability("plugin", "git-testng");
-
-        String[] Tags = new String[] { "Feature", "Tag", "Moderate" };
-        caps.setCapability("tags", Tags);
-
-        driver = new RemoteWebDriver(new URL("https://" + username + ":" + authkey + hub), caps);
+        HashMap<String, Object> ltOptions = new HashMap<String, Object>();
+        ltOptions.put("w3c", true);
+        ltOptions.put("platformName", "ios");
+        ltOptions.put("deviceName", "iphone 13");
+        ltOptions.put("platformVersion", "16");
+        ltOptions.put("isRealMobile", true);
+        ltOptions.put("udid", "abcd123");
+        ltOptions.put("build", "Apple Pay");
+        ltOptions.put("privateCloud", true);
+        ltOptions.put("applePay", true);
+        ltOptions.put("passcode", "123456");
+        ltOptions.put("applePayCardType", new String[] { "discover" });
+        caps.setCapability("lt:options", ltOptions);
+        // add username and access key in below URL
+        driver = new IOSDriver(new URL("https://username:accessKey@mobile-hub.lambdatest.com/wd/hub"), caps);
     }
 
     @Test
     public void basicTest() throws InterruptedException {
-        String spanText;
-        System.out.println("Loading Url");
-        Thread.sleep(100);
-        driver.get("https://lambdatest.github.io/sample-todo-app/");
+        driver.get("https://applepaydemo.apple.com/");
+        Thread.sleep(5000);
 
-        System.out.println("Checking Box");
-        driver.findElement(By.name("li1")).click();
+        String pageSource = driver.getPageSource();
+        WebElement ele = driver.findElement(By.id("transcriptButton"));
+        ele.getRect();
 
-        System.out.println("Checking Another Box");
-        driver.findElement(By.name("li2")).click();
+        int centerX = ele.getRect().x + (ele.getSize().width / 2);
+        int centerY = ele.getRect().y + (ele.getSize().height / 2);
+        System.out.println("centerX" + centerX);
+        System.out.println("centerY" + centerY);
+        PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+        Sequence tap = new Sequence(finger, 1);
+        tap.addAction(finger.createPointerMove(Duration.ofMillis(0), PointerInput.Origin.viewport(), centerX, centerY));
+        tap.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
+        tap.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+        driver.perform(Arrays.asList(tap));
+// Lambda Hook for assistive touch
+        JSONObject json = new JSONObject();
+        json.put("confirm", true);
+        ((JavascriptExecutor) driver).executeScript("lambda-applepay", json);
+        new Actions(driver).sendKeys("123456").perform();
 
-        System.out.println("Checking Box");
-        driver.findElement(By.name("li3")).click();
-
-        System.out.println("Checking Another Box");
-        driver.findElement(By.name("li4")).click();
-
-        driver.findElement(By.id("sampletodotext")).sendKeys(" List Item 6");
-        driver.findElement(By.id("addbutton")).click();
-
-        driver.findElement(By.id("sampletodotext")).sendKeys(" List Item 7");
-        driver.findElement(By.id("addbutton")).click();
-
-        driver.findElement(By.id("sampletodotext")).sendKeys(" List Item 8");
-        driver.findElement(By.id("addbutton")).click();
-
-        System.out.println("Checking Another Box");
-        driver.findElement(By.name("li1")).click();
-
-        System.out.println("Checking Another Box");
-        driver.findElement(By.name("li3")).click();
-
-        System.out.println("Checking Another Box");
-        driver.findElement(By.name("li7")).click();
-
-        System.out.println("Checking Another Box");
-        driver.findElement(By.name("li8")).click();
-
-        System.out.println("Entering Text");
-        driver.findElement(By.id("sampletodotext")).sendKeys("Get Taste of Lambda and Stick to It");
-
-        driver.findElement(By.id("addbutton")).click();
-
-        System.out.println("Checking Another Box");
-        driver.findElement(By.name("li9")).click();
-
-        // Let's also assert that the todo we added is present in the list.
-
-        spanText = driver.findElementByXPath("/html/body/div/div/div/ul/li[9]/span").getText();
-        Assert.assertEquals("Get Taste of Lambda and Stick to It", spanText);
-        Status = "passed";
-        Thread.sleep(800);
-
-        System.out.println("TestFinished");
-
+        Thread.sleep(3000);
     }
 
     @AfterMethod
