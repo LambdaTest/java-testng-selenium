@@ -54,6 +54,7 @@ public class TestNGSaytu {
     }
 
     @Test
+    Run|Debug
     public void basicTest() throws InterruptedException {
         System.out.println("Loading Url");
 
