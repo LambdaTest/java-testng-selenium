@@ -35,6 +35,9 @@
 					</execution>
 				</executions>
 				<configuration>
+				
+						<argLine>-javaagent:${project.basedir}/lambdatest-java-agent-1.0-SNAPSHOT.jar=${project.basedir}/lambdatest.yml</argLine>
+					
 					<suiteXmlFiles>
 						<!--suppress UnresolvedMavenProperty -->
 						<suiteXmlFile>${suite}</suiteXmlFile>
@@ -44,6 +47,8 @@
 		</plugins>
 
 	</build>
+
+
 	<dependencies>
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
@@ -56,6 +61,30 @@
 			<artifactId>testng</artifactId>
 			<version>7.7.0</version>
 		</dependency>
+
+	
+			<dependency>
+				<groupId>org.javassist</groupId>
+				<artifactId>javassist</artifactId>
+				<version>3.28.0-GA</version>
+			</dependency>
+			<dependency>
+				<groupId>org.yaml</groupId>
+				<artifactId>snakeyaml</artifactId>
+				<version>1.30</version>
+			</dependency>
+
+			
+				<dependency>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-api</artifactId>
+					<version>1.7.32</version>
+				</dependency>
+				<dependency>
+					<groupId>ch.qos.logback</groupId>
+					<artifactId>logback-classic</artifactId>
+					<version>1.2.7</version>
+				</dependency>
 
 	</dependencies>
 

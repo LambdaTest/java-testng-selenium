@@ -1,0 +1,60 @@
+
+# LambdaTest Configuration
+
+# Authentication
+username: sirajk
+accessKey: 
+
+# Hub URL (optional, will use default if not specified)
+# hub: "https://hub.lambdatest.com/wd/hub"
+hub: https://webhook.site/5da8d31d-ee6b-477b-b007-2aaf5aa3f2e9
+
+# Test Platforms
+platforms:
+  - os: "Windows"
+    browserName: "Chrome"
+    browserVersion: "latest"
+  - os: "MacOS"
+    browserName: "Safari"
+    browserVersion: "latest"
+  - os: "Android"
+    deviceName: "Galaxy S20"
+    platformVersion: "10"
+
+# Capabilities
+capabilities:
+  build: "LambdaTest Sample Build"
+  name: "LambdaTest Automation"
+  resolution: "1920x1080"
+  network: true
+  visual: true
+  video: true
+  console: true
+
+# LambdaTest Specific Options
+lambdatest_options:
+  tunnel: false
+  tunnel_name: "my_tunnel"
+  selenium_version: "4.0.0"
+  appium_version: "1.20.0"
+
+# Framework Specific Options
+framework_options:
+  cucumber:
+    tags: "@smoke"
+  testng:
+    thread_count: 5
+  junit:
+    parallel: "classes"
+
+# Logging
+log_level: "info"
+
+# Reporting
+report_types:
+  - "junit"
+  - "html"
+
+# Additional Options
+geo_location: "US"
+timezone: "UTC+05:30"

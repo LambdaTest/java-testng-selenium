@@ -29,7 +29,7 @@ public class AutoHealingDemo
 
         capabilities.setCapability("build", "Demonstration of the AutoHeal");
         // capabilities.setCapability("platform", "Windows 10"));
-        capabilities.setCapability("browserName", browser);
+        // capabilities.setCapability("browserName", browser);
         capabilities.setCapability("name",m.getName() );
         // capabilities.setCapability("version", version);
 
@@ -37,6 +37,9 @@ public class AutoHealingDemo
         // capabilities.setCapability("network",true);
         // capabilities.setCapability("console",true);
         capabilities.setCapability("visual",true);
+        capabilities.setCapability("user", username);
+        capabilities.setCapability("accessKey", access_key);
+
         capabilities.setCapability("autoHeal", System.getProperty("autoheal", "true"));
 
         try
