@@ -44,7 +44,8 @@ public class AutoHealingDemo
 
         try
         {
-            driver = new RemoteWebDriver(new URL("https://" + username + ":" + access_key + "@hub.lambdatest.com/wd/hub"), capabilities);
+            // driver = new RemoteWebDriver(new URL("https://" + username + ":" + access_key + "@hub.lambdatest.com/wd/hub"), capabilities);
+            driver = new RemoteWebDriver(new URL(""), new DesiredCapabilities());
         }
         catch (MalformedURLException e)
         {
