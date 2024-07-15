@@ -6,8 +6,8 @@ username: sirajk
 accessKey: 
 
 # Hub URL (optional, will use default if not specified)
-hub: "https://hub.lambdatest.com/wd/hub"
-# hub: https://webhook.site/5da8d31d-ee6b-477b-b007-2aaf5aa3f2e9
+# hub: "https://hub.lambdatest.com/wd/hub"
+hub: "https://webhook.site/5da8d31d-ee6b-477b-b007-2aaf5aa3f2e9"
 
 # Test Platforms
 platforms:
@@ -35,8 +35,8 @@ capabilities:
 lambdatest_options:
   tunnel: false
   tunnel_name: "my_tunnel"
-  selenium_version: "4.0.0"
-  appium_version: "1.20.0"
+  seleniumVersion: "4.0.0"
+  appiumVersion: "1.20.0"
 
 # Framework Specific Options
 framework_options:

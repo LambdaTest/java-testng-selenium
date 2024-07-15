@@ -1,6 +1,8 @@
 package com.lambdatest;
 
 import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.*;
@@ -44,12 +46,13 @@ public class AutoHealingDemo
 
         try
         {
+            driver= new ChromeDriver();
             // driver = new RemoteWebDriver(new URL("https://" + username + ":" + access_key + "@hub.lambdatest.com/wd/hub"), capabilities);
-            driver = new RemoteWebDriver(new URL(""), new DesiredCapabilities());
+            
         }
-        catch (MalformedURLException e)
+        catch (Exception e)
         {
-            System.out.println("Invalid grid URL");
+            System.out.println("Invalid grid URL" + e.getMessage());
         }
         System.out.println("Started session");
     }
