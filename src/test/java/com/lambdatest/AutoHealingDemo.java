@@ -46,7 +46,7 @@ public class AutoHealingDemo
 
         try
         {
-            driver= new ChromeDriver();
+            driver = new RemoteWebDriver(new URL("about:blank"), null);
             // driver = new RemoteWebDriver(new URL("https://" + username + ":" + access_key + "@hub.lambdatest.com/wd/hub"), capabilities);
             
         }

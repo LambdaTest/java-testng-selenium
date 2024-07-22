@@ -5,5 +5,5 @@ ports:
 
 # List the start up tasks. You can start them in parallel in multiple terminals. See https://www.gitpod.io/docs/config-start-tasks/
 tasks:
-  - init: mvn install -Dsuite=autoheal.xml # runs during prebuild
-    command: echo 'Please check your test on https://automation.lambdatest.com/'
+  - init: sdk install java 21.0.3-ms # runs during prebuild
+    command:  mvn install -Dsuite=autoheal.xml; echo 'Please check your test on https://automation.lambdatest.com/'
