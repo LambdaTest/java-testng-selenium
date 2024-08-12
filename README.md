@@ -86,8 +86,8 @@ Make sure you have your LambdaTest credentials with you to run test automation s
 ```java
 DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("browserName", "chrome");
-        capabilities.setCapability("version", "70.0");
-        capabilities.setCapability("platform", "win10"); // If this cap isn't specified, it will just get the any available one
+        capabilities.setCapability("version", "latest");
+        capabilities.setCapability("platform", "Windows 10"); // If this cap isn't specified, it will just get the any available one
         capabilities.setCapability("build", "LambdaTestSampleApp");
         capabilities.setCapability("name", "LambdaTestJavaSample");
 ```
