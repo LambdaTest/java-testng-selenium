@@ -1,0 +1,24 @@
+# LambdaTest Configuration File for Tests
+# This file is loaded automatically by the LambdaTest SDK
+username: <username>
+accesskey: <accessKey>
+
+platforms:
+  - browserName: Chrome
+    browserVersion: latest
+    platformName: Windows 10
+
+# Test metadata
+build: SDK Build Parallel
+project: SDK Project
+name: SDK Test
+
+# LambdaTest features
+video: true
+network: false
+console: true
+visual: false
+
+# Additional capabilities
+resolution: 1920x1080
+tunnel: true
