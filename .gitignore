@@ -3,3 +3,5 @@
 .project
 .settings
 .theia
+.idea/
+lt.log
