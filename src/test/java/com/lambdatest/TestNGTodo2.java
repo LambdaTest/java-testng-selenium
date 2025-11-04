@@ -5,7 +5,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.MutableCapabilities;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Assert;
 import org.testng.ITestContext;
@@ -22,54 +23,40 @@ public class TestNGTodo2 {
     public void setup(Method m, ITestContext ctx) throws MalformedURLException {
         String username = System.getenv("LT_USERNAME") == null ? "Your LT Username" : System.getenv("LT_USERNAME");
         String authkey = System.getenv("LT_ACCESS_KEY") == null ? "Your LT AccessKey" : System.getenv("LT_ACCESS_KEY");
-        ;
-        
-        /*
-        Steps to run Smart UI project (https://beta-smartui.lambdatest.com/)
-        Step - 1 : Change the hub URL to @beta-smartui-hub.lambdatest.com/wd/hub
-        Step - 2 : Add "smartUI.project": "<Project Name>" as a capability above
-        Step - 3 : Add "((JavascriptExecutor) driver).executeScript("smartui.takeScreenshot");" code wherever you need to take a screenshot
-        Note: for additional capabilities navigate to https://www.lambdatest.com/support/docs/test-settings-options/
-        */
 
         String hub = "@hub.lambdatest.com/wd/hub";
 
-        DesiredCapabilities caps = new DesiredCapabilities();
-        caps.setCapability("platform", "Windows 10");
-        caps.setCapability("browserName", "chrome");
-        caps.setCapability("version", "latest");
-        caps.setCapability("build", "TestNG With Java");
-        caps.setCapability("name", m.getName() + this.getClass().getName());
-        caps.setCapability("plugin", "git-testng");
+        // ✅ LambdaTest-specific options (must go under "LT:Options")
+        MutableCapabilities ltOptions = new MutableCapabilities();
+        ltOptions.setCapability("build", "TestNG With Java");
+        ltOptions.setCapability("name", m.getName() + this.getClass().getName());
+        ltOptions.setCapability("platformName", "Windows 10");
+        ltOptions.setCapability("plugin", "git-testng");
+        ltOptions.setCapability("tags", new String[] { "Feature", "Magicleap", "Severe" });
 
         /*
         Enable Smart UI Project
-        caps.setCapability("smartUI.project", "<Project Name>");
+        ltOptions.setCapability("smartUI.project", "<Project Name>");
         */
 
-        String[] Tags = new String[] { "Feature", "Magicleap", "Severe" };
-        caps.setCapability("tags", Tags);
+        // ✅ Standard browser options
+        ChromeOptions browserOptions = new ChromeOptions();
+        browserOptions.setCapability("browserVersion", "latest");
+        browserOptions.setCapability("LT:Options", ltOptions);
 
-        driver = new RemoteWebDriver(new URL("https://" + username + ":" + authkey + hub), caps);
+        driver = new RemoteWebDriver(new URL("https://" + username + ":" + authkey + hub), browserOptions);
     }
 
     @Test
     public void basicTest() throws InterruptedException {
-        String spanText;
         System.out.println("Loading Url");
 
         driver.get("https://lambdatest.github.io/sample-todo-app/");
 
-        System.out.println("Checking Box");
+        System.out.println("Checking boxes...");
         driver.findElement(By.name("li1")).click();
-
-        System.out.println("Checking Another Box");
         driver.findElement(By.name("li2")).click();
-
-        System.out.println("Checking Box");
         driver.findElement(By.name("li3")).click();
-
-        System.out.println("Checking Another Box");
         driver.findElement(By.name("li4")).click();
 
         driver.findElement(By.id("sampletodotext")).sendKeys(" List Item 6");
@@ -81,41 +68,31 @@ public class TestNGTodo2 {
         driver.findElement(By.id("sampletodotext")).sendKeys(" List Item 8");
         driver.findElement(By.id("addbutton")).click();
 
-        System.out.println("Checking Another Box");
         driver.findElement(By.name("li1")).click();
-
-        System.out.println("Checking Another Box");
         driver.findElement(By.name("li3")).click();
-
-        System.out.println("Checking Another Box");
         driver.findElement(By.name("li7")).click();
-
-        System.out.println("Checking Another Box");
         driver.findElement(By.name("li8")).click();
 
         System.out.println("Entering Text");
         driver.findElement(By.id("sampletodotext")).sendKeys("Get Taste of Lambda and Stick to It");
-
         driver.findElement(By.id("addbutton")).click();
 
-        System.out.println("Checking Another Box");
         driver.findElement(By.name("li9")).click();
 
-        // Let's also assert that the todo we added is present in the list.
+        // ✅ Assert that the newly added todo is present
+        String spanText = driver.findElement(By.xpath("//li[9]/span")).getText();
+        Assert.assertEquals(spanText, "Get Taste of Lambda and Stick to It");
 
-        spanText = driver.findElementByXPath("/html/body/div/div/div/ul/li[9]/span").getText();
-        Assert.assertEquals("Get Taste of Lambda and Stick to It", spanText);
         Status = "passed";
         Thread.sleep(150);
-
-        System.out.println("TestFinished");
-
+        System.out.println("Test Finished");
     }
 
     @AfterMethod
     public void tearDown() {
-        driver.executeScript("lambda-status=" + Status);
-        driver.quit();
+        if (driver != null) {
+            driver.executeScript("lambda-status=" + Status);
+            driver.quit();
+        }
     }
-
 }
