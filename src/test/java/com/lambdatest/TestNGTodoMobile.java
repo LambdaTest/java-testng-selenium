@@ -5,7 +5,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.MutableCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Assert;
 import org.testng.ITestContext;
@@ -22,43 +22,39 @@ public class TestNGTodoMobile {
     public void setup(Method m, ITestContext ctx) throws MalformedURLException {
         String username = System.getenv("LT_USERNAME") == null ? "Your LT Username" : System.getenv("LT_USERNAME");
         String authkey = System.getenv("LT_ACCESS_KEY") == null ? "Your LT AccessKey" : System.getenv("LT_ACCESS_KEY");
-        ;
+
         String hub = "@mobile-hub.lambdatest.com/wd/hub";
 
-        DesiredCapabilities caps = new DesiredCapabilities();
-        caps.setCapability("platformName", "android");
-        caps.setCapability("deviceName", "Pixel 4a");
-        caps.setCapability("platformVersion", "11");
-        caps.setCapability("isRealMobile", true);
-        caps.setCapability("build", "TestNG With Java");
-        caps.setCapability("name", m.getName() + this.getClass().getName());
-        caps.setCapability("plugin", "git-testng");
+        // ✅ LambdaTest Mobile W3C-compliant options
+        MutableCapabilities ltOptions = new MutableCapabilities();
+        ltOptions.setCapability("platformName", "Android");
+        ltOptions.setCapability("deviceName", "Pixel 4a");
+        ltOptions.setCapability("platformVersion", "11");
+        ltOptions.setCapability("isRealMobile", true);
+        ltOptions.setCapability("build", "TestNG With Java - Mobile");
+        ltOptions.setCapability("name", m.getName() + " - " + this.getClass().getSimpleName());
+        ltOptions.setCapability("plugin", "git-testng");
+        ltOptions.setCapability("tags", new String[] { "Feature", "Tag", "Mobile" });
 
-        String[] Tags = new String[] { "Feature", "Tag", "Moderate" };
-        caps.setCapability("tags", Tags);
+        // ✅ If you want to specify browser explicitly (mobile web)
+        ltOptions.setCapability("browserName", "Chrome");
 
-        driver = new RemoteWebDriver(new URL("https://" + username + ":" + authkey + hub), caps);
+        driver = new RemoteWebDriver(new URL("https://" + username + ":" + authkey + hub), ltOptions);
     }
 
     @Test
     public void basicTest() throws InterruptedException {
-        String spanText;
-        System.out.println("Loading Url");
-        Thread.sleep(100);
+        System.out.println("Loading URL...");
         driver.get("https://lambdatest.github.io/sample-todo-app/");
+        Thread.sleep(300);
 
-        System.out.println("Checking Box");
+        System.out.println("Checking Boxes...");
         driver.findElement(By.name("li1")).click();
-
-        System.out.println("Checking Another Box");
         driver.findElement(By.name("li2")).click();
-
-        System.out.println("Checking Box");
         driver.findElement(By.name("li3")).click();
-
-        System.out.println("Checking Another Box");
         driver.findElement(By.name("li4")).click();
 
+        System.out.println("Adding New Items...");
         driver.findElement(By.id("sampletodotext")).sendKeys(" List Item 6");
         driver.findElement(By.id("addbutton")).click();
 
@@ -68,41 +64,35 @@ public class TestNGTodoMobile {
         driver.findElement(By.id("sampletodotext")).sendKeys(" List Item 8");
         driver.findElement(By.id("addbutton")).click();
 
-        System.out.println("Checking Another Box");
+        System.out.println("Rechecking Boxes...");
         driver.findElement(By.name("li1")).click();
-
-        System.out.println("Checking Another Box");
         driver.findElement(By.name("li3")).click();
-
-        System.out.println("Checking Another Box");
         driver.findElement(By.name("li7")).click();
-
-        System.out.println("Checking Another Box");
         driver.findElement(By.name("li8")).click();
 
-        System.out.println("Entering Text");
+        System.out.println("Adding Final Todo Item...");
         driver.findElement(By.id("sampletodotext")).sendKeys("Get Taste of Lambda and Stick to It");
-
         driver.findElement(By.id("addbutton")).click();
 
-        System.out.println("Checking Another Box");
         driver.findElement(By.name("li9")).click();
 
-        // Let's also assert that the todo we added is present in the list.
+        // ✅ Stable and cleaner XPath check
+        String spanText = driver.findElement(By.xpath("//li[9]/span")).getText();
+        Assert.assertEquals(spanText, "Get Taste of Lambda and Stick to It");
 
-        spanText = driver.findElementByXPath("/html/body/div/div/div/ul/li[9]/span").getText();
-        Assert.assertEquals("Get Taste of Lambda and Stick to It", spanText);
         Status = "passed";
-        Thread.sleep(800);
-
-        System.out.println("TestFinished");
-
+        Thread.sleep(500);
+        System.out.println("✅ Test Completed Successfully");
     }
 
     @AfterMethod
     public void tearDown() {
-        driver.executeScript("lambda-status=" + Status);
-        driver.quit();
+        try {
+            driver.executeScript("lambda-status=" + Status);
+        } finally {
+            if (driver != null) {
+                driver.quit();
+            }
+        }
     }
-
 }
