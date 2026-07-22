@@ -52,7 +52,7 @@ public class TestNGTodo1 {
         System.out.println("Loading Url");
         driver.executeScript("lambdatest_executor: {\"action\": \"stepcontext\", \"arguments\": {\"data\": \"Opening WebApp\", \"level\": \"info\"}}");
 
-        driver.get("https://lambdatest.github.io/sample-todo-app/");
+        driver.get("https://www.testmuai.com/selenium-playground/todo-app/");
 
         driver.executeScript("lambdatest_executor: {\"action\": \"stepcontext\", \"arguments\": {\"data\": \"Checking List Items\", \"level\": \"info\"}}");
 

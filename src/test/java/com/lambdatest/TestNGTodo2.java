@@ -51,7 +51,7 @@ public class TestNGTodo2 {
     public void basicTest() throws InterruptedException {
         System.out.println("Loading Url");
 
-        driver.get("https://lambdatest.github.io/sample-todo-app/");
+        driver.get("https://www.testmuai.com/selenium-playground/todo-app/");
 
         System.out.println("Checking boxes...");
         driver.findElement(By.name("li1")).click();

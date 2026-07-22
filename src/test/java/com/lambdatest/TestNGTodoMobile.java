@@ -45,7 +45,7 @@ public class TestNGTodoMobile {
     @Test
     public void basicTest() throws InterruptedException {
         System.out.println("Loading URL...");
-        driver.get("https://lambdatest.github.io/sample-todo-app/");
+        driver.get("https://www.testmuai.com/selenium-playground/todo-app/");
         Thread.sleep(300);
 
         System.out.println("Checking Boxes...");
