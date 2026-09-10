@@ -13,7 +13,7 @@
 With TestMu AI (Formerly LambdaTest), you can run Java TestNG Selenium tests across real browsers and operating systems. This sample shows how to configure Java + TestNG + Selenium to run on the TestMu AI cloud.
 
 - [Sign up on TestMu AI](https://www.testmuai.com/register/) (Formerly LambdaTest).
-- Follow the [TestMu AI Documentation](https://www.testmuai.com/support/docs/testng-with-selenium-running-java-automation-scripts-on-testmu-selenium-grid/) for the full setup walkthrough.
+- Follow the [Run Selenium tests with TestNG on TestMu AI](https://www.testmuai.com/support/docs/testng-with-selenium-running-java-automation-scripts-on-testmu-selenium-grid/) for the full setup walkthrough.
 
 ### Prerequisites
 
